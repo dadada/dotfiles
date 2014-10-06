@@ -227,8 +227,6 @@ bar {
 exec --no-startup-id dunst ~/.config/dunst/dunstrc
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id kwalletd
-exec --no-startup-id urxvtd
 exec --no-startup-id owncloud
 exec --no-startup-id xsetroot -solid '#000000' 
 exec --no-startup-id gnome-keyring-daemon
