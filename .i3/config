@@ -12,7 +12,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -p "run: " -fn "SourceCodePro-9" -nb "#073642" -nf "#839496" -sb "#268bd2" -sf "#fdf6e3" -b
+bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -fn "SourceCodePro-9" -nb "#eee8d5" -nf "#586e75" -sb "#268bd2" -sf "#002b36" -b
+#bindsym $mod+d exec ~/.menu/menu main
 
 # change focus
 bindsym $mod+h focus left
@@ -183,11 +184,13 @@ set $green   #859900
 
 # window decoration colors
 # class			border	backgr.	text	indicator
-client.focused		$blue	$blue	$base3	$blue
-client.focused_inactive	$green	$green	$base3	$green
-client.unfocused	$baseO3	$baseO1	$base3	$baseO3
-client.urgent		$red	$red	$base3	$red
+client.focused		$blue	$blue	$baseO3	$blue
+client.focused_inactive	$green	$green	$baseO3	$green
+client.unfocused	$base3	$base1	$baseO3	$base3
+client.urgent		$red	$red	$baseO3	$red
 #client.placeholder      $blue   $baseO1   $base3  $blue
+
+new_window pixel 3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -196,14 +199,14 @@ bar {
         position top
         output LVDS1
 	colors {
-		background $baseO3
-	        statusline $base0
+		background $base3
+	        statusline $baseO0
 
 		# class			border	backgr.	text
-		focused_workspace	$blue	$baseO2 $base1
-	        active_workspace	$green 	$baseO2 $base1 
-		inactive_workspace	$baseO1	$baseO2 $base1
-		urgent_workspace	$red	$baseO2 $base1
+		focused_workspace	$blue	$base2 $baseO1
+	        active_workspace	$green 	$base2 $baseO1 
+		inactive_workspace	$base2	$base2 $baseO1
+		urgent_workspace	$red	$base2 $baseO1
 	}
 }
 
@@ -213,14 +216,14 @@ bar {
 	position top
         tray_output none
 	colors {
-		background $baseO3
-	        statusline $base0
+		background $base3
+	        statusline $baseO0
 
 		# class			border	backgr.	text
-		focused_workspace	$blue	$baseO2 $base1
-	        active_workspace	$green 	$baseO2 $base1 
-		inactive_workspace	$baseO1	$baseO2 $base1
-		urgent_workspace	$red	$baseO2 $base1
+		focused_workspace	$blue	$base2 $baseO1
+	        active_workspace	$green 	$base2 $baseO1 
+		inactive_workspace	$base1	$base2 $baseO1
+		urgent_workspace	$red	$base2 $baseO1
 	}
 }
 
@@ -228,5 +231,5 @@ exec --no-startup-id dunst ~/.config/dunst/dunstrc
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id owncloud
-exec --no-startup-id xsetroot -solid '#000000' 
+exec --no-startup-id xsetroot -solid '#002b36' 
 exec --no-startup-id gnome-keyring-daemon

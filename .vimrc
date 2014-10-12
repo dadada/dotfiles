@@ -62,7 +62,7 @@ set showcmd
 "set hlsearch
 set relativenumber
 set number
-set autoindent
+"set autoindent
 set visualbell
 set shiftwidth=4
 set expandtab
@@ -70,7 +70,7 @@ ino <Esc> <c-o> <c-l>
 ino jj <Esc>
 
 " theming
-"set t_Co=16
+set t_Co=16
 syntax enable
 set background=dark
 colorscheme solarized

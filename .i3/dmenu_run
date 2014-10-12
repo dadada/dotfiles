@@ -1,15 +1,28 @@
-#!/bin/sh
+#!/bin/bash
 cachedir=${XDG_CACHE_HOME:-"$HOME/.cache"}
 if [ -d "$cachedir" ]; then
 	cache=$cachedir/dmenu_run
 else
 	cache=$HOME/.dmenu_cache # if no xdg dir, fall back to dotfile in ~
 fi
-(
+cmd=$(
 	IFS=:
 	if stest -dqr -n "$cache" $PATH; then
 		stest -flx $PATH | sort -u | tee "$cache" | dmenu.xft "$@"
 	else
 		dmenu.xft "$@" < "$cache"
 	fi
-) | ${SHELL:-"/usr/bin/sh"} &
+) 
+unset IFS
+
+if [[ $cmd == *\; ]]; then
+    xterm -hold -e ${cmd%;}
+elif [[ $cmd == *\! ]]; then
+    gksudo ${cmd%!}
+elif [[ $cmd == *\? ]]; then
+    locate ${cmd%?} | dmenu.xft "$@" | xargs xdg-open
+elif [[ $cmd == +p ]]; then
+    xterm -e python
+else
+    echo $cmd | ${SHELL:-"/usr/bin/zsh"} &
+fi

@@ -5,4 +5,3 @@ keysym q = q Q adiaeresis Adiaeresis
 keysym p = p P odiaeresis Odiaeresis
 keysym y = y Y udiaeresis Udiaeresis
 keysym s = s S ssharp
-
