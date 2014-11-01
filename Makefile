@@ -2,11 +2,6 @@ SOURCE = $(HOME)/.i3 $(HOME)/.i3status $(HOME)/.zsh $(HOME)/.zshrc $(HOME)/.zshe
 
 all: zsh i3 zathura vim xmodmap dunst
 
-clean:
-	for f in $(SOURCE); do 
-		mv $(f) $(f).old
-	done
-
 zsh:
 	ln -s $(PWD)/.zsh $(HOME)/
 	ln -s $(PWD)/.zshrc $(HOME)/
@@ -19,7 +14,7 @@ i3:
 zathura:
 	ln -s $(PWD)/.config/zathura/zathurarc $(HOME)/.config/zathura/
 
-vim: `which git`
+vim:
 	mkdir -p $(HOME)/.vim
 	mkdir -p $(HOME)/.vim-backup
 	git clone 'https://github.com/gmarik/Vundle.vim.git' $(HOME)/.vim/bundle/Vundle.vim
