@@ -62,10 +62,11 @@ set showcmd
 "set hlsearch
 set relativenumber
 set number
-"set autoindent
+set autoindent
 set visualbell
-set shiftwidth=4
-set expandtab
+"set shiftwidth=2
+"set softtabstop=2
+"set expandtab
 ino <Esc> <c-o> <c-l>
 ino jj <Esc>
 

@@ -68,7 +68,7 @@ bindsym $mod+o focus child
 # names for workspaces
 set $one 1|msg
 set $two 2|web
-set $three 3
+set $three 3|dev
 set $four 4
 set $five 5
 set $six 6
@@ -197,6 +197,7 @@ new_window pixel 3
 bar {
         status_command i3status
         position top
+        #tray_output none
         output LVDS1
 	colors {
 		background $base3
@@ -230,6 +231,5 @@ bar {
 exec --no-startup-id dunst ~/.config/dunst/dunstrc
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id owncloud
 exec --no-startup-id xsetroot -solid '#002b36' 
 exec --no-startup-id gnome-keyring-daemon
