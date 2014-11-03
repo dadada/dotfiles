@@ -5,6 +5,5 @@ Installation
 ------------
 
 ```
-make clean
 make all
 ```
