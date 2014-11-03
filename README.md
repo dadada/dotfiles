@@ -4,9 +4,7 @@ dotfiles
 Installation
 ------------
 
-You can try running
 ```
-cd dotfiles
-./setup.sh
+make clean
+make all
 ```
-if you're feeling lucky. 
