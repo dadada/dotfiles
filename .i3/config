@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:Source Code Pro Regular 9
+font pango:Source Code Pro Regular 10
 
 floating_modifier $mod
 
@@ -12,7 +12,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -fn "SourceCodePro-9" -nb "#eee8d5" -nf "#586e75" -sb "#268bd2" -sf "#002b36" -b
+bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -fn "SourceCodePro-10" -nb "#002b36" -nf "#268bd2" -sb "#fdf6e3" -sf "#657b83" -b
+#bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -fn "SourceCodePro-10" -nb "#fdf6e3" -nf "#657b83" -sb "#268bd2" -sf "#002b36" -b
 #bindsym $mod+d exec ~/.menu/menu main
 
 # change focus
@@ -66,16 +67,16 @@ bindsym $mod+p focus parent
 bindsym $mod+o focus child
 
 # names for workspaces
-set $one 1|msg
-set $two 2|web
-set $three 3|dev
-set $four 4
+set $one 1<msg
+set $two 2<web
+set $three 3<dev
+set $four 4<mail
 set $five 5
 set $six 6
 set $seven 7
 set $eight 8
 set $nine 9
-set $ten 10
+set $ten 10<remote
 
 # switch to workspace
 bindsym $mod+1 workspace $one
@@ -112,7 +113,7 @@ bindsym $mod+Shift+n move container to workspace prev
 bindsym $mod+Shift+period move workspace to output right
 bindsym $mod+Shift+comma move workspace to output left
 
-# workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth yes
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -124,19 +125,19 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+                bindsym j resize grow height 10 px or 10 ppt
+                bindsym k resize shrink height 10 px or 10 ppt
+                bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+                bindsym Left resize shrink width 10 px or 10 ppt
+                bindsym Down resize grow height 10 px or 10 ppt
+                bindsym Up resize shrink height 10 px or 10 ppt
+                bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+# back to normal: Enter or Escape
+                bindsym Return mode "default"
+                bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -152,7 +153,7 @@ bindsym $mod+t border toggle
 
 # Lock the screen
 bindsym $mod+equal exec --no-startup-id i3lock -c "#002b36"
-bindsym $mod+Shift+equal exec --no-startup-id i3lock -c "#002b36" && systemctl suspend
+bindsym $mod+Shift+equal exec --no-startup-id i3lock -c "#fdf6e3" && systemctl suspend
 
 # audio mixer
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
@@ -184,52 +185,71 @@ set $green   #859900
 
 # window decoration colors
 # class			border	backgr.	text	indicator
-client.focused		$blue	$blue	$baseO3	$blue
+#client.focused		$blue	$blue	$baseO3	$blue
+#client.focused_inactive	$green	$green	$baseO3	$green
+#client.unfocused	$base3	$base1	$baseO3	$base3
+#client.urgent		$red	$red	$baseO3	$red
+##client.placeholder      $blue   $baseO1   $base3  $blue
+
+client.focused		$blue	$blue	$base3	$blue
 client.focused_inactive	$green	$green	$baseO3	$green
-client.unfocused	$base3	$base1	$baseO3	$base3
-client.urgent		$red	$red	$baseO3	$red
+client.unfocused	$base3	$base1	$base3	$baseO3
+client.urgent		$red	$red	$base3	$red
 #client.placeholder      $blue   $baseO1   $base3  $blue
 
-new_window pixel 3
+new_window pixel 5
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
-        position top
-        #tray_output none
-        output LVDS1
-	colors {
-		background $base3
-	        statusline $baseO0
+                position top
+                output LVDS1
+                colors {
+                        background $baseO3
+                        #background $base3
+                        statusline $base0
+                        #statusline $baseO0
 
-		# class			border	backgr.	text
-		focused_workspace	$blue	$base2 $baseO1
-	        active_workspace	$green 	$base2 $baseO1 
-		inactive_workspace	$base2	$base2 $baseO1
-		urgent_workspace	$red	$base2 $baseO1
-	}
+# class			border	backgr.	text
+                        #focused_workspace	$blue	$base2 $baseO1
+                        #active_workspace	$green 	$base2 $baseO1 
+                        #inactive_workspace	$base2	$base2 $baseO1
+                        #urgent_workspace	$red	$base2 $baseO1
+
+                        focused_workspace	$blue	$baseO2 $base1
+                        active_workspace	$green 	$baseO2 $base1 
+                        inactive_workspace	$baseO1	$baseO2 $base1
+                        urgent_workspace	$red	$baseO2 $base1
+                }
 }
 
 bar {
-	status_command /home/tim/bin/getMonitor.sh
-	output VGA1
-	position top
-        tray_output none
-	colors {
-		background $base3
-	        statusline $baseO0
+        status_command /home/tim/bin/getMonitor.sh
+                output VGA1
+                position top
+                tray_output none
+                colors {
+                        background $baseO3
+                        #background $base3
+                        statusline $base0
+                        #statusline $baseO0
 
-		# class			border	backgr.	text
-		focused_workspace	$blue	$base2 $baseO1
-	        active_workspace	$green 	$base2 $baseO1 
-		inactive_workspace	$base1	$base2 $baseO1
-		urgent_workspace	$red	$base2 $baseO1
-	}
+# class			border	backgr.	text
+                        #focused_workspace	$blue	$base2 $baseO1
+                        #active_workspace	$green 	$base2 $baseO1 
+                        #inactive_workspace	$base1	$base2 $baseO1
+                        #urgent_workspace	$red	$base2 $baseO1
+
+                        focused_workspace	$blue	$baseO2 $base1
+                        active_workspace	$green 	$baseO2 $base1 
+                        inactive_workspace	$baseO1	$baseO2 $base1
+                        urgent_workspace	$red	$baseO2 $base1
+                }
 }
 
 exec --no-startup-id dunst ~/.config/dunst/dunstrc
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id xsetroot -solid '#002b36' 
+exec --no-startup-id xsetroot -solid "#002b36" 
 exec --no-startup-id gnome-keyring-daemon

@@ -15,14 +15,14 @@ cmd=$(
 ) 
 unset IFS
 
-if [[ $cmd == *\; ]]; then
-    xterm -hold -e ${cmd%;}
-elif [[ $cmd == *\! ]]; then
-    gksudo ${cmd%!}
-elif [[ $cmd == *\? ]]; then
-    locate ${cmd%?} | dmenu.xft "$@" | xargs xdg-open
-elif [[ $cmd == +p ]]; then
-    xterm -e python
+if [[ $cmd == \;* ]]; then
+    urxvt -e ${cmd##;}
+elif [[ $cmd == \!* ]]; then
+    gksudo ${cmd##!}
+elif [[ $cmd == \?* ]]; then
+    locate ${cmd##?} | dmenu.xft "$@" | xargs xdg-open
+elif [[ $cmd == \^* ]]; then
+    i3-msg ${cmd##^}
 else
     echo $cmd | ${SHELL:-"/usr/bin/zsh"} &
 fi

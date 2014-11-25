@@ -21,7 +21,7 @@ filetype plugin indent on    " required
 
 set encoding=utf-8
 setglobal fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,latin1
+"set fileencodings=ucs-bom,utf-8,latin1
 set hidden
 set backupdir=~/.vim-backup
 set directory=~/.vim-backup
@@ -29,11 +29,14 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
 " editing
+set expandtab
+set tabstop=4
+set shiftwidth=4
 set wildmenu
 set showcmd
 set relativenumber
 set number
-set autoindent
+"set autoindent
 set visualbell
 ino <Esc> <c-o> <c-l>
 ino jj <Esc>
