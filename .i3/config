@@ -152,8 +152,8 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+t border toggle
 
 # Lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -c "#002b36"
-bindsym $mod+Shift+equal exec --no-startup-id i3lock -c "#fdf6e3" && systemctl suspend
+bindsym $mod+XF86ScreenSaver exec --no-startup-id i3lock -c "#002b36"
+bindsym $mod+Shift+XF86ScreenSaver exec --no-startup-id i3lock -c "#fdf6e3" && systemctl suspend
 
 # audio mixer
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
