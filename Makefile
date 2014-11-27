@@ -1,8 +1,8 @@
 SOURCE = $(HOME)/.i3,$(HOME)/.i3status,$(HOME)/.zsh,$(HOME)/.zshrc,$(HOME)/.zshenv,$(HOME)/.vim,$(HOME)/.vimrc,$(HOME)/.config/dunst/dunstrc,$(HOME)/.config/zathura/zathurarc,$(HOME)/.Xmodmap,$(HOME)/.Xresources
 
 clean:
-	mkdir -p $(HOME)/.dotfilesi.backup
-	mv {$(SOURCE)} $(HOME)/.dotfiles-backup
+	mkdir -p $(HOME)/.dotfiles.backup
+	mv {$(SOURCE)} $(HOME)/.dotfiles.backup
 
 all: zsh i3 zathura vim xmodmap dunst
 
