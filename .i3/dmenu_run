@@ -16,13 +16,13 @@ cmd=$(
 unset IFS
 
 if [[ $cmd == \;* ]]; then
-    urxvt -e ${cmd##;}
+    urxvt -e ${cmd##;} &
 elif [[ $cmd == \!* ]]; then
-    gksudo ${cmd##!}
+    gksudo ${cmd##!} &
 elif [[ $cmd == \?* ]]; then
-    locate ${cmd##?} | dmenu.xft "$@" | xargs xdg-open
+    locate ${cmd##?} | dmenu.xft "$@" | xargs xdg-open &
 elif [[ $cmd == \^* ]]; then
-    i3-msg ${cmd##^}
+    i3-msg ${cmd##^} &
 else
     echo $cmd | ${SHELL:-"/usr/bin/zsh"} &
 fi
