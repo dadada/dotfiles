@@ -4,6 +4,7 @@ dotfiles
 Installation
 ------------
 
+Create softlinks to these configuration files and place them where the respective configuration files would be placed. e.g. when inside the directory you cloned this repo to. 
 ```
-make all
+ln -s $PWD/.vimrc $HOME/.vimrc
 ```
