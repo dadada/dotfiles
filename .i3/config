@@ -17,6 +17,7 @@ bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -nb "#002b36" -nf "#268bd2" -sb "
 #bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -fn "SourceCodePro-10" -nb "#fdf6e3" -nf "#657b83" -sb "#268bd2" -sf "#002b36" -b
 #bindsym $mod+d exec ~/.menu/menu main
 
+focus_follows_mouse yes
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
