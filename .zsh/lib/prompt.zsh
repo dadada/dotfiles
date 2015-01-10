@@ -27,5 +27,4 @@ case ${SOLARIZED_THEME:-dark} in
     *)     brg=black && frg=white;;
 esac
 
-#PROMPT='%F{cyan}%n@%m%f:%F{green}%~%f%F{blue}${vcs_info_msg_0_}%f%(0?..%F{red}[%?])%f%F{yellow}%#%f '
-PROMPT='%K{$brg}%F{cyan}%m%f:%F{green}%~%f%F{blue}${vcs_info_msg_0_}%f%(0?..%F{red}[%?])%f%F{yellow}%#%f%k '
+PROMPT='%F{cyan}%m%f:%F{green}%~%f%F{blue}${vcs_info_msg_0_}%f%(0?..%F{red}[%?])%f%F{yellow}%#%f '

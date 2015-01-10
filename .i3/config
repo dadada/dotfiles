@@ -12,7 +12,8 @@ bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -nb "#002b36" -nf "#839496" -sb "#fdf6e3" -sf "#657b83" -fn "DejaVu Sans Mono-8:normal"
+bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -fn "DejaVu Sans Mono-8:normal:antialias=false:hinting=false" 
+#-nb "#002b36" -nf "#839496" -sb "#fdf6e3" -sf "#657b83"
 
 focus_follows_mouse yes
 
@@ -213,18 +214,10 @@ set $blue    #268bd2
 set $cyan    #2aa198
 set $green   #859900
 
-# window decoration colors
-# class			border	backgr.	text	indicator
-#client.focused		$blue	$blue	$baseO3	$blue
+#client.focused		$blue	$blue	$base3	$blue
 #client.focused_inactive	$green	$green	$baseO3	$green
-#client.unfocused	$base3	$base1	$baseO3	$base3
-#client.urgent		$red	$red	$baseO3	$red
-##client.placeholder      $blue   $baseO1   $base3  $blue
-
-client.focused		$blue	$blue	$base3	$blue
-client.focused_inactive	$green	$green	$baseO3	$green
-client.unfocused	$base3	$base1	$base3	$baseO3
-client.urgent		$red	$red	$base3	$red
+#client.unfocused	$base3	$base1	$base3	$baseO3
+#client.urgent		$red	$red	$base3	$red
 #client.placeholder      $blue   $baseO1   $base3  $blue
 
 new_window pixel 5
@@ -236,21 +229,13 @@ bar {
     position bottom
     output LVDS1
     colors {
-        background $baseO3
-#background $base3
-        statusline $base0
-#statusline $baseO0
+#        background $baseO3
+        #statusline $base0
 
-# class			border	backgr.	text
-#focused_workspace	$blue	$base2 $baseO1
-#active_workspace	$green 	$base2 $baseO1 
-#inactive_workspace	$base2	$base2 $baseO1
-#urgent_workspace	$red	$base2 $baseO1
-
-        focused_workspace	$blue	$baseO2 $base1
-        active_workspace	$green 	$baseO2 $base1 
-        inactive_workspace	$baseO1	$baseO2 $base1
-        urgent_workspace	$red	$baseO2 $base1
+        #focused_workspace	$blue	$baseO2 $base1
+        #active_workspace	$green 	$baseO2 $base1 
+        #inactive_workspace	$baseO1	$baseO2 $base1
+        #urgent_workspace	$red	$baseO2 $base1
     }
 }
 
@@ -260,21 +245,13 @@ bar {
     position bottom
     tray_output none
     colors {
-        background $baseO3
-#background $base3
-        statusline $base0
-#statusline $baseO0
+        #background $baseO3
+        #statusline $base0
 
-# class			border	backgr.	text
-#focused_workspace	$blue	$base2 $baseO1
-#active_workspace	$green 	$base2 $baseO1 
-#inactive_workspace	$base1	$base2 $baseO1
-#urgent_workspace	$red	$base2 $baseO1
-
-        focused_workspace	$blue	$baseO2 $base1
-        active_workspace	$green 	$baseO2 $base1 
-        inactive_workspace	$baseO1	$baseO2 $base1
-        urgent_workspace	$red	$baseO2 $base1
+        #focused_workspace	$blue	$baseO2 $base1
+        #active_workspace	$green 	$baseO2 $base1 
+        #inactive_workspace	$baseO1	$baseO2 $base1
+        #urgent_workspace	$red	$baseO2 $base1
     }
 }
 
