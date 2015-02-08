@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 
 font pango:DejaVu Sans Mono 8
 
@@ -40,30 +40,6 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-
-# Focus window outside of current container
-bindcode Mod4+k focus parent; focus up; focus child
-bindcode Mod4+h focus parent; focus left; focus child
-bindcode Mod4+j focus parent; focus down; focus child
-bindcode Mod4+l focus parent; focus right; focus child
-
-# alternatively, you can use the cursor keys
-bindsym Mod4+Up focus parent; focus up; focus child
-bindsym Mod4+Left focus parent; focus left; focus child
-bindsym Mod4+Down focus parent; focus down; focus child
-bindsym Mod4+Right focus parent; focus right; focus child
-
-# Move Container ($mod+Mod4+Shift+g/n/r/t)
-bindcode Mod4+Shift+k focus parent; move up; focus child
-bindcode Mod4+Shift+h focus parent; move left; focus child
-bindcode Mod4+Shift+j focus parent; move down; focus child
-bindcode $mod+Mod4+Shift+l focus parent; move right; focus child
-
-# alternatively, you can use the cursor keys
-bindsym Mod4+Shift+Up focus parent; move up; focus child
-bindsym Mod4+Shift+Left focus parent; move left; focus child
-bindsym Mod4+Shift+Down focus parent; move down; focus child
-bindsym Mod4+Shift+Right focus parent; move right; focus child
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -183,8 +159,8 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+t border toggle
 
 # Lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -c "#002b36"
-bindsym $mod+Shift+equal exec --no-startup-id i3lock -c "#002b36" && systemctl suspend
+bindsym $mod+equal exec --no-startup-id i3lock -c "#000000"
+bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
 
 # audio mixer
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
@@ -214,13 +190,13 @@ set $blue    #268bd2
 set $cyan    #2aa198
 set $green   #859900
 
-#client.focused		$blue	$blue	$base3	$blue
-#client.focused_inactive	$green	$green	$baseO3	$green
-#client.unfocused	$base3	$base1	$base3	$baseO3
-#client.urgent		$red	$red	$base3	$red
-#client.placeholder      $blue   $baseO1   $base3  $blue
+#client.focused		    $base0	$blue	$base3	$blue
+#client.focused_inactive	$base0	$green	$base3	$green
+#client.unfocused	    $base0  $baseO3 $base0	$base3
+#client.urgent		    $base0	$red	$base3	$red
+#client.placeholder     $base0  $baseO3  $base0  $blue
 
-new_window pixel 5
+#new_window pixel 5
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -229,18 +205,17 @@ bar {
     position bottom
     output LVDS1
     colors {
-#        background $baseO3
+        #background $baseO3
         #statusline $base0
 
-        #focused_workspace	$blue	$baseO2 $base1
-        #active_workspace	$green 	$baseO2 $base1 
-        #inactive_workspace	$baseO1	$baseO2 $base1
-        #urgent_workspace	$red	$baseO2 $base1
+        #focused_workspace	$base0 $blue   $base3
+        #active_workspace	$base0 $green  $base3 
+        #inactive_workspace	$base0 $baseO3 $base0
+        #urgent_workspace	$base0 $red    $base3
     }
 }
 
 bar {
-    status_command /home/tim/bin/getMonitor.sh
     output VGA1
     position bottom
     tray_output none
@@ -248,16 +223,22 @@ bar {
         #background $baseO3
         #statusline $base0
 
-        #focused_workspace	$blue	$baseO2 $base1
-        #active_workspace	$green 	$baseO2 $base1 
-        #inactive_workspace	$baseO1	$baseO2 $base1
-        #urgent_workspace	$red	$baseO2 $base1
+        #focused_workspace	$base0 $blue   $base3
+        #active_workspace	$base0 $green  $base3 
+        #inactive_workspace	$base0 $baseO3 $base0
+        #urgent_workspace	$base0 $red    $base3
     }
 }
+
+assign [class="^XChat$"] $one
+assign [class="^Pidgin$"] $one
+assign [class="^Trillian$"] $one
+assign [class="^Icedove$"] $four
 
 exec --no-startup-id dunst ~/.config/dunst/dunstrc
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xrdb ~/.Xresources
-#exec --no-startup-id xsetroot -solid "#002b36" 
 exec --no-startup-id gnome-keyring-daemon
 exec --no-startup-id urxvtd -q -o -f
+exec --no-startup-id feh --bg-scale ~/Downloads/1423092104144.jpg
+

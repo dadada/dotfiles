@@ -5,15 +5,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'altercation/vim-colors-solarized'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'Raimondi/delimitMate'
+Plugin 'sjl/gundo.vim'
+Bundle 'croaky/vim-colors-github'
 
 "All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -29,6 +26,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
 " editing
+set omnifunc=syntaxcomplete#Complete
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -36,16 +34,16 @@ set wildmenu
 set showcmd
 set relativenumber
 set number
-"set autoindent
+set autoindent
 set visualbell
-ino <Esc> <c-o> <c-l>
+"ino <Esc> <c-o> <c-l>
 ino jj <Esc>
+set autochdir
 
 " theming
 set t_Co=256
 syntax enable
-"set background=dark
-"colorscheme solarized
+colorscheme github
 
 " gui options
 set guioptions-=T
