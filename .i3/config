@@ -1,6 +1,7 @@
 set $mod Mod4
 
-font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 8
+font -misc-fixed-medium-r-normal-*-13-*-*-*-c-*-iso10646-1
 
 floating_modifier $mod
 
@@ -11,9 +12,15 @@ bindsym $mod+Return exec urxvtc
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# start i3-input
+bindsym $mod+i exec /usr/bin/i3-input
 # start dmenu (a program launcher)
-bindsym $mod+d exec ~/bin/dmenu_run -p "run: " -fn "DejaVu Sans Mono-8:normal:antialias=false:hinting=false" -nb "#002b36" -nf "#839496" -sb "#fdf6e3" -sf "#657b83"
+bindsym $mod+d exec dmenu_run -p "run: " -fn "font -misc-fixed-bold-*-*-*-13-*-*-*-c-*-iso10646-1" -nb "#000000" -nf "#ffffff" -sb "#0000ff" -sf "#ffffff"
 
+# capture the screen
+bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
+
+#-fn "DejaVu Sans Mono-8:normal:antialias=false:hinting=false
 focus_follows_mouse yes
 
 # change focus
@@ -73,10 +80,10 @@ bindsym $mod+p focus parent
 bindsym $mod+o focus child
 
 # names for workspaces
-set $one 1<msg
-set $two 2<web
-set $three 3<dev
-set $four 4<mail
+set $one 1:msg
+set $two 2:web
+set $three 3:dev
+set $four 4:mail
 set $five 5
 set $six 6
 set $seven 7
@@ -171,29 +178,31 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
-## Solarzied colors | http://ethanschoonover.com/solarized | colors baseO[0-3] are Base0[0-3]
-set $baseO3  #002b36
-set $baseO2  #073642
-set $baseO1  #586e75
-set $baseO0  #657b83
-set $base0   #839496
-set $base1   #93a1a1
-set $base2   #eee8d5
-set $base3   #fdf6e3
-set $yellow  #b58900
-set $orange  #cb4b16
-set $red     #dc322f
-set $magenta #d33682
-set $violet  #6c71c4
-set $blue    #268bd2
-set $cyan    #2aa198
-set $green   #859900
+set $bg             #000000
+set $fg             #ffffff
+set $black          #000000
+set $bright_black   #444444
+set $red            #ff0000
+set $bright_red     #ff2222
+set $green          #00ff00
+set $bright_green   #22ff22
+set $yellow         #ffff00
+set $bright_yellow  #ffff22
+set $blue           #0000ff
+set $bright_blue    #2222ff
+set $magenta        #ff00ff
+set $bright_magenta #ff22ff
+set $cyan           #00ffff
+set $bright_cyan    #22ffff
+set $white          #bbbbbb
+set $bright_white   #ffffff
 
-client.focused		    $base0	$blue	$base3	$blue
-client.focused_inactive	$base0	$green	$base3	$green
-client.unfocused	    $base0  $baseO2 $base0	$base3
-client.urgent		    $base0	$red	$base3	$red
-#client.placeholder     $base0  $baseO2  $base0  $blue
+# class                  border backgr.         text    indicator
+ client.focused          $bg    $blue           $fg     $cyan
+ client.focused_inactive $bg    $green          $fg     $green
+ client.unfocused        $bg    $bright_black   $white  $bright_black
+ client.urgent           $bg    $red            $fg     $red
+# client.placeholder      $black $bright_black $fg $black
 
 #new_window pixel 5
 
@@ -201,42 +210,45 @@ client.urgent		    $base0	$red	$base3	$red
 # finds out, if available)
 bar {
     status_command i3status
-    position bottom
+    position top
     output LVDS1
     colors {
-        background $baseO3
-        statusline $base0
+        background $bg
+        statusline $fg
+        separator  $bright_black
 
-        focused_workspace	$base0 $blue   $base3
-        active_workspace	$base0 $green  $base3 
-        inactive_workspace	$base0 $baseO3 $base0
-        urgent_workspace	$base0 $red    $base3
+        # class                 border backgr.         text 
+        focused_workspace       $bg    $blue           $fg   
+        active_workspace        $bg    $green          $fg   
+        inactive_workspace      $bg    $bright_black   $white
+        urgent_workspace        $bg    $red            $fg   
     }
 }
 
 bar {
     output VGA1
-    position bottom
+    position top
     tray_output none
     colors {
-        background $baseO3
-        statusline $base0
+        background $bg
+        statusline $fg
+        separator  $bright_black
 
-        focused_workspace	$base0 $blue   $base3
-        active_workspace	$base0 $green  $base3 
-        inactive_workspace	$base0 $baseO3 $base0
-        urgent_workspace	$base0 $red    $base3
+        # class                 border backgr.         text 
+        focused_workspace       $bg    $blue           $fg   
+        active_workspace        $bg    $green          $fg   
+        inactive_workspace      $bg    $bright_black   $white
+        urgent_workspace        $bg    $red            $fg   
     }
 }
-
+assign [class="^Icedove$"] $four
 assign [class="^XChat$"] $one
 assign [class="^Pidgin$"] $one
 assign [class="^Trillian$"] $one
-assign [class="^Icedove$"] $four
 
+exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id dunst ~/.config/dunst/dunstrc
 exec --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id gnome-keyring-daemon
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id feh --bg-scale ~/Downloads/1423092104144.jpg
