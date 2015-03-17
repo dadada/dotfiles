@@ -178,30 +178,29 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
-set $bg             #000000
-set $fg             #ffffff
-set $black          #000000
-set $bright_black   #444444
-set $red            #ff0000
-set $bright_red     #ff2222
-set $green          #00ff00
-set $bright_green   #22ff22
-set $yellow         #ffff00
-set $bright_yellow  #ffff22
-set $blue           #0000ff
-set $bright_blue    #2222ff
-set $magenta        #ff00ff
-set $bright_magenta #ff22ff
-set $cyan           #00ffff
-set $bright_cyan    #22ffff
-set $white          #bbbbbb
-set $bright_white   #ffffff
 
-# class                 border backgr.         text    indicator
-client.focused          $bg    $white          $bg     $cyan
-client.focused_inactive $bg    $bright_black   $white  $green
-client.unfocused        $bg    $bright_black   $green  $bright_black
-client.urgent           $bg    $bright_black   $red    $red
+set $bg      #002b36
+set $s_bg    #073642
+set $baseO1  #586e75
+set $s_fg    #657b83
+set $fg      #839496
+set $base1   #93a1a1
+set $base2   #eee8d5
+set $base3   #fdf6e3
+set $yellow  #b58900
+set $orange  #cb4b16
+set $alert   #dc322f
+set $magenta #d33682
+set $violet  #6c71c4
+set $blue    #268bd2
+set $marked  #2aa198
+set $active  #859900
+
+# class                 border backgr. text    indicator
+client.focused          $s_fg  $s_fg   $s_bg   $marked
+client.focused_inactive $s_bg  $s_bg   $s_fg   $active
+client.unfocused        $s_bg  $s_bg   $active $inactive
+client.urgent           $s_bg  $s_bg   $alert  $alert
 
 #new_window pixel 5
 
@@ -214,13 +213,13 @@ bar {
     colors {
         background $bg
         statusline $fg
-        separator  $bright_black
+        separator  $s_fg
 
-        # class             border backgr.       text 
-        focused_workspace   $bg    $white        $bg
-        active_workspace    $bg    $bright_black $green
-        inactive_workspace  $bg    $bright_black $white
-        urgent_workspace    $bg    $bright_black $red
+        # class             border backgr. text 
+        focused_workspace   $s_fg  $s_fg   $s_bg
+        inactive_workspace  $s_bg  $s_bg   $s_fg
+        active_workspace    $s_bg  $s_bg   $active
+        urgent_workspace    $s_bg  $s_bg   $alert
     }
 }
 
@@ -233,11 +232,11 @@ bar {
         statusline $fg
         separator  $bright_black
 
-        # class            border backgr.       text 
-        focused_workspace  $bg    $white        $bg
-        active_workspace   $bg    $bright_black $green
-        inactive_workspace $bg    $bright_black $white
-        urgent_workspace   $bg    $bright_black $red
+        # class             border backgr. text 
+        focused_workspace   $s_fg  $s_fg   $s_bg
+        inactive_workspace  $s_bg  $s_bg   $s_fg
+        active_workspace    $s_bg  $s_bg   $active
+        urgent_workspace    $s_bg  $s_bg   $alert
     }
 }
 

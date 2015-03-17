@@ -13,6 +13,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'Shougo/neocomplete.vim'
 Bundle 'eagletmt/neco-ghc'
+Bundle 'altercation/vim-colors-solarized'
 
 
 "All of your Plugins must be added before the following line
@@ -79,4 +80,4 @@ endif
 syntax enable
 set background=dark
 set laststatus=2
-
+colorscheme solarized
