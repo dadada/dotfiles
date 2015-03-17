@@ -15,7 +15,7 @@ bindsym $mod+Shift+q kill
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -b -p "run:" -fn "Inconsolata" -nb "#000000" -nf "#ffffff" -sb "#0000ff" -sf "#ffffff"
+bindsym $mod+d exec dmenu_run -b -p "run:" -fn "Inconsolata" -nb "#002b36" -nf "#657b83" -sb "#657b83" -sf "#002b36"
 
 # capture the screen
 bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
