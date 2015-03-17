@@ -1,61 +1,40 @@
-!URxvt*font: xft:DejaVu Sans Mono:size=10:antialias=true:hinting=true
-URxvt*font: -misc-fixed-medium-r-normal-*-13-*-*-*-c-*-iso10646-1
+URxvt*font: xft:Inconsolata:size=9
 URxvt*scrollBar: false
 URxvt*fading: 0
-!URxvt*.transparent: true
-!URxvt*shading: 20
 
 ! --- special colors ---
-!
 *background: #000000
 *foreground: #ffffff
-
 ! --- standard colors ---
-
 ! black
 *color0: #000000
-
 ! bright_black
 *color8: #444444
-
 ! red
 *color1: #ff0000
-
 ! bright_red
 *color9: #ff2222
-
 ! green
 *color2: #00ff00
-
 ! bright_green
 *color10: #22ff22
-
 ! yellow
 *color3: #ffff00
-
 ! bright_yellow
 *color11: #ffff22
-
 ! blue
 *color4: #0000ff
-
 ! bright_blue
 *color12: #2222ff
-
 ! magenta
 *color5: #ff00ff
-
 ! bright_magenta
 *color13: #ff22ff
-
 ! cyan
 *color6: #00ffff
-
 ! bright_cyan
 *color14: #22ffff
-
 ! white
 *color7: #bbbbbb
-
 ! bright_white
 *color15: #ffffff

@@ -1,7 +1,7 @@
 set $mod Mod4
 
-#font pango:DejaVu Sans Mono 8
-font -misc-fixed-medium-r-normal-*-13-*-*-*-c-*-iso10646-1
+font pango:Inconsolata
+#font -misc-fixed-medium-r-normal-*-13-*-*-*-c-*-iso10646-1
 
 floating_modifier $mod
 
@@ -15,7 +15,7 @@ bindsym $mod+Shift+q kill
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -p "run: " -fn "font -misc-fixed-bold-*-*-*-13-*-*-*-c-*-iso10646-1" -nb "#000000" -nf "#ffffff" -sb "#0000ff" -sf "#ffffff"
+bindsym $mod+d exec dmenu_run -b -p "run:" -fn "Inconsolata" -nb "#000000" -nf "#ffffff" -sb "#0000ff" -sf "#ffffff"
 
 # capture the screen
 bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
@@ -80,10 +80,10 @@ bindsym $mod+p focus parent
 bindsym $mod+o focus child
 
 # names for workspaces
-set $one 1:msg
-set $two 2:web
-set $three 3:dev
-set $four 4:mail
+set $one 1.msg
+set $two 2.web
+set $three 3.dev
+set $four 4.mail
 set $five 5
 set $six 6
 set $seven 7
@@ -142,13 +142,13 @@ mode "resize" {
     bindsym k resize shrink height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
 
-# same bindings, but for the arrow keys
+    # same bindings, but for the arrow keys
     bindsym Left resize shrink width 10 px or 10 ppt
     bindsym Down resize grow height 10 px or 10 ppt
     bindsym Up resize shrink height 10 px or 10 ppt
     bindsym Right resize grow width 10 px or 10 ppt
 
-# back to normal: Enter or Escape
+    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -197,12 +197,11 @@ set $bright_cyan    #22ffff
 set $white          #bbbbbb
 set $bright_white   #ffffff
 
-# class                  border backgr.         text    indicator
- client.focused          $bg    $blue           $fg     $cyan
- client.focused_inactive $bg    $green          $fg     $green
- client.unfocused        $bg    $bright_black   $white  $bright_black
- client.urgent           $bg    $red            $fg     $red
-# client.placeholder      $black $bright_black $fg $black
+# class                 border backgr.         text    indicator
+client.focused          $bg    $white          $bg     $cyan
+client.focused_inactive $bg    $bright_black   $white  $green
+client.unfocused        $bg    $bright_black   $green  $bright_black
+client.urgent           $bg    $bright_black   $red    $red
 
 #new_window pixel 5
 
@@ -217,11 +216,11 @@ bar {
         statusline $fg
         separator  $bright_black
 
-        # class                 border backgr.         text 
-        focused_workspace       $bg    $blue           $fg   
-        active_workspace        $bg    $green          $fg   
-        inactive_workspace      $bg    $bright_black   $white
-        urgent_workspace        $bg    $red            $fg   
+        # class             border backgr.       text 
+        focused_workspace   $bg    $white        $bg
+        active_workspace    $bg    $bright_black $green
+        inactive_workspace  $bg    $bright_black $white
+        urgent_workspace    $bg    $bright_black $red
     }
 }
 
@@ -234,22 +233,21 @@ bar {
         statusline $fg
         separator  $bright_black
 
-        # class                 border backgr.         text 
-        focused_workspace       $bg    $blue           $fg   
-        active_workspace        $bg    $green          $fg   
-        inactive_workspace      $bg    $bright_black   $white
-        urgent_workspace        $bg    $red            $fg   
+        # class            border backgr.       text 
+        focused_workspace  $bg    $white        $bg
+        active_workspace   $bg    $bright_black $green
+        inactive_workspace $bg    $bright_black $white
+        urgent_workspace   $bg    $bright_black $red
     }
 }
+
 assign [class="^Icedove$"] $four
-assign [class="^XChat$"] $one
 assign [class="^Pidgin$"] $one
 assign [class="^Trillian$"] $one
 
 exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id dunst ~/.config/dunst/dunstrc
+exec --no-startup-id dunst
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id gnome-keyring-daemon
 exec --no-startup-id urxvtd -q -o -f
-exec --no-startup-id feh --bg-scale ~/Downloads/1423092104144.jpg
 
