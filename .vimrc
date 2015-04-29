@@ -13,8 +13,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'Shougo/neocomplete.vim'
 Bundle 'eagletmt/neco-ghc'
-Bundle 'altercation/vim-colors-solarized'
-
+Plugin 'altercation/vim-colors-solarized'
 
 "All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -35,10 +34,10 @@ set tabstop=4
 set shiftwidth=4
 set wildmenu
 set showcmd
-set relativenumber
 set number
-set autoindent
+set relativenumber
 set visualbell
+set autoindent
 ino jj <Esc>
 set autochdir
 let g:acp_enableAtStartup = 0
@@ -76,8 +75,21 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
+if has('gui_running')
+    set grepprg=grep\ -nH\ $*
+    let g:tex_flavor='latex'
+endif
+
+" configure browser for haskell_doc.vim
+let g:haddock_browser = "/usr/bin/iceweasel"
+
 " theming
 syntax enable
-set background=dark
 set laststatus=2
 colorscheme solarized
+if has('gui_running')
+    set background=light
+    set guifont=Inconsolata\ 11
+else
+    set background=dark
+endif
