@@ -187,13 +187,13 @@ set $s_fg   #839496
 set $fg     #93a1a1
 set $alert  #dc322f
 set $marked #2aa198
-set $active #859900
+set $focused #859900
 
-# class                 border  backgr. text    indicator
-client.focused          $select $s_fg   $bg     $marked
-client.focused_inactive $bg     $s_bg   $fg     $s_bg
-client.unfocused        $bg     $s_bg   $active $active
-client.urgent           $bg     $s_bg   $alert  $alert
+# class                 border  backgr. text     indicator
+client.focused          $select $s_fg   $bg      $marked
+client.focused_inactive $bg     $s_bg   $focused $focused
+client.unfocused        $bg     $s_bg   $fg      $s_bg
+client.urgent           $bg     $s_bg   $alert   $alert
 
 # bar
 bar {
@@ -208,7 +208,7 @@ bar {
         # class             border  backgr. text
         focused_workspace   $select $s_fg   $bg
         inactive_workspace  $bg     $s_bg   $fg
-        active_workspace$   $bg     $s_bg   $active
+        active_workspace$   $bg     $s_bg   $focused
         urgent_workspace    $bg     $s_bg   $alert
     }
 }
