@@ -160,18 +160,39 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 
+set $bg     #002b36
+set $s_bg   #073642
+set $select #586e75
+set $s_fg   #839496
+set $fg     #93a1a1
+set $alert  #dc322f
+set $marked #2aa198
+set $active #859900
+
+# class                 border  backgr. text    indicator
+client.focused          $select $s_fg   $bg     $marked
+client.focused_inactive $bg     $s_bg   $fg     $active
+client.unfocused        $bg     $s_bg   $active $inactive
+client.urgent           $bg     $s_bg   $alert  $alert
+
 # bar
 bar {
     position bottom
     output LVDS1
     status_command i3status
-}
 
-bar {
-    position bottom
-    output VGA1
-    status_command i3status
-    tray_output none
+    colors {
+        background $bg
+            statusline $fg
+
+            separator $s_fg
+
+            # class             border  backgr.   text
+            focused_workspace   $select $s_fg     $bg
+            inactive_workspace  $bg     $s_bg     $fg
+            active_workspace$   $bg     $s_bg     $active
+            urgent_workspace    $bg     $s_bg     $alert
+    }
 }
 
 assign [class="^Icedove$"] $four
