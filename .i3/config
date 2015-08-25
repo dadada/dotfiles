@@ -15,7 +15,7 @@ bindsym $mod+Shift+q kill
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -b -fn Monospace-10
+bindsym $mod+d exec dmenu_run -b -fn Monospace-10 -nb "#002b36" -nf "#93a1a1" -sb "#073642" -sf "#839496"
 #
 # capture the screen
 #bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
@@ -191,34 +191,31 @@ set $active #859900
 
 # class                 border  backgr. text    indicator
 client.focused          $select $s_fg   $bg     $marked
-client.focused_inactive $bg     $s_bg   $fg     $active
-client.unfocused        $bg     $s_bg   $active $inactive
+client.focused_inactive $bg     $s_bg   $fg     $s_bg
+client.unfocused        $bg     $s_bg   $active $active
 client.urgent           $bg     $s_bg   $alert  $alert
 
 # bar
 bar {
-    position bottom
-    output LVDS1
+    position top
     status_command i3status
 
     colors {
-        background $bg
-            statusline $fg
+        background  $bg
+        statusline  $fg
+        separator   $s_fg
 
-            separator $s_fg
-
-            # class             border  backgr.   text
-            focused_workspace   $select $s_fg     $bg
-            inactive_workspace  $bg     $s_bg     $fg
-            active_workspace$   $bg     $s_bg     $active
-            urgent_workspace    $bg     $s_bg     $alert
+        # class             border  backgr. text
+        focused_workspace   $select $s_fg   $bg
+        inactive_workspace  $bg     $s_bg   $fg
+        active_workspace$   $bg     $s_bg   $active
+        urgent_workspace    $bg     $s_bg   $alert
     }
 }
 
 assign [class="^Icedove$"] $four
 assign [class="^Pidgin$"] $one
 assign [class="^Trillian$"] $one
-assign [class="^irssi$"] $one
 
 exec --no-startup-id xsetroot -solid #777777
 exec --no-startup-id xrdb ~/.Xresources
