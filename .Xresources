@@ -1,6 +1,13 @@
-*font: xft:Inconsolata:size=11
-Rxvt*scrollBar: false
-Rxvt*fading: 0
+!URxvt*font: fixed
+!URxvt*boldFont: fixed
+xterm*boldMode: false
+xterm*bellIsUrgent: true
+!xterm*.*faceName: xft:Monospace:normal:size=10:antialias=true:hinting:true
+URxvt*.font: xft:Monospace:normal:size=10:antialias=true:hinting:true
+!URxvt.font: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+URxvt*.scrollBar: false
+URxvt*fading:  0
+
 ! Solarized color scheme for the X Window System
 !
 ! http://ethanschoonover.com/solarized
