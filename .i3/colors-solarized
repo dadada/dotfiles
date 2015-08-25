@@ -15,20 +15,3 @@ set $violet  #6c71c4
 set $blue    #268bd2
 set $cyan    #2aa198
 set $green   #859900
-
--------------------
-
-set $bg     #fdf6e3
-set $s_bg   #eee8d5
-set $select #93a1a1
-set $s_fg   #839496
-set $fg     #657b83
-set $alert  #dc322f
-set $marked #2aa198
-set $active #859900
-
-# class                 border  backgr. text    indicator
-client.focused          $select $s_fg   $bg     $marked
-client.focused_inactive $bg     $s_bg   $fg     $active
-client.unfocused        $bg     $s_bg   $active $inactive
-client.urgent           $bg     $s_bg   $alert  $alert
