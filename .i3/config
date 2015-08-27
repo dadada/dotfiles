@@ -5,9 +5,8 @@ font pango:monospace 10
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvtc
-bindsym $mod+Shift+Return exec emacs
+bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -15,7 +14,7 @@ bindsym $mod+Shift+q kill
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -b -fn Monospace-10 -nb "#002b36" -nf "#93a1a1" -sb "#073642" -sf "#839496"
+bindsym $mod+d exec dmenu_run
 #
 # capture the screen
 #bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
@@ -79,40 +78,40 @@ bindsym $mod+p focus parent
 bindsym $mod+o focus child
 
 # names for workspaces
-set $one 1 msg
-set $two 2 web
-set $three 3 dev
-set $four 4 mail
-set $five 5
-set $six 6
-set $seven 7
-set $eight 8
-set $nine 9
-set $ten 10 remote
+set $1 1:msg
+set $2 2:web
+set $3 3:dev
+set $4 4:mail
+set $5 5
+set $6 6
+set $7 7
+set $8 8
+set $9 9
+set $10 10:remote
 
 # switch to workspace
-bindsym $mod+1 workspace $one
-bindsym $mod+2 workspace $two
-bindsym $mod+3 workspace $three
-bindsym $mod+4 workspace $four
-bindsym $mod+5 workspace $five
-bindsym $mod+6 workspace $six
-bindsym $mod+7 workspace $seven
-bindsym $mod+8 workspace $eight
-bindsym $mod+9 workspace $nine
-bindsym $mod+0 workspace $ten
+bindsym $mod+1 workspace $1
+bindsym $mod+2 workspace $2
+bindsym $mod+3 workspace $3
+bindsym $mod+4 workspace $4
+bindsym $mod+5 workspace $5
+bindsym $mod+6 workspace $6
+bindsym $mod+7 workspace $7
+bindsym $mod+8 workspace $8
+bindsym $mod+9 workspace $9
+bindsym $mod+0 workspace $10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $one
-bindsym $mod+Shift+2 move container to workspace $two
-bindsym $mod+Shift+3 move container to workspace $three
-bindsym $mod+Shift+4 move container to workspace $four
-bindsym $mod+Shift+5 move container to workspace $five
-bindsym $mod+Shift+6 move container to workspace $six
-bindsym $mod+Shift+7 move container to workspace $seven
-bindsym $mod+Shift+8 move container to workspace $eight
-bindsym $mod+Shift+9 move container to workspace $nine
-bindsym $mod+Shift+0 move container to workspace $ten
+bindsym $mod+Shift+1 move container to workspace $1
+bindsym $mod+Shift+2 move container to workspace $2
+bindsym $mod+Shift+3 move container to workspace $3
+bindsym $mod+Shift+4 move container to workspace $4
+bindsym $mod+Shift+5 move container to workspace $5
+bindsym $mod+Shift+6 move container to workspace $6
+bindsym $mod+Shift+7 move container to workspace $7
+bindsym $mod+Shift+8 move container to workspace $8
+bindsym $mod+Shift+9 move container to workspace $9
+bindsym $mod+Shift+0 move container to workspace $10
 
 bindsym $mod+m workspace next
 bindsym $mod+n workspace prev
@@ -183,38 +182,16 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 
-set $bg      #002b36
-set $s_bg    #073642
-set $select  #586e75
-set $s_fg    #839496
-set $fg      #93a1a1
-set $alert   #dc322f
-set $marked  #2aa198
-set $focused #859900
-set $active  #2aa198
-
-# class                 border  backgr. text     indicator
-client.focused          $select $s_fg   $bg      $marked
-client.focused_inactive $bg     $s_bg   $focused $focused
-client.unfocused        $bg     $s_bg   $fg      $s_bg
-client.urgent           $bg     $s_bg   $alert   $alert
-
 # bar
 bar {
     position top
     status_command i3status
-
-    colors {
-        background  $bg
-        statusline  $fg
-        separator   $s_fg
-
-        # class             border  backgr. text
-        focused_workspace   $select $s_fg   $bg
-        inactive_workspace  $bg     $s_bg   $fg
-        active_workspace    $bg     $s_bg   $active
-        urgent_workspace    $bg     $s_bg   $alert
-    }
+    mode hide
+    hidden_state hide
+    modifier Mod1
+    strip_workspace_numbers yes
+    separator_symbol "|"
+    tray_output none
 }
 
 assign [class="^Icedove$"] $four
