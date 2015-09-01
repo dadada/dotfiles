@@ -14,7 +14,7 @@ bindsym $mod+Shift+q kill
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -fn xft:Monospace:normal:size=10:antialias=true:hinting:true
 #
 # capture the screen
 #bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
