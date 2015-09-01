@@ -19,8 +19,6 @@ bindsym $mod+d exec dmenu_run
 # capture the screen
 #bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
 
-#new_window 1pixel
-
 # change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -188,15 +186,15 @@ bar {
     status_command i3status
     mode hide
     hidden_state hide
-    modifier Mod1
+    modifier Mod5
     strip_workspace_numbers yes
     separator_symbol "|"
     tray_output none
 }
 
-assign [class="^Icedove$"] $four
-assign [class="^Pidgin$"] $one
-assign [class="^Trillian$"] $one
+assign [class="^Icedove$"] $4
+assign [class="^Pidgin$"] $1
+assign [class="^Trillian$"] $1
 
 exec --no-startup-id xsetroot -solid #777777
 exec --no-startup-id xrdb ~/.Xresources
