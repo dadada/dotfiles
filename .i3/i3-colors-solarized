@@ -1,0 +1,33 @@
+# Solarized color scheme for the X Window System
+#
+# http://ethanschoonover.com/solarized
+
+set $bg      #002b36
+set $s_bg    #073642
+set $select  #586e75
+set $s_fg    #839496
+set $fg      #93a1a1
+set $alert   #dc322f
+set $marked  #2aa198
+set $focused #859900
+set $active  #2aa198
+
+# class                 border  backgr. text     indicator
+client.focused          $select $s_fg   $bg      $marked
+client.focused_inactive $bg     $s_bg   $focused $focused
+client.unfocused        $bg     $s_bg   $fg      $s_bg
+client.urgent           $bg     $s_bg   $alert   $alert
+
+bar {
+    colors {
+        background  $bg
+        statusline  $fg
+        separator   $s_fg
+
+        # class             border  backgr. text
+        focused_workspace   $select $s_fg   $bg
+        inactive_workspace  $bg     $s_bg   $fg
+        active_workspace    $bg     $s_bg   $active
+        urgent_workspace    $bg     $s_bg   $alert
+    }
+}
