@@ -6,16 +6,16 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
+
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn xft:Monospace:normal:size=10:antialias=true:hinting:true
-#
+bindsym $mod+d exec dmenu_run -nb "#f4f4f4" -nf "#000000" -sb "#4a90d9" -sf "#ffffff" -fn xft:Monospace:normal:size=10:antialias=true:hinting:true
+
 # capture the screen
 #bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
 
@@ -165,7 +165,7 @@ bindsym $mod+t border toggle
 new_window pixel 3
 
 # Lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -c "#000000"
+bindsym $mod+equal exec --no-startup-id i3lock
 
 # lock the screen and suspend
 bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
@@ -184,20 +184,37 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 bar {
     position top
     status_command i3status
-    mode hide
-    hidden_state hide
-    modifier Mod5
     strip_workspace_numbers yes
-    separator_symbol "|"
     tray_output none
+
+    colors {
+        background #ededed
+        statusline #000000
+        separator  #a1a1a1
+
+        # class            border  backgr. text   
+        focused_workspace  #4a90d9 #3A81CC #ffffff
+        active_workspace   #2e3436 #d4d4d4 #000000
+        inactive_workspace #8e9192 #f4f4f4 #000000
+        urgent_workspace   #d00000 #d4d4d4 #000000
+    }
 }
 
 assign [class="^Icedove$"] $4
 assign [class="^Pidgin$"] $1
 assign [class="^Trillian$"] $1
 
-exec --no-startup-id xsetroot -solid #777777
+exec --no-startup-id xsetroot -solid white
 exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id urxvtd -q -o -f
+
+# colors
+
+# class                 border  backgr. text    indicator
+client.focused          #ffffff #4a90d9 #000000 #4a90d9 
+client.focused_inactive #2e3436 #d4d4d4 #000000 #2e3436
+client.unfocused        #8e9192 #f4f4f4 #000000 #8e9192
+client.urgent           #d00000 #d4d4d4 #000000 #d00000
+client.placeholder      #a1a1a1 #f4f4f4 #000000 #a1a1a1 
 
