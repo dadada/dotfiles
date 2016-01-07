@@ -1,18 +1,16 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'L9'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'sjl/gundo.vim'
 
-"All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
 
 set encoding=utf-8
 setglobal fileencoding=utf-8
@@ -21,16 +19,34 @@ set backupdir=~/.vim-backup
 set directory=~/.vim-backup
 
 " editing
-set autochdir
-set autoindent
-set relativenumber
-set number
+"set softtabstop=4
+"set tabstop=4
+"set shiftwidth=4
+"set textwidth=79
+"set expandtab
 imap jj <Esc>
-set tabstop=8
-set softtabstop=4
-set shiftround 
-set shiftwidth=4
-set expandtab
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+au FileType make set noexpandtab
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 expandtab
+au FileType go set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 noexpandtab
+au FileType c set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79 expandtab
+au FileType cpp set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79 expandtab
+au BufNewFile,BufRead *.json set ft=javascript
 
 " theming
-syntax on
+set background=light
+if has("gui_running")
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
+endif
+
+syntax enable
+nnoremap <F5> :GundoToggle<CR>
+set number
+"set list listchars=trail:·
+set ruler
+set incsearch
+set hlsearch
+autocmd FileType python setlocal completeopt-=preview

@@ -1,0 +1,20 @@
+# class                 border  backgr. text    indicator
+client.focused          #2e3436 #4a90d9 #ffffff #4a90d9 
+client.focused_inactive #2e3436 #d4d4d4 #000000 #2e3436
+client.unfocused        #8e9192 #f4f4f4 #000000 #8e9192
+client.urgent           #2e3436 #d00000 #ffffff #d00000
+client.placeholder      #a1a1a1 #f4f4f4 #000000 #a1a1a1 
+
+bar {
+    colors {
+        background #ededed
+        statusline #000000
+        separator  #a1a1a1
+
+        # class            border  backgr. text
+        focused_workspace  #3A81CC #3A81CC #ffffff
+        active_workspace   #d4d4d4 #d4d4d4 #000000
+        inactive_workspace #f4f4f4 #f4f4f4 #000000
+        urgent_workspace   #2e3436 #d00000 #ffffff
+    }
+}

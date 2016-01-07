@@ -1,25 +1,40 @@
+# global modifier key
 set $mod Mod4
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
+
+# the font to be used for i3bar and window decorations
 font pango:monospace 10
-
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
-# kill focused window
-bindsym $mod+Shift+q kill
 
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb "#f4f4f4" -nf "#000000" -sb "#4a90d9" -sf "#ffffff" -fn xft:Monospace:normal:size=10:antialias=true:hinting:true
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
-# capture the screen
-#bindsym --release Print exec --no-startup-id /usr/bin/scrot -s
+# start dmenu
+bindsym $mod+d exec dmenu_run -fn 'Monospace Regular-10' -sb "#00ffff" -sf "#000000" -nb "#ffffff" -nf "#000000"
 
-# change focus
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# toggle moving floating windows with the mouse
+floating_modifier $mod
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# change focus with arrow keys
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -43,93 +58,8 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# split in horizontal orientation
-bindsym $mod+b split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
-
-# default mode
-workspace_layout default
-
-# keep focus within current container 
-force_focus_wrapping yes
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+p focus parent
-
-# focus the child container
-bindsym $mod+o focus child
-
-# names for workspaces
-set $1 1:msg
-set $2 2:web
-set $3 3:dev
-set $4 4:mail
-set $5 5
-set $6 6
-set $7 7
-set $8 8
-set $9 9
-set $10 10:remote
-
-# switch to workspace
-bindsym $mod+1 workspace $1
-bindsym $mod+2 workspace $2
-bindsym $mod+3 workspace $3
-bindsym $mod+4 workspace $4
-bindsym $mod+5 workspace $5
-bindsym $mod+6 workspace $6
-bindsym $mod+7 workspace $7
-bindsym $mod+8 workspace $8
-bindsym $mod+9 workspace $9
-bindsym $mod+0 workspace $10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $1
-bindsym $mod+Shift+2 move container to workspace $2
-bindsym $mod+Shift+3 move container to workspace $3
-bindsym $mod+Shift+4 move container to workspace $4
-bindsym $mod+Shift+5 move container to workspace $5
-bindsym $mod+Shift+6 move container to workspace $6
-bindsym $mod+Shift+7 move container to workspace $7
-bindsym $mod+Shift+8 move container to workspace $8
-bindsym $mod+Shift+9 move container to workspace $9
-bindsym $mod+Shift+0 move container to workspace $10
-
-bindsym $mod+m workspace next
-bindsym $mod+n workspace prev
+# focus latest urgent window
 bindsym $mod+x [urgent=latest] focus
-bindsym $mod+period focus output right
-bindsym $mod+comma focus output left
-
-bindsym $mod+Shift+m move container to workspace next
-bindsym $mod+Shift+n move container to workspace prev
-bindsym $mod+Shift+period move workspace to output right
-bindsym $mod+Shift+comma move workspace to output left
-
-workspace_auto_back_and_forth yes
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -150,24 +80,100 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
+# switch to resize mode
 bindsym $mod+r mode "resize"
-
-# Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the first scratchpad window
-bindsym $mod+minus scratchpad show
 
 # toggle window decorations
 bindsym $mod+t border toggle
 
 # set border width of new window
-new_window pixel 3
+new_window normal
 
-# Lock the screen
+# keep focus within current container?
+force_focus_wrapping no
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# focus the parent container
+bindsym $mod+p focus parent
+
+# focus the child container
+bindsym $mod+o focus child
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $1
+bindsym $mod+Shift+2 move container to workspace $2
+bindsym $mod+Shift+3 move container to workspace $3
+bindsym $mod+Shift+4 move container to workspace $4
+bindsym $mod+Shift+5 move container to workspace $5
+bindsym $mod+Shift+6 move container to workspace $6
+bindsym $mod+Shift+7 move container to workspace $7
+bindsym $mod+Shift+8 move container to workspace $8
+bindsym $mod+Shift+9 move container to workspace $9
+bindsym $mod+Shift+0 move container to workspace $10
+bindsym $mod+Shift+m move container to workspace next
+bindsym $mod+Shift+n move container to workspace prev
+
+# default mode
+workspace_layout default
+
+# name workspaces
+set $1 1:msg
+set $2 2:web
+set $3 3:dev
+set $4 4:mail
+set $5 5:media
+set $6 6
+set $7 7
+set $8 8
+set $9 9
+set $10 10:remote
+
+# automatically jump back to previous workspace
+workspace_auto_back_and_forth yes
+
+# switch to workspace
+bindsym $mod+1 workspace $1
+bindsym $mod+2 workspace $2
+bindsym $mod+3 workspace $3
+bindsym $mod+4 workspace $4
+bindsym $mod+5 workspace $5
+bindsym $mod+6 workspace $6
+bindsym $mod+7 workspace $7
+bindsym $mod+8 workspace $8
+bindsym $mod+9 workspace $9
+bindsym $mod+0 workspace $10
+bindsym $mod+m workspace next
+bindsym $mod+n workspace prev
+
+# focus different outputs (displays)
+bindsym $mod+period focus output LVDS1
+bindsym $mod+comma focus output VGA1
+
+# move selected workspace to output
+bindsym $mod+Shift+period move workspace to output LVDS1
+bindsym $mod+Shift+comma move workspace to output VGA1
+
+# make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# lock the screen
 bindsym $mod+equal exec --no-startup-id i3lock
-
-# lock the screen and suspend
 bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
 
 # control volume
@@ -182,39 +188,41 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 
 # bar
 bar {
-    position top
-    status_command i3status
-    strip_workspace_numbers yes
-    tray_output none
+	id bar
+	mode dock
+	position top
+	status_command i3status
+	strip_workspace_numbers yes
+	workspace_buttons yes
+	output LVDS1
+	tray_output none
 
-    colors {
-        background #ededed
-        statusline #000000
-        separator  #a1a1a1
-
-        # class            border  backgr. text   
-        focused_workspace  #4a90d9 #3A81CC #ffffff
-        active_workspace   #2e3436 #d4d4d4 #000000
-        inactive_workspace #8e9192 #f4f4f4 #000000
-        urgent_workspace   #d00000 #d4d4d4 #000000
-    }
+	colors {
+		background #ffffff
+		statusline #000000
+		separator #888888
+		
+		# class			border	backgr.	text
+		focused_workspace	#777777 #00ffff #000000
+		active_workspace	#777777 #00ff00 #000000
+		inactive_workspace	#777777 #e5e5e5 #000000
+		urgent_workspace	#777777 #00ff00 #000000
+		#binding_mode		#777777 #e5e5e5 #000000
+	}
 }
 
-assign [class="^Icedove$"] $4
-assign [class="^Pidgin$"] $1
-assign [class="^Trillian$"] $1
+# colors for window decorations
+# class			border	backgr.	text	indicator
+client.focused		#777777 #00ffff #000000 #00ffff
+client.focused_inactive #777777 #00ff00 #000000 #00ff00
+client.unfocused	#777777 #e5e5e5 #000000 #e5e5e5
+client.urgent		#777777 #00ff00 #000000 #ff0000
+client.placeholder      #777777 #e5e5e5 #000000 #e5e5e5
+client.background 		#ffffff
 
-exec --no-startup-id xsetroot -solid white
-exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id urxvtd -q -o -f
+# assign applications to workspaces
+assign [class="^Evolution$"] $4
+assign [class="^Gajim$"] $1
 
-# colors
-
-# class                 border  backgr. text    indicator
-client.focused          #ffffff #4a90d9 #000000 #4a90d9 
-client.focused_inactive #2e3436 #d4d4d4 #000000 #2e3436
-client.unfocused        #8e9192 #f4f4f4 #000000 #8e9192
-client.urgent           #d00000 #d4d4d4 #000000 #d00000
-client.placeholder      #a1a1a1 #f4f4f4 #000000 #a1a1a1 
-
+# automatically run the following when after i3
+exec --no-startup-id xsetroot -solid black
