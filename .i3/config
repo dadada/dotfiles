@@ -17,10 +17,10 @@ font pango:monospace 10
 bindsym $mod+i exec /usr/bin/i3-input
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt256c
 
 # start dmenu
-bindsym $mod+d exec dmenu_run -fn 'Monospace Regular-10' -sb "#00ffff" -sf "#000000" -nb "#ffffff" -nf "#000000"
+bindsym $mod+d exec dmenu_run -sb "#00ffff" -sf "#000000" -nb "#ffffff" -nf "#000000"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -63,21 +63,21 @@ bindsym $mod+x [urgent=latest] focus
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-    # resize windows with arrow keys
+# resize windows with arrow keys
     bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
-    # resize windows with hjkl
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+# resize windows with hjkl
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
-    # back to normal mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+# back to normal mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 
 # switch to resize mode
@@ -163,8 +163,8 @@ bindsym $mod+period focus output LVDS1
 bindsym $mod+comma focus output VGA1
 
 # move selected workspace to output
-bindsym $mod+Shift+period move workspace to output LVDS1
-bindsym $mod+Shift+comma move workspace to output VGA1
+bindsym $mod+Shift+comma move workspace to output LVDS1
+bindsym $mod+Shift+period move workspace to output VGA1
 
 # make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -188,27 +188,26 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 
 # bar
 bar {
-	id bar
-	mode dock
-	position top
-	status_command i3status
-	strip_workspace_numbers yes
-	workspace_buttons yes
-	output LVDS1
-	tray_output none
+    id bar
+        mode dock
+        position top
+        status_command i3status
+        strip_workspace_numbers yes
+        workspace_buttons yes
+        tray_output none
 
-	colors {
-		background #ffffff
-		statusline #000000
-		separator #888888
-		
-		# class			border	backgr.	text
-		focused_workspace	#777777 #00ffff #000000
-		active_workspace	#777777 #00ff00 #000000
-		inactive_workspace	#777777 #e5e5e5 #000000
-		urgent_workspace	#777777 #00ff00 #000000
-		#binding_mode		#777777 #e5e5e5 #000000
-	}
+        colors {
+            background #ffffff
+                statusline #000000
+                separator #888888
+
+# class			border	backgr.	text
+                focused_workspace	#777777 #00ffff #000000
+                active_workspace	#777777 #00ff00 #000000
+                inactive_workspace	#777777 #e5e5e5 #000000
+                urgent_workspace	#777777 #00ff00 #000000
+#binding_mode		#777777 #e5e5e5 #000000
+        }
 }
 
 # colors for window decorations
@@ -226,3 +225,4 @@ assign [class="^Gajim$"] $1
 
 # automatically run the following when after i3
 exec --no-startup-id xsetroot -solid black
+exec --no-startup-id xrdb ~/.Xresources
