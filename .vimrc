@@ -1,3 +1,7 @@
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
 set nocompatible
 filetype off
 
@@ -8,6 +12,7 @@ Plugin 'L9'
 Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'sjl/gundo.vim'
+Plugin 'dag/vim-fish'
 
 call vundle#end()
 filetype plugin indent on
@@ -19,21 +24,23 @@ set backupdir=~/.vim-backup
 set directory=~/.vim-backup
 
 " editing
-"set softtabstop=4
-"set tabstop=4
-"set shiftwidth=4
-"set textwidth=79
-"set expandtab
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set expandtab
 imap jj <Esc>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 au FileType make set noexpandtab
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 expandtab
 au FileType go set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 noexpandtab
-au FileType c set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79 expandtab
-au FileType cpp set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79 expandtab
+au FileType c set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 expandtab
+au FileType cpp set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 expandtab
+au FileType fish set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 expandtab
+au FileType fish compiler fish
 au BufNewFile,BufRead *.json set ft=javascript
 
 " theming
+syntax enable
 set background=light
 if has("gui_running")
     set guioptions-=m  "remove menu bar
@@ -42,7 +49,6 @@ if has("gui_running")
     set guioptions-=L  "remove left-hand scroll bar
 endif
 
-syntax enable
 nnoremap <F5> :GundoToggle<CR>
 set number
 "set list listchars=trail:·
