@@ -7,4 +7,4 @@ xterm*VT100.Translations: #override \
 xterm*saveLines: 65536
 xterm*ScrollBar: false
 
-#include "src/src/solarized/xresources/solarized"
+#include "src/solarized/xresources/solarized"
