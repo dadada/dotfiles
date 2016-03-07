@@ -1,5 +1,8 @@
-xterm*boldMode: false
-xterm*bellIsUrgent: true
-xterm*borderWidth: 0
-URxvt.font: xft:Monospace:normal:size=10:antialias=true:hinting:true
-URxvt.scrollBar: false
+*.faceName: Monospace:normal:size=8:antialias=true:hinting=true
+*.font: 9x15
+xterm*BorderWidth: 0
+xterm*VT100.Translations: #override \
+                 Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+                 Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+xterm*saveLines: 65536
+xterm*ScrollBar: false
