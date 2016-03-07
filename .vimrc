@@ -13,6 +13,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'dag/vim-fish'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,7 +42,7 @@ au BufNewFile,BufRead *.json set ft=javascript
 
 " theming
 syntax enable
-set background=light
+colorscheme solarized
 if has("gui_running")
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
