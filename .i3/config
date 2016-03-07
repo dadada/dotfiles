@@ -11,13 +11,13 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
 
 # the font to be used for i3bar and window decorations
-font pango:monospace 10
+font pango:monospace 8
 
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
 
 # start a terminal
-bindsym $mod+Return exec urxvt256c
+bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
 bindsym $mod+d exec dmenu_run -sb "#00ffff" -sf "#000000" -nb "#ffffff" -nf "#000000"
@@ -127,7 +127,7 @@ bindsym $mod+Shift+m move container to workspace next
 bindsym $mod+Shift+n move container to workspace prev
 
 # default mode
-workspace_layout default
+workspace_layout stacking
 
 # name workspaces
 set $1 1:msg
@@ -190,7 +190,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 bar {
     id bar
         mode dock
-        position top
+        position bottom
         status_command i3status
         strip_workspace_numbers yes
         workspace_buttons yes
