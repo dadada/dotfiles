@@ -186,42 +186,43 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 
+set $bg      #002b36
+set $s_bg    #073642
+set $select  #586e75
+set $s_fg    #839496
+set $fg      #93a1a1
+set $alert   #dc322f
+set $marked  #2aa198
+set $focused #859900
+set $active  #2aa198
+
+# class                 border  backgr. text     indicator
+client.focused          $select $s_fg   $bg      $marked
+client.focused_inactive $bg     $s_bg   $focused $focused
+client.unfocused        $bg     $s_bg   $fg      $s_bg
+client.urgent           $bg     $s_bg   $alert   $alert
+
 # bar
 bar {
     id bar
-        mode dock
-        position bottom
-        status_command i3status
-        strip_workspace_numbers yes
-        workspace_buttons yes
-        tray_output none
+    mode dock
+    position bottom
+    status_command i3status
+    strip_workspace_numbers yes
+    workspace_buttons yes
+    tray_output none
+    colors {
+        background  $bg
+        statusline  $fg
+        separator   $s_fg
 
-        colors {
-            background #ffffff
-                statusline #000000
-                separator #888888
-
-# class			border	backgr.	text
-                focused_workspace	#777777 #00ffff #000000
-                active_workspace	#777777 #00ff00 #000000
-                inactive_workspace	#777777 #e5e5e5 #000000
-                urgent_workspace	#777777 #00ff00 #000000
-#binding_mode		#777777 #e5e5e5 #000000
-        }
+        # class             border  backgr. text
+        focused_workspace   $select $s_fg   $bg
+        inactive_workspace  $bg     $s_bg   $fg
+        active_workspace    $bg     $s_bg   $active
+        urgent_workspace    $bg     $s_bg   $alert
+    }
 }
-
-# colors for window decorations
-# class			border	backgr.	text	indicator
-client.focused		#777777 #00ffff #000000 #00ffff
-client.focused_inactive #777777 #00ff00 #000000 #00ff00
-client.unfocused	#777777 #e5e5e5 #000000 #e5e5e5
-client.urgent		#777777 #00ff00 #000000 #ff0000
-client.placeholder      #777777 #e5e5e5 #000000 #e5e5e5
-client.background 		#ffffff
-
-# assign applications to workspaces
-assign [class="^Evolution$"] $4
-assign [class="^Gajim$"] $1
 
 # automatically run the following when after i3
 exec --no-startup-id xsetroot -solid black
