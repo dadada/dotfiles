@@ -226,4 +226,4 @@ bar {
 
 # automatically run the following when after i3
 exec --no-startup-id xsetroot -solid black
-exec --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id xrdb -I$HOME ~/.Xresources
