@@ -6,3 +6,5 @@ xterm*VT100.Translations: #override \
                  Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
 xterm*saveLines: 65536
 xterm*ScrollBar: false
+
+#include "src/src/solarized/xresources/solarized"
