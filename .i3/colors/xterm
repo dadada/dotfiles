@@ -1,0 +1,23 @@
+bar {
+    colors {
+        background #ffffff
+        statusline #000000
+        separator #888888
+    
+        # class             border  backgr. text
+        focused_workspace	#777777 #00ffff #000000
+        active_workspace	#777777 #00ff00 #000000
+        inactive_workspace	#777777 #e5e5e5 #000000
+        urgent_workspace	#777777 #00ff00 #000000
+        #binding_mode		#777777 #e5e5e5 #000000
+    }
+}
+
+# colors for window decorations
+# class                 border	backgr.	text	indicator
+client.focused          #777777 #00ffff #000000 #00ffff
+client.focused_inactive #777777 #00ff00 #000000 #00ff00
+client.unfocused        #777777 #e5e5e5 #000000 #e5e5e5
+client.urgent           #777777 #00ff00 #000000 #ff0000
+client.placeholder      #777777 #e5e5e5 #000000 #e5e5e5
+client.background       #ffffff
