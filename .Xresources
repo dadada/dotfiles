@@ -1,4 +1,4 @@
-*.faceName: Monospace:normal:size=8:antialias=true:hinting=true
+*.faceName: Monospace:normal:size=10:antialias=true:hinting=true
 *.font: 9x15
 xterm*BorderWidth: 0
 xterm*VT100.Translations: #override \
