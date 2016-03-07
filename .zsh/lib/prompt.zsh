@@ -1,7 +1,7 @@
 # autoload -U add-zsh-hook
 autoload -Uz vcs_info
 
-# # enable VCS systems you use
+# enable VCS systems you use
 zstyle ':vcs_info:*' enable git svn
 zstyle ':vcs_info:*:prompt:*' check-for-changes true
 
@@ -22,5 +22,4 @@ zstyle ':vcs_info:*' formats ':%b%c%u%f'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 precmd () { vcs_info }
 
-PROMPT='[%n@%m:%F{cyan}%~%f%F{green}${vcs_info_msg_0_}%f%F{red}%(0?..[%?])%f] '
-#%n@%m:
+PROMPT='%F{cyan}%n%F{blue}%m%F{green}%F{magenta}${vcs_info_msg_0_}%F{red}%(0?..%?)%f→ '
