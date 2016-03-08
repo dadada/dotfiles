@@ -8,21 +8,21 @@ fi
 cmd=$(
 	IFS=:
 	if stest -dqr -n "$cache" $PATH; then
-		stest -flx $PATH | sort -u | tee "$cache" | dmenu.xft "$@"
+		stest -flx $PATH | sort -u | tee "$cache" | dmenu "$@"
 	else
-		dmenu.xft "$@" < "$cache"
+		dmenu "$@" < "$cache"
 	fi
 ) 
 unset IFS
 
-if [[ $cmd == \;* ]]; then
-    urxvt -e ${cmd##;} &
-elif [[ $cmd == \!* ]]; then
-    gksudo ${cmd##!} &
-elif [[ $cmd == \?* ]]; then
-    locate ${cmd##?} | dmenu.xft "$@" | xargs xdg-open &
-elif [[ $cmd == \^* ]]; then
-    i3-msg ${cmd##^} &
+if [[ $cmd == \!"term "* ]]; then
+    x-terminal-emulator -e ${cmd##"\!term "} &
+elif [[ $cmd == \!"sudo "* ]]; then
+    gksudo ${cmd##\!sudo } &
+elif [[ $cmd == \!"where "* ]]; then
+    locate ${cmd##\!where } | dmenu "$@" | xargs xdg-open &
+elif [[ $cmd == \!"i3 "* ]]; then
+    i3-msg ${cmd##\!i3 } &
 else
-    echo $cmd | ${SHELL:-"/usr/bin/zsh"} &
+    echo $cmd | ${SHELL:-"/bin/sh"} &
 fi
