@@ -13,11 +13,12 @@ set $focused #859900
 set $active  #2aa198
 
 # class                 border  backgr. text     indicator
-client.focused          $select $s_fg   $bg      $marked
+client.focused          $bg     $s_bg   $marked  $marked
 client.focused_inactive $bg     $s_bg   $focused $focused
-client.unfocused        $bg     $s_bg   $fg      $s_bg
+client.unfocused        $bg     $s_bg   $fg      $fg
 client.urgent           $bg     $s_bg   $alert   $alert
 
+# bar
 bar {
     colors {
         background  $bg
@@ -25,7 +26,7 @@ bar {
         separator   $s_fg
 
         # class             border  backgr. text
-        focused_workspace   $select $s_fg   $bg
+        focused_workspace   $bg     $s_bg   $marked
         inactive_workspace  $bg     $s_bg   $fg
         active_workspace    $bg     $s_bg   $active
         urgent_workspace    $bg     $s_bg   $alert
