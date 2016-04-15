@@ -9,7 +9,7 @@ bar {
         active_workspace	#777777 #00ff00 #000000
         inactive_workspace	#777777 #e5e5e5 #000000
         urgent_workspace	#777777 #00ff00 #000000
-        #binding_mode		#777777 #e5e5e5 #000000
+        binding_mode		#777777 #e5e5e5 #000000
     }
 }
 
