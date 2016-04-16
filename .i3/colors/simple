@@ -1,0 +1,22 @@
+# class                 border	backgr.	text	indicator
+client.focused          #000000 #222222 #ffffff #222222
+client.focused_inactive #aaaaaa #dddddd #333333 #aaaaaa
+client.unfocused        #aaaaaa #dddddd #666666 #dddddd
+client.urgent           #aaaaaa #dddddd #660000 #dddddd
+client.placeholder      #aaaaaa #dddddd #666666 #dddddd
+client.background       #ffffff
+
+bar {
+    colors {
+        background #ffffff
+        statusline #000000
+        separator #aaaaaa
+
+        # class            border  backgr. text
+        focused_workspace  #000000 #222222 #ffffff
+        active_workspac	   #aaaaaa #dddddd #333333
+        inactive_workspace #aaaaaa #dddddd #666666
+        urgent_workspace   #aaaaaa #dddddd #660000
+        binding_mode	   #aaaaaa #ffffff #660000
+    }
+}
