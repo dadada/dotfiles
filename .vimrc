@@ -9,10 +9,6 @@ set directory=~/.vim-backup
 " editing
 imap jj <Esc>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-au FileType make set noexpandtab
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79 expandtab
-au FileType fish compiler fish
-au BufNewFile,BufRead *.json set ft=javascript
 
 " theming
 syntax off
@@ -29,4 +25,3 @@ set number
 set ruler
 set incsearch
 set hlsearch
-autocmd FileType python setlocal completeopt-=preview
