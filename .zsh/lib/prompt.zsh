@@ -22,4 +22,4 @@ zstyle ':vcs_info:*' formats ':%b%c%u%f'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 precmd () { vcs_info }
 
-PROMPT='%S%n@%m:%d${vcs_info_msg_0_}%(0?..%?)%s '
+PROMPT='%S%n@%m:%d${vcs_info_msg_0_}%(0?..[%?])%s '
