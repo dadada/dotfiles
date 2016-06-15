@@ -11,7 +11,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
 
 # the font to be used for i3bar and window decorations
-font pango:monospace 10
+font pango:monospace 8
 
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
@@ -20,7 +20,7 @@ bindsym $mod+i exec /usr/bin/i3-input
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
-bindsym $mod+d exec dmenu_run -fn 7x13
+bindsym $mod+d exec dmenu_run -fn 'Monospace:normal:size=10:antialias=true:hinting=true' -nb "#ffffff" -nf "#000000" -sb "#555555" -sf "#ffffff"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -63,21 +63,21 @@ bindsym $mod+x [urgent=latest] focus
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-    # resize windows with arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-
-    # resize windows with hjkl
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
-
-    # back to normal mode 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+	# resize windows with arrow keys
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
+	
+	# resize windows with hjkl
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+	
+	# back to normal mode 
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 # switch to resize mode
@@ -87,7 +87,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+t border toggle
 
 # set border width of new window
-new_window normal
+new_window pixel
 
 # keep focus within current container?
 force_focus_wrapping no
@@ -113,15 +113,15 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # name workspaces
-set $1   1msg
-set $2   2web
-set $3   3dev
-set $4   4mail
-set $5   5media
-set $6   6
-set $7   7
-set $8   8
-set $9   9
+set $1 1msg
+set $2 2web
+set $3 3dev
+set $4 4
+set $5 5media
+set $6 6
+set $7 7
+set $8 8
+set $9 9
 set $10 10remote
 
 # move focused container to workspace
@@ -188,35 +188,35 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 
 # bar
 bar {
-    id bar
-    mode dock
-    position bottom
-    status_command i3status
-    strip_workspace_numbers yes
-    workspace_buttons yes
-    tray_output none
-    colors {
-        background #ffffff
-        statusline #000000
-        separator #aaaaaa
+	id bar
+	mode dock
+	position bottom
+	status_command i3status
+	strip_workspace_numbers yes
+	workspace_buttons yes
+	tray_output none
+	colors {
+		background #ffffff
+		statusline #000000
+		separator #aaaaaa
 
-        # class             border  backgr. text
-        focused_workspace	#222222 #555555 #ffffff
-        active_workspace	#aaaaaa #dddddd #333333
-        inactive_workspace	#aaaaaa #dddddd #666666
-        urgent_workspace	#aaaaaa #dddddd #660000
-        binding_mode		#aaaaaa #ffffff #660000
-    }
+		# class			 border  backgr. text
+		focused_workspace	#222222 #555555 #ffffff
+		active_workspace	#aaaaaa #dddddd #000000
+		inactive_workspace	#aaaaaa #dddddd #222222
+		urgent_workspace	#aaaaaa #dddddd #220000
+		binding_mode		#aaaaaa #ffffff #220000
+	}
 }
 
 # colors for window decorations
-# class                 border	backgr.	text	indicator
-client.focused          #222222 #555555 #ffffff #555555
-client.focused_inactive #aaaaaa #dddddd #333333 #aaaaaa
-client.unfocused        #aaaaaa #dddddd #666666 #dddddd
-client.urgent           #aaaaaa #dddddd #660000 #dddddd
-client.placeholder      #aaaaaa #dddddd #666666 #dddddd
-client.background       #ffffff
+# class	border		backgr.	text	indicator
+client.focused		#222222 #555555	#ffffff	#555555
+client.focused_inactive	#aaaaaa	#dddddd	#000000	#aaaaaa
+client.unfocused	#aaaaaa	#dddddd	#222222	#dddddd
+client.urgent		#aaaaaa	#dddddd	#220000	#dddddd
+client.placeholder	#aaaaaa	#dddddd	#222222	#dddddd
+client.background	#ffffff
 
 # automatically run the following after starting i3
 exec --no-startup-id xrdb ~/.Xresources
