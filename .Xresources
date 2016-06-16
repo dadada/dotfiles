@@ -1,3 +1,5 @@
+xterm*cursorBlink: true
+xterm*cursorUnderLine: true
 xterm*termName: xterm-256color
 XTerm*locale: true
 *.faceName:  Monospace:normal:size=8:antialias=true:hinting=true
