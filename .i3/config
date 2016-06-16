@@ -212,11 +212,11 @@ bar {
 # colors for window decorations
 # class			border	backgr.	text	indicator
 client.focused		#969694 #4271ae #eeeeee	#3e999f
-client.focused_inactive	#969694 #eeeeee	#718c00	#4271ae
-client.unfocused	#969694 #eeeeee #4d4d4c	#eeeeee
-client.urgent		#969694 #eeeeee	#8959a8 #d7005f
-client.placeholder	#969694 #eeeeee #4d4d4c	#4271ae
-client.background	#ffffff
+client.focused_inactive	#969694	#f5f5f5 #718c00	#4271ae
+client.unfocused	#969694	#f5f5f5 #4d4d4c	#eeeeee
+client.urgent		#969694	#f5f5f5 #8959a8 #d7005f
+client.placeholder	#969694	#f5f5f5 #4d4d4c	#4271ae
+client.background	#ffffff	#f5f5f5
 
 # automatically run the following after starting i3
 exec --no-startup-id xrdb ~/.Xresources
