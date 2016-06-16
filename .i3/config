@@ -201,7 +201,7 @@ bar {
 		separator #969694
 
 		# class			border	backgr.	text
-		focused_workspace	#969694 #3e999f #eeeeee
+		focused_workspace	#969694 #4271ae #eeeeee
 		active_workspace	#969694 #eeeeee	#718c00
 		inactive_workspace	#969694 #eeeeee #4d4d4c
 		urgent_workspace	#969694 #eeeeee	#d7005f
@@ -211,7 +211,7 @@ bar {
 
 # colors for window decorations
 # class			border	backgr.	text	indicator
-client.focused		#969694 #3e999f #eeeeee	#3e999f
+client.focused		#969694 #4271ae #eeeeee	#3e999f
 client.focused_inactive	#969694 #eeeeee	#718c00	#4271ae
 client.unfocused	#969694 #eeeeee #4d4d4c	#eeeeee
 client.urgent		#969694 #eeeeee	#8959a8 #d7005f
