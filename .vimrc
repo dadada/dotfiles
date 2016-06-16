@@ -3,7 +3,7 @@ set nocompatible
 set history=50
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg " lower priority suffixes
 set autochdir
-set runtimepath^=~/.vim/bundle/ctrlp.vim,~/.vim/bundle/airline.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/virtualenv.vim
+set runtimepath^=~/.vim/bundle/ctrlp.vim,~/.vim/bundle/airline.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/virtualenv.vim,~/.vim/bundle/clang_complete,~/.vim/bundle/vim-airline-themes,~/.vim/bundle/papercolor-theme.vim,~/.vim/bundle/undotree,~/.vim/bundle/vim-fugitive
 set updatetime=250
 
 " file format
@@ -31,14 +31,23 @@ let g:syntastic_check_on_wq = 0
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='papercolor'
 set laststatus=2
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" undotree
+nnoremap <F5> :UndotreeToggle<cr>
+
 " theming
 syntax on
+set t_Co=256
 set background=light
+colorscheme PaperColor
 set number
 set relativenumber
 set colorcolumn=80

@@ -190,34 +190,34 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 bar {
 	id bar
 	mode dock
-	position bottom
+	position top
 	status_command i3status
 	strip_workspace_numbers yes
 	workspace_buttons yes
 	tray_output none
 	colors {
-		background #ffffff
-		statusline #000000
-		separator #aaaaaa
+		background #eeeeee
+		statusline #4d4d4c
+		separator #969694
 
-		# class			 border  backgr. text
-		focused_workspace	#222222 #555555 #ffffff
-		active_workspace	#aaaaaa #dddddd #000000
-		inactive_workspace	#aaaaaa #dddddd #222222
-		urgent_workspace	#aaaaaa #dddddd #220000
-		binding_mode		#aaaaaa #ffffff #220000
+		# class			border	backgr.	text
+		focused_workspace	#969694 #3e999f #eeeeee
+		active_workspace	#969694 #eeeeee	#718c00
+		inactive_workspace	#969694 #eeeeee #4d4d4c
+		urgent_workspace	#969694 #eeeeee	#d7005f
+		binding_mode		#969694 #eeeeee #4d4d4c
 	}
 }
 
 # colors for window decorations
-# class	border		backgr.	text	indicator
-client.focused		#222222 #555555	#ffffff	#555555
-client.focused_inactive	#aaaaaa	#dddddd	#000000	#aaaaaa
-client.unfocused	#aaaaaa	#dddddd	#222222	#dddddd
-client.urgent		#aaaaaa	#dddddd	#220000	#dddddd
-client.placeholder	#aaaaaa	#dddddd	#222222	#dddddd
+# class			border	backgr.	text	indicator
+client.focused		#969694 #3e999f #eeeeee	#3e999f
+client.focused_inactive	#969694 #eeeeee	#718c00	#4271ae
+client.unfocused	#969694 #eeeeee #4d4d4c	#eeeeee
+client.urgent		#969694 #eeeeee	#8959a8 #d7005f
+client.placeholder	#969694 #eeeeee #4d4d4c	#4271ae
 client.background	#ffffff
 
 # automatically run the following after starting i3
 exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id xsetroot -grey
+exec --no-startup-id xsetroot -solid #eeeeee
