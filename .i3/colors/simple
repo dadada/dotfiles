@@ -1,22 +1,23 @@
-# class                 border	backgr.	text	indicator
-client.focused          #222222 #555555 #ffffff #555555
-client.focused_inactive #aaaaaa #dddddd #333333 #aaaaaa
-client.unfocused        #aaaaaa #dddddd #666666 #dddddd
-client.urgent           #aaaaaa #dddddd #660000 #dddddd
-client.placeholder      #aaaaaa #dddddd #666666 #dddddd
-client.background       #ffffff
+# colors for window decorations
+# class	border		backgr.	text	indicator
+client.focused		#222222 #555555	#ffffff	#555555
+client.focused_inactive	#aaaaaa	#dddddd	#000000	#aaaaaa
+client.unfocused	#aaaaaa	#dddddd	#222222	#dddddd
+client.urgent		#aaaaaa	#dddddd	#220000	#dddddd
+client.placeholder	#aaaaaa	#dddddd	#222222	#dddddd
+client.background	#ffffff
 
 bar {
-    colors {
-        background #ffffff
-        statusline #000000
-        separator #aaaaaa
+	colors {
+		background #ffffff
+		statusline #000000
+		separator #aaaaaa
 
-        # class             border  backgr. text
-        focused_workspace   #222222 #555555 #ffffff
-        active_workspace    #aaaaaa #dddddd #333333
-        inactive_workspace  #aaaaaa #dddddd #666666
-        urgent_workspace    #aaaaaa #dddddd #660000
-        binding_mode	    #aaaaaa #ffffff #660000
-    }
+		# class			 border  backgr. text
+		focused_workspace	#222222 #555555 #ffffff
+		active_workspace	#aaaaaa #dddddd #000000
+		inactive_workspace	#aaaaaa #dddddd #222222
+		urgent_workspace	#aaaaaa #dddddd #220000
+		binding_mode		#aaaaaa #ffffff #220000
+	}
 }
