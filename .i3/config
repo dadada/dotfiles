@@ -11,7 +11,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
 
 # the font to be used for i3bar and window decorations
-font pango:monospace 8
+font pango:monospace 10
 
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
@@ -20,7 +20,7 @@ bindsym $mod+i exec /usr/bin/i3-input
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
-bindsym $mod+d exec dmenu_run -fn 'Monospace:normal:size=10:antialias=true:hinting=true' -nb "#ffffff" -nf "#000000" -sb "#555555" -sf "#ffffff"
+bindsym $mod+d exec dmenu_run -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "#eeeeee" -nf "#4d4d4c" -sb "#4271ae" -sf "#f5f5f5" -b
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -101,6 +101,9 @@ bindsym $mod+p focus parent
 # focus the child container
 bindsym $mod+o focus child
 
+# default orientation of new windows
+default_orientation vertical
+
 # split in horizontal orientation
 bindsym $mod+b split h
 
@@ -139,7 +142,7 @@ bindsym $mod+Shift+m move container to workspace next
 bindsym $mod+Shift+n move container to workspace prev
 
 # default mode
-workspace_layout stacking
+workspace_layout tabbed
 
 # automatically jump back to previous workspace
 workspace_auto_back_and_forth yes
@@ -173,8 +176,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock
-bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
+bindsym $mod+equal exec --no-startup-id i3lock -f
+#bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
 
 # control volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
@@ -196,28 +199,28 @@ bar {
 	workspace_buttons yes
 	tray_output none
 	colors {
-		background #eeeeee
+		background #f5f5f5
 		statusline #4d4d4c
 		separator #969694
 
 		# class			border	backgr.	text
-		focused_workspace	#969694 #4271ae #eeeeee
-		active_workspace	#969694 #eeeeee	#718c00
-		inactive_workspace	#969694 #eeeeee #4d4d4c
-		urgent_workspace	#969694 #eeeeee	#d7005f
-		binding_mode		#969694 #eeeeee #4d4d4c
+		focused_workspace	#969694 #4271ae #f5f5f5
+		active_workspace	#969694 #f5f5f5	#718c00
+		inactive_workspace	#969694 #f5f5f5 #4d4d4c
+		urgent_workspace	#969694 #f5f5f5	#d7005f
+		binding_mode		#969694 #f5f5f5 #4d4d4c
 	}
 }
 
 # colors for window decorations
 # class			border	backgr.	text	indicator
-client.focused		#969694 #4271ae #eeeeee	#3e999f
-client.focused_inactive	#969694	#f5f5f5 #718c00	#4271ae
-client.unfocused	#969694	#f5f5f5 #4d4d4c	#eeeeee
-client.urgent		#969694	#f5f5f5 #8959a8 #d7005f
-client.placeholder	#969694	#f5f5f5 #4d4d4c	#4271ae
-client.background	#ffffff	#f5f5f5
+client.focused		#969694 #4271ae #f5f5f5	#4271ae #4271ae
+client.focused_inactive	#969694	#f5f5f5 #718c00	#718c00 #f5f5f5
+client.unfocused	#969694	#f5f5f5 #4d4d4c	#4d4d4c #f5f5f5
+client.urgent		#969694	#f5f5f5 #d7005f #8959a8 #f5f5f5
+#client.placeholder	#969694	#f5f5f5 #4d4d4c	#4d4d4c #f5f5f5
+#client.background	#969694 #f5f5f5
 
 # automatically run the following after starting i3
+exec --no-startup-id xsetroot -solid "#EEEEEE"
 exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id xsetroot -solid #eeeeee
