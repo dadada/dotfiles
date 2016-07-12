@@ -3,7 +3,7 @@ set nocompatible
 set history=50
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg " lower priority suffixes
 set autochdir
-set runtimepath^=~/.vim/bundle/ctrlp.vim,~/.vim/bundle/airline.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/virtualenv.vim,~/.vim/bundle/clang_complete,~/.vim/bundle/vim-airline-themes,~/.vim/bundle/papercolor-theme.vim,~/.vim/bundle/undotree,~/.vim/bundle/vim-fugitive,~/.vim/bundle/delimitMate,~/.vim/bundle/vim-lldb
+set runtimepath^=~/.vim/bundle/ctrlp,~/.vim/bundle/vim-airline,~/.vim/bundle/tagbar,~/.vim/bundle/syntastic,~/.vim/bundle/vim-gitgutter,~/.vim/bundle/clang_complete,~/.vim/bundle/vim-airline-themes,~/.vim/bundle/papercolor-theme,~/.vim/bundle/undotree,~/.vim/bundle/vim-fugitive,~/.vim/bundle/delimitMate
 set updatetime=250
 set mouse=a
 
