@@ -20,7 +20,7 @@ bindsym $mod+i exec /usr/bin/i3-input
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
-bindsym $mod+d exec dmenu_run -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "#eeeeee" -nf "#4d4d4c" -sb "#4271ae" -sf "#f5f5f5" -b
+bindsym $mod+d exec dmenu_run -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "#f5f5f5" -nf "#4d4d4c" -sb "#4271ae" -sf "#f5f5f5" -b
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -222,5 +222,5 @@ client.urgent		#969694	#f5f5f5 #d7005f #8959a8 #f5f5f5
 #client.background	#969694 #f5f5f5
 
 # automatically run the following after starting i3
-exec --no-startup-id xsetroot -solid "#EEEEEE"
+exec --no-startup-id xsetroot -solid "#eeeeee"
 exec --no-startup-id xrdb ~/.Xresources
