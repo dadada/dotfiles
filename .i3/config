@@ -162,12 +162,12 @@ bindsym $mod+m workspace next
 bindsym $mod+n workspace prev
 
 # focus different outputs (displays)
-bindsym $mod+period focus output LVDS1
-bindsym $mod+comma focus output VGA1
+bindsym $mod+period focus output right
+bindsym $mod+comma focus output left
 
 # move selected workspace to output
-bindsym $mod+Shift+period move workspace to output left
-bindsym $mod+Shift+comma move workspace to output right
+bindsym $mod+Shift+period move workspace to output right
+bindsym $mod+Shift+comma move workspace to output left
 
 # make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
