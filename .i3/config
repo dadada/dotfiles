@@ -20,7 +20,7 @@ bindsym $mod+i exec /usr/bin/i3-input
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
-bindsym $mod+d exec dmenu_run -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "#f5f5f5" -nf "#4d4d4c" -sb "#4271ae" -sf "#f5f5f5" -b
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "#f5f5f5" -nf "#4d4d4c" -sb "#4271ae" -sf "#f5f5f5" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -102,7 +102,7 @@ bindsym $mod+p focus parent
 bindsym $mod+o focus child
 
 # default orientation of new windows
-default_orientation vertical
+default_orientation horizontal
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -142,7 +142,7 @@ bindsym $mod+Shift+m move container to workspace next
 bindsym $mod+Shift+n move container to workspace prev
 
 # default mode
-workspace_layout tabbed
+workspace_layout default
 
 # automatically jump back to previous workspace
 workspace_auto_back_and_forth yes
@@ -186,8 +186,8 @@ bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
 # control screen brightnes
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 # bar
 bar {
