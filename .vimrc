@@ -3,7 +3,16 @@ set nocompatible
 set history=50
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg " lower priority suffixes
 set autochdir
-set runtimepath^=~/.vim/bundle/ctrlp,~/.vim/bundle/vim-airline,~/.vim/bundle/tagbar,~/.vim/bundle/neomake,~/.vim/bundle/vim-gitgutter,~/.vim/bundle/vim-clang,~/.vim/bundle/vim-airline-themes,~/.vim/bundle/papercolor-theme,~/.vim/bundle/undotree,~/.vim/bundle/vim-fugitive,~/.vim/bundle/delimitMate
+set runtimepath^=~/.vim/bundle/ctrlp
+set runtimepath^=~/.vim/bundle/vim-airline
+set runtimepath^=~/.vim/bundle/tagbar
+set runtimepath^=~/.vim/bundle/neomake
+set runtimepath^=~/.vim/bundle/vim-gitgutter
+set runtimepath^=~/.vim/bundle/vim-clang
+set runtimepath^=~/.vim/bundle/vim-airline-themes
+set runtimepath^=~/.vim/bundle/papercolor-theme
+set runtimepath^=~/.vim/bundle/undotree
+set runtimepath^=~/.vim/bundle/vim-fugitive
 set updatetime=250
 set mouse=a
 
@@ -17,7 +26,9 @@ set directory=~/.vim-backup
 imap jj <Esc>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set backspace=indent,eol,start
-set autoindent
+filetype plugin indent on
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+au FileType c set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 
 " neomake
 autocmd! BufWritePost * Neomake
