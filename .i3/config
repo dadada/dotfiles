@@ -11,7 +11,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
 
 # the font to be used for i3bar and window decorations
-font pango:monospace 10
+font pango:monospace 8
 
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
@@ -180,10 +180,15 @@ bindsym $mod+equal exec --no-startup-id i3lock -f -c "#eeeeee"
 #bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
 
 # control volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
-bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
-bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+
+# control media player
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # control screen brightnes
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
