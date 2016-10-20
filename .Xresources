@@ -1,7 +1,7 @@
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: true
 !URxvt.font: -misc-fixed-medium-r-normal-*-13-120-75-75-C-70-iso10646-1
-URxvt.font: xft:Monospace:normal:size=10:antialias=true:hinting=true
+URxvt.font: xft:Monospace:normal:size=8:antialias=true:hinting=true
 URxvt.letterSpace: -1
 URxvt*.internalBorder: 0
 URxvt*.externalBorder: 0
