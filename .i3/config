@@ -210,9 +210,9 @@ bar {
 
 		# class			border	backgr.	text
 		focused_workspace	#969694	#4271ae	#f5f5f5
-		active_workspace	#969694	#718c00	#f5f5f5
-		inactive_workspace	#969694	#4d4d4c	#f5f5f5
-		urgent_workspace	#969694	#d7005f	#f5f5f5
+		active_workspace	#969694	#f5f5f5	#718c00
+		inactive_workspace	#969694	#f5f5f5	#4d4d4c
+		urgent_workspace	#969694	#f5f5f5	#d7005f
 		binding_mode		#969694	#f5f5f5	#4d4d4c
 	}
 }
@@ -220,10 +220,10 @@ bar {
 # colors for window decorations
 # class			border	backgr.	text	indicator
 client.focused		#969694	#4271ae	#f5f5f5	#4271ae	#4271ae
-client.focused_inactive	#969694	#718c00	#f5f5f5	#718c00	#718c00
-client.unfocused	#969694	#4d4d4c	#f5f5f5	#4d4d4c	#4d4d4c
-client.urgent		#969694	#d7005f	#f5f5f5	#d7005f	#d7005f
-#client.placeholder	#969694	#4d4d4c	#f5f5f5	#4d4d4c	#4d4d4c
+client.focused_inactive	#969694	#f5f5f5	#718c00	#718c00	#718c00
+client.unfocused	#969694	#f5f5f5	#4d4d4c	#4d4d4c	#4d4d4c
+client.urgent		#969694	#f5f5f5	#d7005f	#d7005f	#d7005f
+#client.placeholder	#969694	#f5f5f5	#4d4d4c	#4d4d4c	#4d4d4c
 #client.background	#969694	#f5f5f5
 
 # automatically run the following after starting i3
