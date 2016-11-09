@@ -1,8 +1,9 @@
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: true
-!URxvt.font: -misc-fixed-medium-r-normal-*-13-120-75-75-C-70-iso10646-1
-URxvt.font: xft:Monospace:normal:size=8:antialias=true:hinting=true
-URxvt.letterSpace: -1
+URxvt*.font: xft:Noto Mono:size=8:normal:antialias=true:hinting=slight, \
+xft:Noto Sans Mono CJK JP:size=8:normal:antialias=true:hinting=slight, \
+xft:Noto Color Emoji:size=8:normal:antialias=true:hinting=slight, \
+xft:Noto Emoji:size=8:normal:antialias=true:hinting=slight
 URxvt*.internalBorder: 0
 URxvt*.externalBorder: 0
 xterm*VT100.Translations: #override \
