@@ -17,10 +17,14 @@ set updatetime=250
 set mouse=a
 
 " file format
+filetype indent on
 set encoding=utf-8
 setglobal fileencoding=utf-8
 set backupdir=~/.vim-backup
 set directory=~/.vim-backup
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
+autocmd FileType java setlocal shiftwidth=4 tabstop=4 expandtab
 
 " editing
 imap jj <Esc>
@@ -29,6 +33,8 @@ set backspace=indent,eol,start
 filetype plugin indent on
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 au FileType c set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+au FileType tex set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+au FileType sh set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " neomake
 autocmd! BufWritePost * Neomake
