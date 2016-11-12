@@ -1,3 +1,20 @@
+set_from_resource $black i3wm.color0 #ededed
+set_from_resource $brightblack i3wm.color8 #969694
+set_from_resource $red i3wm.color1 #d7005f
+set_from_resource $brightred i3wm.color9 #d7005f
+set_from_resource $green i3wm.color2 #969694
+set_from_resource $brightgreen i3wm.color10 #969694
+set_from_resource $yellow i3wm.color3 #d75f00
+set_from_resource $brightyellow i3wm.color11 #d75f00
+set_from_resource $blue i3wm.color4 #4271ae
+set_from_resource $brightblue i3wm.color12 #4271ae
+set_from_resource $magenta i3wm.color5 #8959a8
+set_from_resource $brightmagenta i3wm.color13 #8959a8
+set_from_resource $cyan i3wm.color6 #3e999f
+set_from_resource $brightcyan i3wm.color14 #3e999f
+set_from_resource $white i3wm.color7 #4d4d4c
+set_from_resource $brightwhite i3wm.color15 #f5f5f5
+
 # global modifier key
 set $mod Mod4
 
@@ -21,7 +38,7 @@ bindsym $mod+i exec /usr/bin/i3-input
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "#f5f5f5" -nf "#4d4d4c" -sb "#4271ae" -sf "#f5f5f5" -b'
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "$brightwhite" -nf "$white" -sb "$blue" -sf "$brightwhite" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -177,7 +194,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -f -c "#eeeeee"
+bindsym $mod+equal exec --no-startup-id i3lock -f -c "$brightwhite"
 #bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
 
 # control volume
@@ -205,28 +222,28 @@ bar {
 	workspace_buttons yes
 	tray_output none
 	colors {
-		background #f5f5f5
-		statusline #4d4d4c
-		separator #969694
+		background $brightwhite
+		statusline $white
+		separator $brightblack
 
-		# class			border	backgr.	text
-		focused_workspace	#969694	#4271ae	#f5f5f5
-		active_workspace	#969694	#f5f5f5	#718c00
-		inactive_workspace	#969694	#f5f5f5	#4d4d4c
-		urgent_workspace	#969694	#f5f5f5	#d7005f
-		binding_mode		#969694	#f5f5f5	#4d4d4c
+		# class			border		backgr.		text
+		focused_workspace	$brightblack	$blue		$black
+		active_workspace	$brightblack	$brightwhite	$green
+		inactive_workspace	$brightblack	$brightwhite	$white
+		urgent_workspace	$brightblack	$brightwhite	$red
+		binding_mode		$brightblack	$brightwhite	$white
 	}
 }
 
 # colors for window decorations
-# class			border	backgr.	text	indicator
-client.focused		#969694	#4271ae	#f5f5f5	#4271ae	#4271ae
-client.focused_inactive	#969694	#f5f5f5	#718c00	#718c00	#718c00
-client.unfocused	#969694	#f5f5f5	#4d4d4c	#4d4d4c	#4d4d4c
-client.urgent		#969694	#f5f5f5	#d7005f	#d7005f	#d7005f
-#client.placeholder	#969694	#f5f5f5	#4d4d4c	#4d4d4c	#4d4d4c
-#client.background	#969694	#f5f5f5
+# class			border		backgr.		text	indicator
+client.focused		$brightblack	$blue		$black	$black
+client.focused_inactive	$brightblack	$brightwhite	$green	$green
+client.unfocused	$brightblack	$brightwhite	$white	$white
+client.urgent		$brightblack	$brightwhite	$red  	$yellow
+client.placeholder	$brightblack	$brightwhite	$white	$white
+client.background	$brightblack
 
 # automatically run the following after starting i3
-exec --no-startup-id xsetroot -solid "#eeeeee"
-exec --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id xsetroot -solid "$white"
+#exec --no-startup-id xrdb ~/.Xresources
