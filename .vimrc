@@ -35,6 +35,8 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 au FileType c set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 au FileType tex set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 au FileType sh set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set modelines=0
+set nomodeline
 
 " neomake
 autocmd! BufWritePost * Neomake
