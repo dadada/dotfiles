@@ -134,16 +134,16 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # name workspaces
-set $1 1msg
-set $2 2web
-set $3 3dev
+set $1 1:msg
+set $2 2:web
+set $3 3:dev
 set $4 4
-set $5 5media
+set $5 5
 set $6 6
 set $7 7
 set $8 8
 set $9 9
-set $10 10remote
+set $10 10:remote
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $1
@@ -194,7 +194,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -f -c "$brightwhite"
+bindsym $mod+equal exec --no-startup-id i3lock -f -c "$white"
 #bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
 
 # control volume
@@ -218,7 +218,7 @@ bar {
 	mode dock
 	position top
 	status_command i3status
-	strip_workspace_numbers yes
+	strip_workspace_numbers no
 	workspace_buttons yes
 	tray_output none
 	colors {
