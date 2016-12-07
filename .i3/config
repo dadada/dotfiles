@@ -40,7 +40,7 @@ bindsym $mod+i exec /usr/bin/i3-input
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "$brightblack" -nf "$foreground" -sb "$blue" -sf "$foreground" -b'
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "$background" -nf "$foreground" -sb "$green" -sf "$foreground" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
