@@ -230,22 +230,23 @@ bar {
 
 		# class			border		backgr.		text
 		focused_workspace	$cyan		$background	$foreground
-		active_workspace	$blue		$background	$foreground
-		inactive_workspace	$green		$backgroundck	$foreground
+		active_workspace	$green		$background	$foreground
+		inactive_workspace	$brightblack	$background	$foreground
 		urgent_workspace	$red		$background	$foreground
-		binding_mode		$brightblack	$background 	$foreground
+		binding_mode		$white		$background 	$foreground
 	}
 }
 
 # colors for window decorations
 # class			border		backgr.		text		indicator
 client.focused		$cyan		$cyan	    	$foreground	$cyan	    
-client.focused_inactive	$blue		$blue	    	$foreground	$blue	    
-client.unfocused	$green		$green	    	$foreground	$green	    
+client.focused_inactive	$green		$green	    	$foreground	$blue	    
+client.unfocused	$brightblack	$brightblack   	$foreground	$green	    
 client.urgent		$red		$red	    	$foreground	$red	    
 client.placeholder	$brightblack	$brightblack 	$foreground	$brightblack
-client.background	$brightblack
+client.background	$background
 
 # automatically run the following after starting i3
-exec --no-startup-id xsetroot -solid "$background"
+#exec --no-startup-id xsetroot -solid "$background"
 #exec --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id feh --bg-fill ~/.wallpaper.jpg
