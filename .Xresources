@@ -1,5 +1,5 @@
-URxvt*cursorBlink: true
-URxvt*cursorUnderline: true
+URxvt*cursorBlink: false
+URxvt*cursorUnderline: false
 URxvt*.font: xft:Noto Mono:size=8:normal:antialias=true:hinting=slight, \
 xft:Noto Sans Mono CJK JP:size=8:normal:antialias=true:hinting=slight, \
 xft:Noto Color Emoji:size=8:normal:antialias=true:hinting=slight, \
