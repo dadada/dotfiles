@@ -10,7 +10,6 @@ set runtimepath^=~/.vim/bundle/neomake
 set runtimepath^=~/.vim/bundle/vim-gitgutter
 "set runtimepath^=~/.vim/bundle/vim-clang
 set runtimepath^=~/.vim/bundle/vim-airline-themes
-set runtimepath^=~/.vim/bundle/papercolor-theme
 set runtimepath^=~/.vim/bundle/undotree
 set runtimepath^=~/.vim/bundle/vim-fugitive
 set updatetime=250
@@ -43,7 +42,6 @@ autocmd! BufWritePost * Neomake
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='papercolor'
 set laststatus=2
 
 " tagbar
@@ -55,11 +53,9 @@ nnoremap <F5> :UndotreeToggle<cr>
 " theming
 syntax on
 set t_Co=256
-set background=light
-colorscheme PaperColor
+set background=dark
 set number
 set relativenumber
-set colorcolumn=80
 set ruler
 set incsearch
 set hlsearch

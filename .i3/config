@@ -1,19 +1,21 @@
-set_from_resource $black i3wm.color0 #ededed
-set_from_resource $brightblack i3wm.color8 #969694
-set_from_resource $red i3wm.color1 #d7005f
-set_from_resource $brightred i3wm.color9 #d7005f
-set_from_resource $green i3wm.color2 #969694
-set_from_resource $brightgreen i3wm.color10 #969694
-set_from_resource $yellow i3wm.color3 #d75f00
-set_from_resource $brightyellow i3wm.color11 #d75f00
-set_from_resource $blue i3wm.color4 #4271ae
-set_from_resource $brightblue i3wm.color12 #4271ae
-set_from_resource $magenta i3wm.color5 #8959a8
-set_from_resource $brightmagenta i3wm.color13 #8959a8
-set_from_resource $cyan i3wm.color6 #3e999f
-set_from_resource $brightcyan i3wm.color14 #3e999f
-set_from_resource $white i3wm.color7 #4d4d4c
-set_from_resource $brightwhite i3wm.color15 #f5f5f5
+set_from_resource $background i3wm.background #000000
+set_from_resource $foreground i3wm.foreground #ffffff
+set_from_resource $black i3wm.color0 #000000
+set_from_resource $brightblack i3wm.color8 #575757
+set_from_resource $red i3wm.color1 #e7344c
+set_from_resource $brightred i3wm.color9 #e7344c
+set_from_resource $green i3wm.color2 #a2c617
+set_from_resource $brightgreen i3wm.color10 #a2c617
+set_from_resource $yellow i3wm.color3 #fff374
+set_from_resource $brightyellow i3wm.color11 #fff374
+set_from_resource $blue i3wm.color4 #75519c
+set_from_resource $brightblue i3wm.color12 #75519c
+set_from_resource $magenta i3wm.color5 #ec6090
+set_from_resource $brightmagenta i3wm.color13 #ec6090
+set_from_resource $cyan i3wm.color6 #007bc4
+set_from_resource $brightcyan i3wm.color14 #007bc4
+set_from_resource $white i3wm.color7 #ffffff
+set_from_resource $brightwhite i3wm.color15 #ffffff
 
 # global modifier key
 set $mod Mod4
@@ -38,7 +40,7 @@ bindsym $mod+i exec /usr/bin/i3-input
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "$brightwhite" -nf "$white" -sb "$blue" -sf "$brightwhite" -b'
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -nb "$background" -nf "$foreground" -sb "$green" -sf "$background" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -194,7 +196,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -f -c "$white"
+bindsym $mod+equal exec --no-startup-id i3lock -f -c "$background"
 #bindsym $mod+Shift+equal exec --no-startup-id i3lock && systemctl suspend
 
 # control volume
@@ -222,28 +224,27 @@ bar {
 	workspace_buttons yes
 	tray_output none
 	colors {
-		background $brightwhite
-		statusline $white
+		background $background
+		statusline $foreground
 		separator $brightblack
 
 		# class			border		backgr.		text
-		focused_workspace	$brightblack	$blue		$black
-		active_workspace	$brightblack	$brightwhite	$green
-		inactive_workspace	$brightblack	$brightwhite	$white
-		urgent_workspace	$brightblack	$brightwhite	$red
-		binding_mode		$brightblack	$brightwhite	$white
+		focused_workspace	$cyan		$background	$foreground
+		active_workspace	$green		$background	$foreground
+		inactive_workspace	$brightblack	$background	$foreground
+		urgent_workspace	$red		$background	$foreground
+		binding_mode		$white		$background 	$foreground
 	}
 }
 
 # colors for window decorations
-# class			border		backgr.		text	indicator
-client.focused		$brightblack	$blue		$black	$black
-client.focused_inactive	$brightblack	$brightwhite	$green	$green
-client.unfocused	$brightblack	$brightwhite	$white	$white
-client.urgent		$brightblack	$brightwhite	$red  	$yellow
-client.placeholder	$brightblack	$brightwhite	$white	$white
-client.background	$brightblack
+# class			border		backgr.		text		indicator
+client.focused		$cyan		$cyan	    	$foreground	$cyan	    
+client.focused_inactive	$green		$green	    	$background	$blue	    
+client.unfocused	$brightblack	$brightblack   	$foreground	$green	    
+client.urgent		$red		$red	    	$foreground	$red	    
+client.placeholder	$brightblack	$brightblack 	$foreground	$brightblack
+client.background	$background
 
 # automatically run the following after starting i3
-exec --no-startup-id xsetroot -solid "$white"
-#exec --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id xsetroot -solid "$background"
