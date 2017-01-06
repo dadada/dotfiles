@@ -56,7 +56,6 @@ set t_Co=256
 set background=dark
 set number
 set relativenumber
-set colorcolumn=80
 set ruler
 set incsearch
 set hlsearch
