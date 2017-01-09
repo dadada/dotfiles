@@ -1,0 +1,79 @@
+command=~/bin/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[mpd]
+label=♪
+separator=false
+interval=5
+
+[volume]
+instance=Master
+interval=once
+signal=10
+
+[memory]
+label=▤
+separator=false
+interval=30
+
+[disk]
+label=~
+separator=false
+interval=30
+
+[disk]
+label=/
+instance=/
+interval=30
+
+[wifi]
+label=◌
+instance=wlp3s0
+interval=10
+separator=false
+
+[bandwidth]
+instance=wlp3s0
+interval=5
+
+[iface]
+label=☡
+instance=enp0s25
+interval=10
+separator=false
+
+[bandwidth]
+instance=enp0s25
+interval=5
+
+# CPU usage
+#
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+[cpu_usage]
+label=CPU
+interval=10
+min_width=CPU: 100.00%
+#separator=false
+
+#[load_average]
+#interval=10
+
+# Battery indicator
+#
+# The battery instance defaults to 0.
+[battery]
+label=⚡
+#instance=1
+interval=30
+
+# Date Time
+#
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=5
+
+[temperature]
+label=TEMP
+interval=10
