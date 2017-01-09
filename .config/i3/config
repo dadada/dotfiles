@@ -219,7 +219,7 @@ bar {
 	id bar
 	mode dock
 	position top
-	status_command i3blocks
+	status_command i3status
 	strip_workspace_numbers no
 	workspace_buttons yes
 	tray_output none
