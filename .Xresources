@@ -11,6 +11,8 @@ xterm*VT100.Translations: #override \
                  Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
 URxvt*saveLines: 8192
 URxvt*scrollBar: false
+URxvt.letterSpace: -1
+URxvt.internalBorder: 4
 
 ! https://events.ccc.de/congress/2016/wiki/Static:Design
 
