@@ -4,7 +4,7 @@ set history=50
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg " lower priority suffixes
 set autochdir
 "set runtimepath^=~/.vim/bundle/ctrlp
-set runtimepath^=~/.vim/bundle/vim-airline
+"set runtimepath^=~/.vim/bundle/vim-airline
 set runtimepath^=~/.vim/bundle/tagbar
 set runtimepath^=~/.vim/bundle/neomake
 set runtimepath^=~/.vim/bundle/vim-gitgutter
@@ -12,6 +12,7 @@ set runtimepath^=~/.vim/bundle/vim-gitgutter
 set runtimepath^=~/.vim/bundle/vim-airline-themes
 set runtimepath^=~/.vim/bundle/undotree
 set runtimepath^=~/.vim/bundle/vim-fugitive
+set runtimepath^=~/.vim/bundle/riv.vim
 set updatetime=250
 set mouse=a
 
@@ -52,7 +53,6 @@ nnoremap <F5> :UndotreeToggle<cr>
 
 " theming
 syntax on
-set t_Co=256
 set background=dark
 set number
 set relativenumber

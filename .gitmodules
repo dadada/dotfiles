@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/vim-clang"]
 	path = .vim/bundle/vim-clang
 	url = https://github.com/justmao945/vim-clang.git
+[submodule ".vim/bundle/riv.vim"]
+	path = .vim/bundle/riv.vim
+	url = https://github.com/Rykka/riv.vim.git
