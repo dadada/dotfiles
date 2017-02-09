@@ -16,10 +16,10 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '*'   # display this when there are unstaged changes
 zstyle ':vcs_info:*' stagedstr '+'  # display this when there are staged changes
 zstyle ':vcs_info:*' actionformats '[%b%|%a%c%u%]%f'
-zstyle ':vcs_info:*' formats '%b%c%u%f'
+zstyle ':vcs_info:*' formats '|%b%c%u%f'
 
 
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%r'
 precmd () { vcs_info }
 
-PROMPT='%S%F{cyan}%n@%m%F{blue}%3~%f%F{green}${vcs_info_msg_0_}%f%(0?..%F{red}%?%f)%s '
+PROMPT='%S%n@%m|%3~${vcs_info_msg_0_}%(0?..|%?)%s '

@@ -12,33 +12,7 @@ xterm*VT100.Translations: #override \
 URxvt*saveLines: 8192
 URxvt*scrollBar: false
 URxvt.letterSpace: -1
-URxvt.internalBorder: 4
 
-! https://events.ccc.de/congress/2016/wiki/Static:Design
-
-*foreground: #ffffff
+! Terminal colors
 *background: #000000
-! black
-*color0: #000000
-*color8: #575757
-! red
-*color1: #e7344c
-*color9: #e7344c
-! green
-*color2: #a2c617
-*color10: #a2c617
-! yellow / orange
-*color3: #fff374
-*color11: #fff374
-! blue
-*color4: #75519c
-*color12: #75519c
-! magenta
-*color5: #ec6090
-*color13: #ec6090
-! cyan
-*color6: #007bc4
-*color14: #007bc4
-! white
-*color7: #ffffff
-*color15: #ffffff
+*foreground: #ffffff
