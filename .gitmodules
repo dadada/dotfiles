@@ -34,3 +34,12 @@
 [submodule ".vim/bundle/riv.vim"]
 	path = .vim/bundle/riv.vim
 	url = https://github.com/Rykka/riv.vim.git
+[submodule ".vim/bundle/InstantRst"]
+	path = .vim/bundle/InstantRst
+	url = https://github.com/Rykka/InstantRst.git
+[submodule ".vim/bundle/vim-markdown"]
+	path = .vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
