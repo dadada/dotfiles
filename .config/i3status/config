@@ -8,14 +8,9 @@
 
 general {
 	colors = false
-	#color_good = "#a2c617"
-	#color_degraded = "#fff374"
-	#color_bad = "#e7344c"
 	interval = 5
 }
 
-#order += "run_watch DHCP"
-#order += "ipv6"
 order += "wireless wlp3s0"
 order += "ethernet enp0s25"
 order += "volume master"
