@@ -1,4 +1,4 @@
-command=~/bin/i3blocks/$BLOCK_NAME
+command=~/.config/i3blocks/lib/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -39,18 +39,6 @@ separator=false
 instance=wlp3s0
 interval=1
 
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU: 100.00%
-
-#[load_average]
-#interval=10
-
 # Battery indicator
 #
 # The battery instance defaults to 0.
@@ -64,7 +52,3 @@ interval=10
 label=⏰
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=5
-
-#[temperature]
-#label=TEMP
-#interval=10

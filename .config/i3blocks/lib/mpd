@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo -e $(mpc status \
+  | grep -Z 'paused\|playing' \
+  | cut -d ' ' -f1 && mpc -f "[[%title% - ]%artist%]" current)
