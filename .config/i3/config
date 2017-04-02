@@ -40,7 +40,7 @@ bindsym $mod+i exec /usr/bin/i3-input
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -b -nb "$background" -nf "$foreground" -sb "$color0C" -sf "$color01" -b'
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -b -nb "$background" -nf "$foreground" -sb "$dark_cyan" -sf "$dark_white" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -107,7 +107,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+t border toggle
 
 # set border width of new window
-new_window pixel 2
+new_window pixel 1
 
 # keep focus within current container?
 force_focus_wrapping no
