@@ -12,11 +12,12 @@ set runtimepath^=~/.vim/bundle/vim-markdown.vim
 set runtimepath^=~/.vim/bundle/tagbar
 set runtimepath^=~/.vim/bundle/neomake
 set runtimepath^=~/.vim/bundle/vim-gitgutter
-"set runtimepath^=~/.vim/bundle/vim-clang
-set runtimepath^=~/.vim/bundle/vim-airline-themes
+set runtimepath^=~/.vim/bundle/vim-clang
+"set runtimepath^=~/.vim/bundle/vim-airline-themes
 set runtimepath^=~/.vim/bundle/undotree
 set runtimepath^=~/.vim/bundle/vim-fugitive
-set runtimepath^=~/.vim/bundle/base16-vim
+"set runtimepath^=~/.vim/bundle/base16-vim
+set runtimepath^=~/.vim/bundle/vim-colors-solarized
 set updatetime=250
 set mouse=a
 
@@ -36,7 +37,6 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 set backspace=indent,eol,start
 filetype plugin indent on
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4
-" textwidth=79
 au FileType c set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 au FileType tex set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 au FileType sh set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
@@ -56,10 +56,14 @@ nmap <F8> :TagbarToggle<CR>
 " undotree
 nnoremap <F5> :UndotreeToggle<cr>
 
+" clang
+ let g:clang_c_options = '-std=c++11'
+ let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
 " theming
-syntax on
-set background=dark
-colorscheme base16-grayscale-dark
+syntax enable
+set background=light
+colorscheme solarized
 set number
 set relativenumber
 set ruler
