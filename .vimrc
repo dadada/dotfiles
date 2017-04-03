@@ -62,7 +62,7 @@ nnoremap <F5> :UndotreeToggle<cr>
 
 " theming
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 set number
 set relativenumber

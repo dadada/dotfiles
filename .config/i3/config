@@ -37,7 +37,10 @@ font pango:NotoMono 8
 bindsym $mod+i exec /usr/bin/i3-input
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec terminology
+
+# start an editor
+bindsym $mod+Shift+Return exec /usr/bin/emacsclient -c
 
 # start dmenu
 bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -b -nb "$background" -nf "$foreground" -sb "$dark_cyan" -sf "$dark_white" -b'
