@@ -199,7 +199,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -f -c "$background"
+bindsym $mod+equal exec --no-startup-id i3lock -f --image ~/.wallpaper.png
 
 # control volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
@@ -249,4 +249,5 @@ client.urgent           $light_black $dark_red     $light_black $dark_red     $d
 client.placeholder      $light_black $dark_magenta $light_black $dark_magenta $dark_magenta    
 
 # automatically run the following after starting i3
-exec --no-startup-id xsetroot -solid "$background"
+exec --no-startup-id feh --bg-fill ~/.wallpaper.png
+exec --no-startup-id compton
