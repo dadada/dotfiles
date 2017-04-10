@@ -30,20 +30,20 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
 
 # the font to be used for i3bar and window decorations
-font pango:NotoMono 8
+font pango:SourceCodePro 10
 #font pango:Noto Sans Mono CJK JP 8
 
 # start i3-input
 bindsym $mod+i exec /usr/bin/i3-input
 
 # start a terminal
-bindsym $mod+Return exec terminology
+bindsym $mod+Return exec xfce4-terminal 
 
 # start an editor
-bindsym $mod+Shift+Return exec /usr/bin/emacsclient -c
+bindsym $mod+Shift+Return exec /usr/bin/emacsclient -c -n
 
 # start dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn 'Monospace:size=9:antialias=true:hinting=true' -b -nb "$background" -nf "$foreground" -sb "$dark_cyan" -sf "$dark_white" -b'
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn "Source Code Pro:size=10" -b -nb "$background" -nf "$foreground" -sb "$dark_cyan" -sf "$dark_white" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -220,7 +220,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bar {
     id bar
     status_command i3blocks
-    mode dock
+    mode hide
+    modifier $mod
     position bottom
     strip_workspace_numbers no
     workspace_buttons yes
@@ -240,6 +241,8 @@ bar {
     }
 }
 
+hide_edge_borders both
+
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border        BG            Text        Indicator    Child Border
 client.focused          $light_black $dark_cyan    $light_black $dark_cyan    $dark_cyan    
@@ -250,4 +253,3 @@ client.placeholder      $light_black $dark_magenta $light_black $dark_magenta $d
 
 # automatically run the following after starting i3
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png
-exec --no-startup-id compton
