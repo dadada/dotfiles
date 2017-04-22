@@ -2,9 +2,16 @@ command=~/.config/i3blocks/lib/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-[mpd]
+#[mpd]
+#label=♪
+#separator=true
+#interval=5
+#signal=11
+
+[playerctl]
 label=♪
 separator=true
+instance=spotify
 interval=5
 signal=11
 

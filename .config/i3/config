@@ -208,9 +208,9 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle && pkill -RT
 bindsym XF86AudioMicMute exec --no-startup-id amixer set 'Capture' toggle && pkill -RTMIN+10 i3blocks
 
 # control media player
-bindsym XF86AudioPlay exec mpc toggle && pkill -RTMIN+11 i3blocks
-bindsym XF86AudioNext exec mpc next && pkill -RTMIN+11 i3blocks
-bindsym XF86AudioPrev exec mpc prev && pkill -RTMIN+11 i3blocks
+bindsym XF86AudioPlay exec playerctl play-pause && pkill -RTMIN+11 i3blocks
+bindsym XF86AudioNext exec playerctl next && pkill -RTMIN+11 i3blocks
+bindsym XF86AudioPrev exec playerctl previous && pkill -RTMIN+11 i3blocks
 
 # control screen brightnes
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
@@ -253,3 +253,4 @@ client.placeholder      $light_black $dark_magenta $light_black $dark_magenta $d
 
 # automatically run the following after starting i3
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png
+exec --no-startup-id mpDris2
