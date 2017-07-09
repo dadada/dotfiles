@@ -1,4 +1,6 @@
-export ZSH=~/.zsh
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.powerlevel9k/powerlevel9k.zsh-theme
@@ -11,11 +13,7 @@ alias mkdir='nocorrect mkdir'
 alias gist='nocorrect gist'
 alias sudo='nocorrect sudo'
 alias killall='nocorrect killall'
-alias em='emacsclient -c -n'
-
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+alias em='emacsclient -n -c'
 
 setopt append_history
 setopt extended_history

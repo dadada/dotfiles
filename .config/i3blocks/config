@@ -8,6 +8,11 @@ markup=none
 #interval=5
 #signal=11
 
+#[fgraum]
+#label=FG
+#separator=true
+#interval=30
+
 [playerctl]
 label=♪
 separator=true
