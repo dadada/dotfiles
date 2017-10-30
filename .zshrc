@@ -7,6 +7,7 @@ source ~/.powerlevel9k/powerlevel9k.zsh-theme
 
 alias man='nocorrect man'
 alias mv='nocorrect mv -i'
+alias cp='nocorrect cp -i'
 alias sqlite3='nocorrect sqlite3'
 alias sqlite='nocorrect sqlite'
 alias mkdir='nocorrect mkdir'
@@ -29,3 +30,7 @@ zstyle :compinstall filename '/home/tim/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+autoload -Uz promptinit
+promptinit
+#prompt restore

@@ -37,13 +37,13 @@ font pango:SourceCodePro 9
 bindsym $mod+i exec /usr/bin/i3-input
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal 
+bindsym $mod+Return exec gnome-terminal
 
 # start an editor
 bindsym $mod+Shift+Return exec /usr/bin/emacsclient -n -c
 
 # start dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn "Source Code Pro:size=10" -b -nb "$background" -nf "$foreground" -sb "$dark_cyan" -sf "$dark_white" -b'
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn "Source Code Pro:size=10" -b -nb "$background" -nf "$foreground" -sb "$dark_cyan" -sf "$dark_black" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -264,6 +264,7 @@ client.placeholder      $light_black $dark_magenta $light_black $dark_magenta $d
 #client.placeholder      $dark_white $dark_magenta $light_white $dark_magenta $dark_magenta
 
 # automatically run the following after starting i3
-exec --no-startup-id mpDris2
 exec --no-startup-id xinput set-prop 11 264 1
 exec --no-startup-id xinput set-prop 11 274 1
+exec --no-startup-id nm-applet
+exec --no-startup-id gnome-keyring-daemon
