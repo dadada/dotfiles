@@ -2,6 +2,9 @@ HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir root_indicator)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs vcs)
+POWERLEVEL9K_COLOR_SCHEME='dark'
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.powerlevel9k/powerlevel9k.zsh-theme
 
@@ -14,7 +17,7 @@ alias mkdir='nocorrect mkdir'
 alias gist='nocorrect gist'
 alias sudo='nocorrect sudo'
 alias killall='nocorrect killall'
-alias em='emacsclient -n -c'
+alias em='emacsclient -nc'
 
 setopt append_history
 setopt extended_history
