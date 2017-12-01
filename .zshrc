@@ -1,12 +1,12 @@
 HISTSIZE=100000
 SAVEHIST=100000
-HISTFILE=~/.zsh_history
+HISTFILE=${HOME}/.zsh_history
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir root_indicator)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs vcs)
 POWERLEVEL9K_COLOR_SCHEME='dark'
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.powerlevel9k/powerlevel9k.zsh-theme
+source ${DOTFILES}/powerlevel9k/powerlevel9k.zsh-theme
 
 alias man='nocorrect man'
 alias mv='nocorrect mv -i'
