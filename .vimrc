@@ -3,21 +3,6 @@ set nocompatible
 set history=50
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg " lower priority suffixes
 set autochdir
-"set runtimepath^=~/.vim/bundle/riv.vim
-"set runtimepath^=~/.vim/bundle/InstantRst.vim
-set runtimepath^=~/.vim/bundle/tabular.vim
-set runtimepath^=~/.vim/bundle/vim-markdown.vim
-"set runtimepath^=~/.vim/bundle/ctrlp
-"set runtimepath^=~/.vim/bundle/vim-airline
-set runtimepath^=~/.vim/bundle/tagbar
-set runtimepath^=~/.vim/bundle/neomake
-set runtimepath^=~/.vim/bundle/vim-gitgutter
-set runtimepath^=~/.vim/bundle/vim-clang
-"set runtimepath^=~/.vim/bundle/vim-airline-themes
-set runtimepath^=~/.vim/bundle/undotree
-set runtimepath^=~/.vim/bundle/vim-fugitive
-"set runtimepath^=~/.vim/bundle/base16-vim
-set runtimepath^=~/.vim/bundle/vim-colors-solarized
 set updatetime=250
 set mouse=a
 
@@ -25,8 +10,8 @@ set mouse=a
 filetype indent on
 set encoding=utf-8
 setglobal fileencoding=utf-8
-set backupdir=~/.vim-backup
-set directory=~/.vim-backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
 autocmd FileType java setlocal shiftwidth=4 tabstop=4 expandtab
@@ -46,24 +31,9 @@ set nomodeline
 " neomake
 autocmd! BufWritePost * Neomake
 
-" airline
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-
-" tagbar
-nmap <F8> :TagbarToggle<CR>
-
-" undotree
-nnoremap <F5> :UndotreeToggle<cr>
-
-" clang
- let g:clang_c_options = '-std=c++11'
- let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
-
 " theming
 syntax enable
 set background=dark
-colorscheme solarized
 set number
 set relativenumber
 set ruler
