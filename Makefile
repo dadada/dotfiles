@@ -26,7 +26,7 @@ i3status: .config/i3status
 i3blocks: .config/i3blocks
 	install -d $(DEST)/.config/i3blocks/lib
 	install -m 440 .config/i3blocks/config $(DEST)/.config/i3blocks
-	install -m 540 .config/i3blocks/lib/* $(DEST)/.config/i3blocks/lib
+	-install -m 540 .config/i3blocks/lib/* $(DEST)/.config/i3blocks/lib
 
 zsh: .zshrc .zshenv
 	git submodule init powerlevel9k
