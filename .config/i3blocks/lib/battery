@@ -6,12 +6,10 @@ set -e
 status=$(cat /sys/class/power_supply/BAT0/status)
 full=$(cat /sys/class/power_supply/BAT0/energy_full)
 now=$(cat /sys/class/power_supply/BAT0/energy_now)
-percent=$(python -c "print('%.0f' % ($now / $full * 100))")
-full_text="${status} ${percent}%"
-short_text=$full_text;
+percent=$(echo "100 * ${now} / ${full}" | bc)
 
-echo $full_text
-echo $short_text
+printf '%11s %2d%%\n' ${status} ${percent}
+echo $status
 
 # consider color and urgent flag only on discharge
 if [ $status = "Discharging" ]; then
