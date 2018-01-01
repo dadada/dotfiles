@@ -4,7 +4,9 @@ ifndef DEST
 DEST=$(HOME)
 endif
 
-all: git i3 i3blocks i3status spacemacs ssh vim xresources zsh
+all: install
+
+install: git i3 i3blocks i3status spacemacs ssh vim xresources zsh
 
 test:
 	install -d test
