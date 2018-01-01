@@ -220,7 +220,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bar {
     id bar
     status_command i3blocks
-    mode hide
+    mode dock
     modifier $mod
     position bottom
     strip_workspace_numbers no
@@ -259,3 +259,4 @@ exec --no-startup-id xinput set-prop 11 274 1
 exec --no-startup-id feh --bg-scale ~/lib/pictures/Wallpapers/11j1ho2zyb701.jpg
 exec --no-startup-id xss-lock -- i3lock -n -c "#1f2022" -u
 exec --no-startup-id nm-applet
+exec --no-startup-id compton 
