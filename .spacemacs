@@ -328,7 +328,7 @@ you should place your code here."
     (define-key c++-mode-map [tab] 'clang-format-buffer))
   (setq eclim-eclipse-dirs '("/usr/bin/eclipse")
         eclim-executable "/usr/lib/eclipse/eclim")
-  (spacemacs/enable-transparency)
+  (spacemacs/toggle-transparency)
   )
 
 
