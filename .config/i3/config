@@ -43,7 +43,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+Return exec /usr/bin/emacsclient -n -c
 
 # start dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn "Source Code Pro:size=10" -b -nb "$background" -nf "$foreground" -sb "$dark_cyan" -sf "$background" -b'
+bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn "Source Code Pro:size=10" -b -nb "#1f2022" -nf "#a3a3a3" -sb "#2d9574" -sf "#1f2022" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -242,6 +242,7 @@ bar {
 }
 
 #hide_edge_borders both
+bindsym XF86Launch1 exec --no-startup-id aplay ~/lib/sounds/wortwitzklingel-mono.wav
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border        BG            Text        Indicator    Child Border
