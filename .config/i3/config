@@ -1,21 +1,21 @@
-set_from_resource $foreground    i3wm.foreground #000000
-set_from_resource $background    i3wm.background #ffffff
-set_from_resource $dark_black    i3wm.color0     #000000
-set_from_resource $light_black   i3wm.color8     #555753
-set_from_resource $dark_red      i3wm.color1     #CC0000
-set_from_resource $light_red     i3wm.color9     #EF2929
-set_from_resource $dark_green    i3wm.color2     #4E9A06
-set_from_resource $light_green   i3wm.color10    #8AE234
-set_from_resource $dark_yellow   i3wm.color3     #C4A000
-set_from_resource $light_yellow  i3wm.color11    #FCE94F
-set_from_resource $dark_blue     i3wm.color4     #3465A4
-set_from_resource $light_blie    i3wm.color12    #729FCF
-set_from_resource $dark_magenta  i3wm.color5     #75507B
-set_from_resource $light_magenta i3wm.color13    #AD7FA8
-set_from_resource $dark_cyan     i3wm.color6     #06989A
-set_from_resource $light_cyan    i3wm.color14    #34E2E2
-set_from_resource $dark_white    i3wm.color7     #D3D7CF
-set_from_resource $light_white   i3wm.color15    #EEEEEC
+set_from_resource $foreground    i3wm.foreground #a3a3a3
+set_from_resource $background    i3wm.background #1f2022
+set_from_resource $dark_black    i3wm.color0     #1f2022
+set_from_resource $light_black   i3wm.color8     #282828
+set_from_resource $dark_red      i3wm.color1     #444155
+set_from_resource $light_red     i3wm.color9     #585858
+set_from_resource $dark_green    i3wm.color2     #b8b8b8
+set_from_resource $light_green   i3wm.color10    #a3a3a3
+set_from_resource $dark_yellow   i3wm.color3     #e8e8e8
+set_from_resource $light_yellow  i3wm.color11    #f8f8f8
+set_from_resource $dark_blue     i3wm.color4     #f2241f
+set_from_resource $light_blie    i3wm.color12    #ffa500
+set_from_resource $dark_magenta  i3wm.color5     #b1951d
+set_from_resource $light_magenta i3wm.color13    #67b11d
+set_from_resource $dark_cyan     i3wm.color6     #2d9574
+set_from_resource $light_cyan    i3wm.color14    #4f97d7
+set_from_resource $dark_white    i3wm.color7     #a31db1
+set_from_resource $light_white   i3wm.color15    #b03060
 
 # global modifier key
 set $mod Mod4
@@ -139,16 +139,16 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # name workspaces
-set $1 1:msg
-set $2 2:web
-set $3 3:dev
+set $1 1
+set $2 2
+set $3 3
 set $4 4
 set $5 5
 set $6 6
 set $7 7
 set $8 8
 set $9 9
-set $10 10:remote
+set $10 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $1
@@ -199,7 +199,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock && xset dpms force off
+bindsym $mod+equal exec --no-startup-id i3lock -u -c "#1f2022" -u && xset dpms force off
 
 # control volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
@@ -220,7 +220,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bar {
     id bar
     status_command i3blocks
-    #mode hide
+    mode hide
     modifier $mod
     position bottom
     strip_workspace_numbers no
@@ -235,7 +235,7 @@ bar {
         # State            Border        BG           Text
         focused_workspace  $light_black $dark_cyan    $background
         active_workspace   $light_black $dark_green   $background
-        inactive_workspace $dark_black  $light_black  $background
+        inactive_workspace $dark_black  $light_black  $foreground
         urgent_workspace   $light_black $dark_red     $background
         binding_mode       $light_black $dark_magenta $background
     }
@@ -247,7 +247,7 @@ bar {
 # Property Name         Border        BG            Text        Indicator    Child Border
 client.focused          $light_black $dark_cyan    $background $dark_cyan    $dark_cyan
 client.focused_inactive $light_black $dark_green   $background $dark_green   $dark_green
-client.unfocused        $dark_black  $light_black  $background $dark_white   $dark_white
+client.unfocused        $dark_black  $light_black  $foreground $dark_white   $dark_white
 client.urgent           $light_black $dark_red     $background $dark_red     $dark_red
 client.placeholder      $light_black $dark_magenta $background $dark_magenta $dark_magenta
 
@@ -256,4 +256,6 @@ exec --no-startup-id xinput set-prop 11 264 1
 exec --no-startup-id xinput set-prop 11 274 1
 #exec --no-startup-id nm-applet
 #exec --no-startup-id gnome-keyring-daemon
-exec --no-startup-id feh --bg-scale ~/lib/pictures/Wallpapers/3vwlurova6zz.jpg
+exec --no-startup-id feh --bg-scale ~/lib/pictures/Wallpapers/11j1ho2zyb701.jpg
+exec --no-startup-id xss-lock -- i3lock -n -c "#1f2022" -u
+exec --no-startup-id nm-applet

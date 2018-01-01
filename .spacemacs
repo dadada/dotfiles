@@ -54,6 +54,7 @@ values."
      version-control
      (c-c++ :variables
             c-c++-enable-clang-support t)
+     gtags
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -264,7 +265,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -325,6 +326,7 @@ you should place your code here."
   (add-hook 'c++-mode-hook 'clang-format-bindings)
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
+  (spacemacs/enable-transparency)
   )
 
 
