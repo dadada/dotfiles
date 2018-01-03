@@ -1,0 +1,38 @@
+#!/bin/env python3
+
+import urllib3
+import json
+import dateutil.parser
+
+from datetime import datetime, date
+
+
+http = urllib3.PoolManager()
+
+urllib3.disable_warnings()
+
+req = http.request('GET', 'https://status.stratum0.org/status.json')
+
+if req.status is 200:
+    status = json.loads(req.data)
+
+    if not 'isOpen' in status:
+        label = 'Unknown'
+        color = '#ffff00'
+    elif status['isOpen']:
+        label = 'OPEN'
+        color = '#00ff00'
+    else:
+        label = 'CLOSED'
+        color = '#ff0000'
+
+    if 'since' in status and 'openedBy' in status:
+        since = dateutil.parser.parse(status['since'])
+        long_text = '%s since %s by %s' % (label, date.strftime(since, '%X'), status['openedBy'])
+    else:
+        long_text = label
+
+    short_text = label
+    print(long_text)
+    print(short_text)
+    print(color)

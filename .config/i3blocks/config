@@ -8,6 +8,11 @@ markup=none
 #interval=5
 #signal=11
 
+[space]
+label=S
+separator=true
+interval=30
+
 #[fgraum]
 #label=FG
 #separator=true
