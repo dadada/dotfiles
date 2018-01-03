@@ -8,7 +8,7 @@ full=$(cat /sys/class/power_supply/BAT0/energy_full)
 now=$(cat /sys/class/power_supply/BAT0/energy_now)
 percent=$(echo "100 * ${now} / ${full}" | bc)
 
-printf '%11s %2d%%\n' ${status} ${percent}
+printf '%s %2d%%\n' ${status} ${percent}
 echo $status
 
 # consider color and urgent flag only on discharge
