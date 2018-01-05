@@ -1,11 +1,8 @@
-set PATH ~/bin $PATH
-set EDITOR /usr/bin/vim
-set -g fish_key_bindings fish_vi_key_bindings
-
-# some color aliases
-set fish_color_user cyan
-set fish_color_host blue
-set fish_color_status red
+set TERM xterm-256color
+set EDITOR "emacsclient -nc"
+set PATH $PATH $HOME/usr/msp430/bin $HOME/.local/bin $HOME/usr/bin $HOME/.gem/ruby/2.4.0/bin
+set LD_LIBRARY_PATH $LD_LIBRARY_PATH $HOME/usr/lib
+set CPATH $CPATH $HOME/usr/include
 
 # fish git prompt
 set __fish_git_prompt_show_informative_status 'yes'
@@ -16,24 +13,19 @@ set __fish_git_prompt_showupstream 'yes'
 set __fish_git_prompt_showcolorhints 'yes'
  
 function fish_prompt
-    set last_status $status
+  set last_status $status
+  printf "%s %s:%s%% " \
+  (set_color red
+    echo $last_status) \
+  (set_color green
+    hostname) \
+  (set_color blue
+    prompt_pwd)
+  set_color normal
+end
 
-    if test $last_status = 0
-        set last_status ""
-    end
-
-    printf '%s%s%s%s%s%s%s%s%s%s→ '\
-    (set_color $fish_color_status)\
-    (echo $last_status)\
-    (set_color $fish_color_user)\
-    (whoami)\
-    (set_color $fish_color_host)\
-    (hostname)\
-    (set_color $fish_color_cwd)\
-    (prompt_pwd)\
-    (set_color normal)\
-    (__fish_git_prompt)\
-    #    (__fish_svn_prompt)
+function fish_right_prompt
+  printf '%s' (__fish_git_prompt)
 end
 
 function fish_greeting
