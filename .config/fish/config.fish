@@ -17,7 +17,7 @@ set fish_prompt_pwd_dir_length 0
  
 function fish_prompt
   set last_status $status
-  printf "%s %s:%s%% " \
+  printf '%s %s:%s% ' \
   (set_color red
     echo $last_status) \
   (set_color green
@@ -25,6 +25,7 @@ function fish_prompt
   (set_color blue
     prompt_pwd)
   set_color normal
+  echo -n ' '
 end
 
 function fish_right_prompt
