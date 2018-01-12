@@ -199,7 +199,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -u -c "#1f2022" -u && xset dpms force off
+bindsym $mod+equal exec --no-startup-id i3lock -c "#1f2022" -u && xset dpms force off
 
 # control volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
@@ -258,6 +258,6 @@ exec --no-startup-id xinput set-prop 11 274 1
 #exec --no-startup-id nm-applet
 #exec --no-startup-id gnome-keyring-daemon
 exec --no-startup-id feh --bg-scale ~/lib/pictures/Wallpapers/11j1ho2zyb701.jpg
-exec --no-startup-id xss-lock -- i3lock -n -c "#1f2022" -u
+#exec --no-startup-id xss-lock -- i3lock -n -c "#1f2022" -u
 exec --no-startup-id nm-applet
 exec --no-startup-id compton 

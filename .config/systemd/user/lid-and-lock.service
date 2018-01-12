@@ -1,0 +1,11 @@
+[Unit]
+Description=lock XSession
+Before=sleep.target
+
+[Service]
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/i3lock -c 000000
+
+[Install]
+WantedBy=suspend.target

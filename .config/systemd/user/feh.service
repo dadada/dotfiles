@@ -1,0 +1,10 @@
+[Unit]
+Description=Set background
+After=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --bg-scale %h/.wallpaper
+
+[Install]
+WantedBy=default.target

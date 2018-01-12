@@ -6,7 +6,7 @@ endif
 
 all: install
 
-install: fish git i3 i3blocks i3status spacemacs ssh vim xresources zsh
+install: fish git i3 i3blocks i3status spacemacs ssh systemd vim xresources zsh
 
 test:
 	install -d test
@@ -55,3 +55,7 @@ fish:
 	install -d $(DEST)/.config/fish
 	install -m 440 .config/fish/config.fish $(DEST)/.config/fish/
 	install -d $(DEST)/.config/fish/functions $(DEST)/.config/fish/
+
+systemd:
+	install -d $(DEST)/.config/systemd/user
+	install -m 440 .config/systemd/user/* $(DEST)/.config/systemd/user
