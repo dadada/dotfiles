@@ -58,7 +58,8 @@ values."
      (c-c++ :variables
             c-c++-enable-clang-support t)
      (mu4e :variables
-           mu4e-installation-path "/usr/share/emacs/site-lisp"))
+           mu4e-installation-path "/usr/share/emacs/site-lisp")
+     pass)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -310,7 +311,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  )
+  ;; set transparency
+  (set-frame-parameter (selected-frame) 'alpha '(90 90))
+  (add-to-list 'default-frame-alist '(alpha 90 90)))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -332,7 +335,6 @@ you should place your code here."
     (define-key c++-mode-map [tab] 'clang-format-buffer))
   (setq eclim-eclipse-dirs '("/usr/bin/eclipse")
         eclim-executable "/usr/lib/eclipse/eclim")
-  (spacemacs/toggle-transparency)
   (setq send-mail-function 'smtpmail-send-it)
   (setq smtpmail-default-smtp-server "encke.uberspace.de"
         smtpmail-stream-type 'starttls
@@ -378,7 +380,13 @@ you should place your code here."
                         (smtpmail-smtp-server . "encke.uberspace.de")
                         ;;(smtpmail-stream-type . 'starttls)
                         (smtpmail-smtp-service . 587)
-                        (smtpmail-smtp-user . "dadada")))))))
+                        (smtpmail-smtp-user . "dadada"))))))
+  (load "~/.emacs.d/.erc-auth")
+  (setq erc-server "irc.freenode.net"
+        erc-port 6697
+        erc-nick "dadada_"
+        erc-nick-uniquifier "_"
+        erc-autojoin-channels-alist '(("freenode.net" "##cs-studs" "#stratum0" "#emacs"))))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
