@@ -146,8 +146,8 @@ bindsym $mod+7 workspace number $7
 bindsym $mod+8 workspace number $8
 bindsym $mod+9 workspace number $9
 bindsym $mod+0 workspace number $10
-bindsym $mod+m workspace next_on_display
-bindsym $mod+n workspace prev_on_display
+bindsym $mod+m workspace next_on_output
+bindsym $mod+n workspace prev_on_output
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $1
@@ -160,8 +160,8 @@ bindsym $mod+Shift+7 move container to workspace number $7
 bindsym $mod+Shift+8 move container to workspace number $8
 bindsym $mod+Shift+9 move container to workspace number $9
 bindsym $mod+Shift+0 move container to workspace number $10
-bindsym $mod+Shift+m move container to workspace next_on_display
-bindsym $mod+Shift+n move container to workspace prev_on_display
+bindsym $mod+Shift+m move container to workspace next_on_output
+bindsym $mod+Shift+n move container to workspace prev_on_output
 
 # focus different outputs (displays)
 bindsym $mod+ctrl+h focus output left
