@@ -21,7 +21,7 @@ interval=30
 [playerctl]
 label=♪
 separator=true
-instance=spotify
+#instance=spotify
 interval=5
 signal=11
 

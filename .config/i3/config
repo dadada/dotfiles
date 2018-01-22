@@ -9,7 +9,7 @@ set_from_resource $light_green   i3wm.color10    #a3a3a3ff
 set_from_resource $dark_yellow   i3wm.color3     #e8e8e8ff
 set_from_resource $light_yellow  i3wm.color11    #f8f8f8ff
 set_from_resource $dark_blue     i3wm.color4     #f2241fff
-set_from_resource $light_blie    i3wm.color12    #ffa500ff
+set_from_resource $light_blue    i3wm.color12    #ffa500ff
 set_from_resource $dark_magenta  i3wm.color5     #b1951dff
 set_from_resource $light_magenta i3wm.color13    #67b11dff
 set_from_resource $dark_cyan     i3wm.color6     #2d9574ff
@@ -33,9 +33,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 font pango:SourceCodePro 9
 #font pango:Noto Sans Mono CJK JP 8
 
-# start i3-input
-bindsym $mod+i exec /usr/bin/i3-input
-
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
@@ -43,7 +40,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+Return exec /usr/bin/emacsclient -n -c
 
 # start dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn "Source Code Pro:size=10" -b -nb "#1f2022" -nf "#a3a3a3" -sb "#2d9574" -sf "#1f2022" -b'
+bindsym $mod+space exec i3-dmenu-desktop --dmenu='dmenu -fn "Source Code Pro:size=10" -b -nb "#1f2022" -nf "#a3a3a3" -sb "#2d9574" -sf "#1f2022" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -52,46 +49,13 @@ bindsym $mod+Shift+q kill
 floating_modifier $mod
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# change focus with arrow keys
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# change focus with hjkl
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-
-# move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# move focused window with hjkl
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# focus latest urgent window
-bindsym $mod+x [urgent=latest] focus
+bindsym $mod+f focus mode_toggle
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-    # resize windows with arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-    
     # resize windows with hjkl
     bindsym h resize shrink width 10 px or 10 ppt
     bindsym j resize grow height 10 px or 10 ppt
@@ -116,13 +80,13 @@ new_window pixel 1
 force_focus_wrapping no
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+o fullscreen
 
 # focus the parent container
 bindsym $mod+p focus parent
 
 # focus the child container
-bindsym $mod+o focus child
+bindsym $mod+shift+p focus child
 
 # default orientation of new windows
 default_orientation horizontal
@@ -131,12 +95,12 @@ default_orientation horizontal
 bindsym $mod+b split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+shift+b split v
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+y layout stacking
+bindsym $mod+u layout tabbed
+bindsym $mod+i layout toggle split
 
 # name workspaces
 set $1 1
@@ -150,25 +114,26 @@ set $8 8
 set $9 9
 set $10 10
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $1
-bindsym $mod+Shift+2 move container to workspace number $2
-bindsym $mod+Shift+3 move container to workspace number $3
-bindsym $mod+Shift+4 move container to workspace number $4
-bindsym $mod+Shift+5 move container to workspace number $5
-bindsym $mod+Shift+6 move container to workspace number $6
-bindsym $mod+Shift+7 move container to workspace number $7
-bindsym $mod+Shift+8 move container to workspace number $8
-bindsym $mod+Shift+9 move container to workspace number $9
-bindsym $mod+Shift+0 move container to workspace number $10
-bindsym $mod+Shift+m move container to workspace next
-bindsym $mod+Shift+n move container to workspace prev
-
 # default mode
 workspace_layout default
 
 # automatically jump back to previous workspace
 workspace_auto_back_and_forth yes
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# focus latest urgent window
+bindsym $mod+x [urgent=latest] focus
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # switch to workspace
 bindsym $mod+1 workspace number $1
@@ -181,16 +146,34 @@ bindsym $mod+7 workspace number $7
 bindsym $mod+8 workspace number $8
 bindsym $mod+9 workspace number $9
 bindsym $mod+0 workspace number $10
-bindsym $mod+m workspace next
-bindsym $mod+n workspace prev
+bindsym $mod+m workspace next_on_display
+bindsym $mod+n workspace prev_on_display
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $1
+bindsym $mod+Shift+2 move container to workspace number $2
+bindsym $mod+Shift+3 move container to workspace number $3
+bindsym $mod+Shift+4 move container to workspace number $4
+bindsym $mod+Shift+5 move container to workspace number $5
+bindsym $mod+Shift+6 move container to workspace number $6
+bindsym $mod+Shift+7 move container to workspace number $7
+bindsym $mod+Shift+8 move container to workspace number $8
+bindsym $mod+Shift+9 move container to workspace number $9
+bindsym $mod+Shift+0 move container to workspace number $10
+bindsym $mod+Shift+m move container to workspace next_on_display
+bindsym $mod+Shift+n move container to workspace prev_on_display
 
 # focus different outputs (displays)
-bindsym $mod+period focus output right
-bindsym $mod+comma focus output left
+bindsym $mod+ctrl+h focus output left
+bindsym $mod+ctrl+j focus output down
+bindsym $mod+ctrl+k focus output up
+bindsym $mod+ctrl+l focus output right
 
 # move selected workspace to output
-bindsym $mod+Shift+period move workspace to output right
-bindsym $mod+Shift+comma move workspace to output left
+bindsym $mod+shift+ctrl+h move to output left
+bindsym $mod+shift+ctrl+j move to output down
+bindsym $mod+shift+ctrl+k move to output up
+bindsym $mod+shift+ctrl+l move to output right
 
 # make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
