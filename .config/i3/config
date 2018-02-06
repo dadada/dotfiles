@@ -170,10 +170,10 @@ bindsym $mod+ctrl+k focus output up
 bindsym $mod+ctrl+l focus output right
 
 # move selected workspace to output
-bindsym $mod+shift+ctrl+h move to output left
-bindsym $mod+shift+ctrl+j move to output down
-bindsym $mod+shift+ctrl+k move to output up
-bindsym $mod+shift+ctrl+l move to output right
+bindsym $mod+shift+ctrl+h move workspace to output left
+bindsym $mod+shift+ctrl+j move workspace to output down
+bindsym $mod+shift+ctrl+k move workspace to output up
+bindsym $mod+shift+ctrl+l move workspace to output right
 
 # make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
