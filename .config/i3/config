@@ -1,21 +1,4 @@
-set_from_resource $foreground    i3wm.foreground #a3a3a3ff
-set_from_resource $background    i3wm.background #1f2022e5
-set_from_resource $dark_black    i3wm.color0     #1f2022ff
-set_from_resource $light_black   i3wm.color8     #282828ff
-set_from_resource $dark_red      i3wm.color1     #444155ff
-set_from_resource $light_red     i3wm.color9     #585858ff
-set_from_resource $dark_green    i3wm.color2     #b8b8b8ff
-set_from_resource $light_green   i3wm.color10    #a3a3a3ff
-set_from_resource $dark_yellow   i3wm.color3     #e8e8e8ff
-set_from_resource $light_yellow  i3wm.color11    #f8f8f8ff
-set_from_resource $dark_blue     i3wm.color4     #f2241fff
-set_from_resource $light_blue    i3wm.color12    #ffa500ff
-set_from_resource $dark_magenta  i3wm.color5     #b1951dff
-set_from_resource $light_magenta i3wm.color13    #67b11dff
-set_from_resource $dark_cyan     i3wm.color6     #2d9574ff
-set_from_resource $light_cyan    i3wm.color14    #4f97d7ff
-set_from_resource $dark_white    i3wm.color7     #a31db1ff
-set_from_resource $light_white   i3wm.color15    #b03060ff
+include spacemacs
 
 # global modifier key
 set $mod Mod4
