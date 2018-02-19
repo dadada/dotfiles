@@ -1,4 +1,4 @@
-.PHONY: git i3 i3blocks i3status spacemacs ssh vim xresources zsh test
+.PHONY: git sway i3blocks i3status spacemacs ssh vim xresources zsh test
 
 ifndef DEST
 DEST=$(HOME)
@@ -18,9 +18,9 @@ clean:
 git: .gitconfig
 	install -m 440 .gitconfig $(DEST)/.gitconfig
 
-i3: i3status i3blocks .config/i3/config
-	install -m 440 .config/i3/config $(DEST)/.i3
-	install -m 440 .config/i3status/config $(DEST)/.i3status
+sway: i3status i3blocks .config/i3/config
+	install -m 440 .config/i3/config $(DEST)/.config/i3
+	install -m 440 .config/i3status/config $(DEST)/.config/i3status
 
 i3status: .config/i3status
 	install -d $(DEST)/.config/i3 $(DEST)/.config/i3status
