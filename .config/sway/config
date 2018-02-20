@@ -16,7 +16,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+edmenu  exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
 
 # the font to be used for i3bar and window decorations
 font pango:SourceCodePro 9
@@ -29,7 +29,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+Return exec /usr/bin/emacsclient -n -c
 
 # start dmenu
-bindsym $mod+space exec i3-dmenu-desktop --dmenu='dmenu -fn "Source Code Pro:size=10" -b -nb "#1f2022" -nf "#a3a3a3" -sb "#2d9574" -sf "#1f2022" -b'
+bindsym $mod+space exec dmenu_run -fn "Source Code Pro:size=9" -b -nb "#1f2022" -nf "#a3a3a3" -sb "#2d9574" -sf "#1f2022"
 
 # kill focused window
 bindsym $mod+Shift+q kill
