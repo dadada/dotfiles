@@ -1,5 +1,11 @@
 include spacemacs
 
+output LVDS-1 bg ~/.wallpaper fill
+
+input "2:7:SynPS/2_Synaptics_TouchPad" tap enabled
+input "2:7:SynPS/2_Synaptics_TouchPad" natural_scroll enabled
+input "2:7:SynPS/2_Synaptics_TouchPad" dwt enabled
+
 # global modifier key
 set $mod Mod4
 
@@ -10,7 +16,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
+bindsym $mod+Shift+edmenu  exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
 
 # the font to be used for i3bar and window decorations
 font pango:SourceCodePro 9
@@ -86,9 +92,9 @@ bindsym $mod+u layout tabbed
 bindsym $mod+i layout toggle split
 
 # name workspaces
-set $1 1
-set $2 2
-set $3 3
+set $1 1:msg
+set $2 2:web
+set $3 3:dev
 set $4 4
 set $5 5
 set $6 6
@@ -165,7 +171,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -c "#1f2022" -u && xset dpms force off
+bindsym $mod+equal exec --no-startup-id swaylock -fc "#1f2022" -u && xset dpms force off
 
 # control volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
@@ -179,8 +185,8 @@ bindsym XF86AudioNext exec playerctl next && pkill -RTMIN+11 i3blocks
 bindsym XF86AudioPrev exec playerctl previous && pkill -RTMIN+11 i3blocks
 
 # control screen brightnes
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
 # Basic bar configuration using the Base16 variables.
 bar {
@@ -189,7 +195,7 @@ bar {
     mode dock
     modifier $mod
     position bottom
-    strip_workspace_numbers no
+    strip_workspace_numbers yes
     workspace_buttons yes
     tray_output LVDS1
 

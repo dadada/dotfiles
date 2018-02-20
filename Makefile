@@ -18,17 +18,19 @@ clean:
 git: .gitconfig
 	install -m 440 .gitconfig $(DEST)/.gitconfig
 
-sway: i3status i3blocks .config/i3/config
-	install -m 440 .config/i3/config $(DEST)/.config/i3
+sway: i3status i3blocks .config/sway/config .config/sway/spacemacs
+	install -d $(DEST)/.config/sway
+	install -m 440 .config/sway/config $(DEST)/.config/sway/config
+	install -m 440 .config/sway/spacemacs $(DEST)/.config/sway/spacemacs
 	install -m 440 .config/i3status/config $(DEST)/.config/i3status
 
 i3status: .config/i3status
-	install -d $(DEST)/.config/i3 $(DEST)/.config/i3status
+	install -d $(DEST)/.config/i3status $(DEST)/.config/i3status
 
 i3blocks: .config/i3blocks
 	install -d $(DEST)/.config/i3blocks/lib
 	install -m 440 .config/i3blocks/config $(DEST)/.config/i3blocks
-	-install -m 540 .config/i3blocks/lib/* $(DEST)/.config/i3blocks/lib
+	install -m 540 .config/i3blocks/lib/* $(DEST)/.config/i3blocks/lib
 
 zsh: .zshrc .zshenv
 	git submodule init powerlevel9k
