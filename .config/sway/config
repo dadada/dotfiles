@@ -1,6 +1,6 @@
 include spacemacs
 
-output LVDS-1 bg ~/.wallpaper fill
+output WLC-1 bg ~/.wallpaper fill
 
 input "2:7:SynPS/2_Synaptics_TouchPad" tap enabled
 input "2:7:SynPS/2_Synaptics_TouchPad" natural_scroll enabled
@@ -16,7 +16,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3!' 'i3-msg exit'"
+bindsym $mod+Shift+e exit
 
 # the font to be used for i3bar and window decorations
 font pango:SourceCodePro 9
@@ -29,7 +29,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+Return exec /usr/bin/emacsclient -n -c
 
 # start dmenu
-bindsym $mod+space exec dmenu_run -fn "Source Code Pro:size=9" -b -nb "#1f2022" -nf "#a3a3a3" -sb "#2d9574" -sf "#1f2022"
+bindsym $mod+space exec dmenu_run -fn "Source Code Pro:size=9"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -207,7 +207,7 @@ bar {
         # State            Border        BG           Text
         focused_workspace  $light_black $dark_cyan    $background
         active_workspace   $light_black $dark_green   $background
-        inactive_workspace $dark_black  $light_black  $foreground
+        inactive_workspace $dark_black  $background   $foreground
         urgent_workspace   $light_black $dark_red     $background
         binding_mode       $light_black $dark_magenta $background
     }
@@ -220,7 +220,7 @@ bindsym XF86Launch1 exec --no-startup-id aplay ~/lib/sounds/wortwitzklingel-mono
 # Property Name         Border        BG            Text        Indicator    Child Border
 client.focused          $light_black $dark_cyan    $background $dark_cyan    $dark_cyan
 client.focused_inactive $light_black $dark_green   $background $dark_green   $dark_green
-client.unfocused        $dark_black  $light_black  $foreground $dark_white   $dark_white
+client.unfocused        $dark_black  $background   $foreground $dark_white   $dark_white
 client.urgent           $light_black $dark_red     $background $dark_red     $dark_red
 client.placeholder      $light_black $dark_magenta $background $dark_magenta $dark_magenta
 
