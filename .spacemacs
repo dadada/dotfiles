@@ -182,14 +182,14 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(solarized-light
+                         solarized-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 12
+                               :size 10
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -357,8 +357,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   ;; set transparency
-  (set-frame-parameter (selected-frame) 'alpha '(90 90))
-  (add-to-list 'default-frame-alist '(alpha 90 90)))
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -368,9 +367,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq-default c-default-style '((other . "linux"))
-                ;;indent-tabs-mode t
-                c-basic-offset 2
-                tab-width 2)
+                indent-tabs-mode t
+                c-basic-offset 4
+                tab-width 4)
   (defvaralias 'c-basic-offset 'tabwidth)
   ;; Bind clang-format-region to C-M-tab in all modes:
   (global-set-key [C-M-tab] 'clang-format-region)
@@ -384,16 +383,7 @@ you should place your code here."
   (setq smtpmail-default-smtp-server "encke.uberspace.de"
         smtpmail-stream-type 'starttls
         smtpmail-smtp-service 587
-        smtpmail-smtp-user "dadada")
-  (defun gnutls-available-p ()
-    "Function redefined in order not to use built-in GnuTLS support"
-    nil)
-  (defun start-irc ()
-    "Connect to IRC over SSL and pass a certificate for nick identification."
-    (interactive)
-    (let ((tls-program '("gnutls-cli --x509certfile ~/.ssl/certs/freenode.pem --x509keyfile ~/.ssl/certs/freenode.pem -p %p %h"))))
-    (erc-tls :server "irc.freenode.net" :port 6697
-             :nick "dadada_" :full-name "tim")))
+        smtpmail-smtp-user "dadada"))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
