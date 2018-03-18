@@ -1,4 +1,4 @@
-.PHONY: git sway i3blocks i3status spacemacs ssh vim xresources zsh test
+.PHONY: git sway i3 i3blocks i3status spacemacs ssh vim xresources zsh test
 
 ifndef DEST
 DEST=$(HOME)
@@ -6,7 +6,7 @@ endif
 
 all: install
 
-install: fish git i3 i3blocks i3status spacemacs ssh systemd vim xresources zsh
+install: fish git i3blocks i3status spacemacs ssh systemd vim xresources zsh
 
 test:
 	install -d test
@@ -18,10 +18,18 @@ clean:
 git: .gitconfig
 	install -m 440 .gitconfig $(DEST)/.gitconfig
 
-sway: i3status i3blocks .config/sway/config .config/sway/spacemacs
+i3: i3status i3blocks .config/i3/config .config/i3/spacemacs .config/i3/solarized_light
+	install -d $(DEST)/.config/i3
+	install -m 440 .config/i3/config $(DEST)/.config/i3/config
+	install -m 440 .config/i3/spacemacs $(DEST)/.config/i3/spacemacs
+	install -m 440 .config/i3/solarized_light $(DEST)/.config/i3/solarized_light
+	install -m 440 .config/i3status/config $(DEST)/.config/i3status
+
+sway: i3status i3blocks .config/sway/config .config/sway/spacemacs .config/sway/solarized_light
 	install -d $(DEST)/.config/sway
 	install -m 440 .config/sway/config $(DEST)/.config/sway/config
 	install -m 440 .config/sway/spacemacs $(DEST)/.config/sway/spacemacs
+	install -m 440 .config/sway/solarized_light $(DEST)/.config/sway/solarized_light
 	install -m 440 .config/i3status/config $(DEST)/.config/i3status
 
 i3status: .config/i3status
