@@ -3,6 +3,9 @@ set EDITOR "emacsclient -nc"
 set PATH $PATH $HOME/usr/msp430/bin $HOME/.local/bin $HOME/usr/bin $HOME/.gem/ruby/2.4.0/bin
 set LD_LIBRARY_PATH $LD_LIBRARY_PATH $HOME/usr/lib
 set CPATH $CPATH $HOME/usr/include
+#set XKB_DEFAULT_LAYOUT us
+#set XKB_DEFAULT_VARIANT altgr-intl
+#set XKB_DEFAULT_MODEL pc105
 
 # fish git prompt
 set __fish_git_prompt_show_informative_status 'yes'
