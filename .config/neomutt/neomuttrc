@@ -1,0 +1,108 @@
+source mutt-colors-solarized-dark-16.muttrc
+set mail_check_stats
+
+set sidebar_visible=yes
+set sidebar_folder_indent=yes
+
+set sendmail="/usr/bin/msmtp"
+set realname='Tim Schubert'
+set editor="vi"
+set edit_headers=yes
+set from=mail@timschubert.net
+set use_from=yes
+
+#set mbox_type=Maildir
+#set folder="~/Maildir/"
+#set spoolfile=+/
+#set record="+Sent"
+#set postponed="+Drafts"
+#set header_cache=~/.cache/neomutt
+
+set ssl_starttls=yes
+set ssl_force_tls=yes
+
+set imap_user=dadada
+set imap_pass=`pass Network/uberspace.de/dadada | head -n1`
+set folder=imaps://encke.uberspace.de:993/
+set spoolfile=+INBOX
+set imap_check_subscribed
+unset imap_passive
+set postponed=+Drafts
+set imap_keepalive=300
+set mail_check=120
+
+set sort=threads
+set sort_aux=last-date-received
+
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Co sidebar-open
+
+# Moving around
+bind attach g noop
+bind pager g noop
+bind index d noop
+bind index g noop
+bind attach,browser,index       gg  first-entry
+bind attach,browser,index       G   last-entry
+bind pager                      gg  top
+bind pager                      G   bottom
+bind pager                      k   previous-line
+bind pager                      j   next-line
+
+# Scrolling
+bind attach,browser,pager,index \CF next-page
+bind attach,browser,pager,index \CB previous-page
+bind attach,browser,pager,index \Cu half-up
+bind attach,browser,pager,index \Cd half-down
+bind browser,pager              \Ce next-line
+bind browser,pager              \Cy previous-line
+bind index                      \Ce next-line
+bind index                      \Cy previous-line
+
+bind pager,index                dd  delete-message
+
+# Mail & Reply
+#bind index                      \Cm list-reply # Doesn't work currently
+
+# Threads
+bind browser,pager,index        N   search-opposite
+bind pager,index                dT  delete-thread
+bind pager,index                dt  delete-subthread
+bind pager,index                gt  next-thread
+bind pager,index                gT  previous-thread
+bind index                      za  collapse-thread
+bind index                      zA  collapse-all # Missing :folddisable/foldenable
+
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+
+set pgp_sign_as="0x20FE69A51CA0398B22B0A44999658A3EB5CD7C13"
+set postpone_encrypt= yes
+set pgp_self_encrypt = yes
+set pgp_use_gpg_agent = yes
+set pgp_auto_decode = yes
+set pgp_timeout = 3600
+set crypt_replysign=yes
+set crypt_replyencrypt = yes
+set crypt_replysignencrypted = yes
+set crypt_verify_sig = yes
+
+set pgp_decode_command="gpg2 --status-fd=2 %?p?--pinentry-mode loopback --passphrase-fd 0? --no-verbose --quiet --batch --output - %f"
+set pgp_verify_command="gpg2 --status-fd=2 --no-verbose --quiet --batch --output - --verify %s %f"
+set pgp_decrypt_command="gpg2 --status-fd=2 %?p?--pinentry-mode loopback --passphrase-fd 0? --no-verbose --quiet --batch --output - --decrypt %f"
+set pgp_sign_command="gpg2 --comment '' --no-verbose --batch --output - %?p?--passphrase-fd 0? --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="gpg2 --comment '' --no-verbose --batch --output - %?p?--passphrase-fd 0? --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="/usr/lib/neomutt/pgpewrap gpg2 -v --batch --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+set pgp_encrypt_sign_command="/usr/lib/neomutt/pgpewrap gpg2 %?p?--passphrase-fd 0? -v --batch --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+set pgp_import_command="gpg2 --no-verbose --import %f"
+set pgp_export_command="gpg2 --no-verbose --armor --export %r"
+set pgp_verify_key_command="gpg2 --verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="gpg2 --no-verbose --batch --quiet --with-colons --with-fingerprint --with-fingerprint --list-keys %r"
+set pgp_list_secring_command="gpg2 --no-verbose --batch --quiet --with-colons --with-fingerprint --with-fingerprint --list-secret-keys %r"
+#set pgp_getkeys_command="gpg2 --search-keys %r"
+set pgp_good_sign="^gpgv?: Good signature from"
+set pgp_decryption_okay="^\\[GNUPG:\\] DECRYPTION_OKAY"
+
+crypt-hook t.goesmann@tu-bs.de 0xEBE9AFCB67811E3C
