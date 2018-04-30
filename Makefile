@@ -1,4 +1,4 @@
-.PHONY: git sway i3 i3blocks i3status spacemacs ssh vim xresources zsh test
+.PHONY: git sway i3 i3blocks i3status spacemacs ssh vim xresources zsh test gnupg mbsync systemd
 
 ifndef DEST
 DEST=$(HOME)
@@ -13,59 +13,63 @@ test:
 	$(MAKE) DEST=test all
 
 clean:
-	rm -r test
+	rm -rf test
 
 git: .gitconfig
-	install -m 440 .gitconfig $(DEST)/.gitconfig
+	ln -rs .gitconfig $(DEST)
 
-i3: i3status i3blocks .config/i3/config .config/i3/spacemacs .config/i3/solarized_light
-	install -d $(DEST)/.config/i3
-	install -m 440 .config/i3/config $(DEST)/.config/i3/config
-	install -m 440 .config/i3/spacemacs $(DEST)/.config/i3/spacemacs
-	install -m 440 .config/i3/solarized_light $(DEST)/.config/i3/solarized_light
-	install -m 440 .config/i3status/config $(DEST)/.config/i3status
+i3: i3status i3blocks .config/i3/config
+	mkdir -p $(DEST)/.config
+	ln -rs .config/i3 $(DEST)/.config
 
 sway: i3status i3blocks .config/sway/config .config/sway/spacemacs .config/sway/solarized_light
-	install -d $(DEST)/.config/sway
-	install -m 440 .config/sway/config $(DEST)/.config/sway/config
-	install -m 440 .config/sway/spacemacs $(DEST)/.config/sway/spacemacs
-	install -m 440 .config/sway/solarized_light $(DEST)/.config/sway/solarized_light
-	install -m 440 .config/i3status/config $(DEST)/.config/i3status
+	mkdir -p $(DEST)/.config
+	ln -rs .config/i3 $(DEST)/.config
 
 i3status: .config/i3status
-	install -d $(DEST)/.config/i3status $(DEST)/.config/i3status
+	mkdir -p $(DEST)/.config
+	ln -rs .config/i3status $(DEST)/.config
 
 i3blocks: .config/i3blocks
-	install -d $(DEST)/.config/i3blocks/lib
-	install -m 440 .config/i3blocks/config $(DEST)/.config/i3blocks
-	install -m 540 .config/i3blocks/lib/* $(DEST)/.config/i3blocks/lib
+	mkdir -p $(DEST)/.config
+	ln -rs .config/i3blocks $(DEST)/.config
 
 zsh: .zshrc .zshenv
 	git submodule init powerlevel9k
 	git submodule update powerlevel9k
-	install -m 440 .zshrc $(DEST)
-	install -m 640 .zshenv $(DEST)
+	ln -rs .zshrc $(DEST)
+	install .zshenv $(DEST)
 	echo "DOTFILES=$(CURDIR)" >> $(DEST)/.zshenv
-	chmod 440 $(DEST)/.zshenv
 
 spacemacs: .spacemacs
-	install -m 640 .spacemacs $(DEST)
+	ln -rs .spacemacs $(DEST)
+
+mbsync: .mbsyncrc
+	ln -rs .mbsyncrc $(DEST)
 
 xresources: .Xresources
-	install -m 440 .Xresources $(DEST)
+	ln -rs .Xresources $(DEST)
 
 ssh: .ssh/config
-	install -m 440 .ssh/config $(DEST)/.ssh
+	mkdir -p $(DEST)/.ssh
+	ln -rs .ssh/config $(DEST)/.ssh
 
 vim: .vimrc
-	install -d $(DEST)/.vim/backup
-	install -m 440 .vimrc $(DEST)
+	mkdir -p $(DEST)/.vim/backup
+	ln -rs .vimrc $(DEST)
 
 fish:
-	install -d $(DEST)/.config/fish
-	install -m 440 .config/fish/config.fish $(DEST)/.config/fish/
-	install -d $(DEST)/.config/fish/functions $(DEST)/.config/fish/
+	mkdir -p $(DEST)/.config
+	ln -rs .config/fish $(DEST)/.config
 
 systemd:
-	install -d $(DEST)/.config/systemd/user
-	install -m 440 .config/systemd/user/* $(DEST)/.config/systemd/user
+	mkdir -p $(DEST)/.config
+	ln -rs .config/systemd $(DEST)/.config/systemd
+
+gnupg:
+	mkdir -p $(DEST)/.gnupg
+	ln -rs .gnupg/gpg.conf $(DEST)/.gnupg
+	ln -rs .gnupg/gpg-agent.conf $(DEST)/.gnupg-agent
+
+mailrc:
+	ln -rs .mailrc $(DEST)
