@@ -28,7 +28,7 @@ if req.status is 200:
 
     if 'since' in status and 'openedBy' in status:
         since = dateutil.parser.parse(status['since'])
-        long_text = '%s since %s by %s' % (label, date.strftime(since, '%X'), status['openedBy'])
+        long_text = '%s since %s by %s' % (label, datetime.isoformat(since), status['openedBy'])
     else:
         long_text = label
 
