@@ -1,6 +1,6 @@
 set $wallpaper ~/.wallpaper
-set $foreground    #586e75
-set $background    #fdf6e3
+set $foreground    #839496
+set $background    #002b36
 set $dark_black    #002b36
 set $light_black   #073642
 set $dark_red      #586e75
@@ -41,7 +41,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+Return exec /usr/bin/emacsclient -n -c
 
 # start dmenu
-bindsym $mod+space exec dmenu_run -fn "Source Code Pro:size=8"
+bindsym $mod+space exec i3-dmenu-desktop --dmenu='dmenu -i -fn "Source Code Pro:size=8" -nb "#002b36" -nf "#839496" -sb "#073642" -sf "#d33682" -b'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -197,8 +197,10 @@ bindsym XF86AudioNext exec playerctl next && pkill -RTMIN+11 i3blocks
 bindsym XF86AudioPrev exec playerctl previous && pkill -RTMIN+11 i3blocks
 
 # control screen brightnes
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+#bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+#bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 # Basic bar configuration using the Base16 variables.
 bar {

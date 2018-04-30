@@ -1,1 +1,0 @@
-/home/tim/Documents/src/fish-shell/share/functions/__fish_svn_prompt.fish
