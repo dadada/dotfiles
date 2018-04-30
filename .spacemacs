@@ -31,15 +31,10 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     (erc :variables
-          erc-autojoin-channels-alist '(("freenode.net" "##cs-studs" "#stratum0" "#emacs"))
-          erc-enable-sasl-auth t
-          erc-server-list
-          '(("irc.freenode.net"
-             :port 6697
-             :ssl t
-             :nick "dadada_"
-             :password (shell-command-to-string "pass Instant-Messaging/IRC/freenode"))))
+	 csv
+	 extra-langs
+	 shell-scripts
+	 pass
      selectric
      php
      lua
@@ -73,38 +68,11 @@ values."
            mu4e-refile-folder "/Archives"
            mu4e-sent-folder "/Sent"
            mu4e-get-mail-command "mbsync -a"
-           mu4e-update-interval nil
+           mu4e-update-interval 900
            mu4e-compose-signature-auto-include t
            mu4e-view-show-images t
            mu4e-enable-notifications t
-           mu4e-view-show-addresses t
-           mu4e-contexts
-           `( ,(make-mu4e-context
-                :name "TUBS"
-                :enter-func (lambda () (mu4e-message "Entering TUBS context"))
-                :leave-func (lambda () (mu4e-message "Leaving TUBS context"))
-                :match-func (lambda (msg)
-                              (when msg
-                                (mu4e-message-contact-field-matches msg :to "[y0067212,tim.schubert]@tu-[bs,braunschweig].de")))
-                :vars '( (user-mail-address . "tim.schubert@tu-bs.de")
-                         (user-full-name . "Tim Schubert")
-                         (smtpmail-smtp-server . "groupware.tu-braunschweig.de")
-                         (smtpmail-smtp-service . 465)
-                         (smtpmail-stream-type . 'ssl)
-                         (smtpmail-smtp-user . "y0067212")))
-              ,(make-mu4e-context
-                :name "Uberspace"
-                :enter-func (lambda () (mu4e-message "Entering Uberspace context"))
-                :leave-func (lambda () (mu4e-message "Leaving Uberspace context"))
-                :match-func (lambda (msg)
-                              (when msg
-                                (mu4e-message-contact-field-matches msg :to "*@timschubert.net")))
-                :vars '( (user-mail-address . "mail@timschubert.net")
-                         (user-full-name . "Tim Schubert")
-                         (smtpmail-smtp-server . "encke.uberspace.de")
-                         ;;(smtpmail-stream-type . 'starttls)
-                         (smtpmail-smtp-service . 587)
-                         (smtpmail-smtp-user . "dadada"))))))
+           mu4e-view-show-addresses t))
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -183,7 +151,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(solarized-dark
-                         solarized-light)
+                         spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -379,11 +347,29 @@ you should place your code here."
     (define-key c++-mode-map [tab] 'clang-format-buffer))
   (setq eclim-eclipse-dirs '("/usr/bin/eclipse")
         eclim-executable "/usr/lib/eclipse/eclim")
-  (setq send-mail-function 'smtpmail-send-it)
-  (setq smtpmail-default-smtp-server "encke.uberspace.de"
-        smtpmail-stream-type 'starttls
-        smtpmail-smtp-service 587
-        smtpmail-smtp-user "dadada"))
+  (setq message-send-mail-function 'message-send-mail-with-sendmail
+		sendmail-program "/usr/bin/msmtp"
+		user-full-name "Tim Schubert")
+  (with-eval-after-load 'mu4e
+	(setq mu4e-contexts
+		  `(,(make-mu4e-context
+			  :name "tubs"
+			  :enter-func (lambda () (mu4e-message "Entering TUBS context"))
+			  :leave-func (lambda () (mu4e-message "Leaving TUBS context"))
+			  :match-func (lambda (msg)
+							(when msg
+							  (mu4e-message-contact-field-matches msg :to "[y0067212,tim.schubert]@tu-[bs,braunschweig].de")))
+			  :vars '((user-mail-address . "tim.schubert@tu-bs.de")
+					  (user-full-name . "Tim Schubert")))
+			,(make-mu4e-context
+			  :name "Uberspace"
+			  :enter-func (lambda () (mu4e-message "Entering Uberspace context"))
+			  :leave-func (lambda () (mu4e-message "Leaving Uberspace context"))
+			  :match-func (lambda (msg)
+							(when msg
+							  (mu4e-message-contact-field-matches msg :to "*@timschubert.net")))
+			  :vars '( (user-mail-address . "mail@timschubert.net")
+					   (user-full-name . "Tim Schubert")))))))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -395,7 +381,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks mu4e-maildirs-extension mu4e-alert ht alert log4e gntp company-emacs-eclim eclim selectric-mode spacemace-dark-theme phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode lua-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors company-tern tern coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode company-anaconda anaconda-mode pythonic yaml-mode counsel swiper packed avy evil goto-chg projectile helm helm-core ivy async hydra dash toml-mode racer flycheck-rust seq cargo rust-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data orgit mmm-mode markdown-toc markdown-mode fringe-helper git-gutter+ git-gutter gh-md flyspell-correct pos-tip flycheck magit magit-popup git-commit with-editor company yasnippet auto-complete ws-butler winum volatile-highlights vi-tilde-fringe uuidgen toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu eval-sexp-fu highlight dumb-jump f s define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol aggressive-indent adaptive-wrap ace-link which-key wgrep use-package unfill smex smeargle pcre2el mwim magit-gitflow macrostep ivy-hydra help-fns+ helm-make gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ fuzzy flyspell-correct-ivy flycheck-pos-tip flx exec-path-from-shell evil-visualstar evil-magit evil-escape elisp-slime-nav disaster diff-hl counsel-projectile company-statistics company-c-headers cmake-mode clang-format bind-map auto-yasnippet auto-dictionary auto-compile ace-window ac-ispell))))
+    (wolfram-mode thrift stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode csv-mode insert-shebang fish-mode company-shell erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks mu4e-maildirs-extension mu4e-alert ht alert log4e gntp company-emacs-eclim eclim selectric-mode spacemace-dark-theme phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode lua-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors company-tern tern coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode company-anaconda anaconda-mode pythonic yaml-mode counsel swiper packed avy evil goto-chg projectile helm helm-core ivy async hydra dash toml-mode racer flycheck-rust seq cargo rust-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data orgit mmm-mode markdown-toc markdown-mode fringe-helper git-gutter+ git-gutter gh-md flyspell-correct pos-tip flycheck magit magit-popup git-commit with-editor company yasnippet auto-complete ws-butler winum volatile-highlights vi-tilde-fringe uuidgen toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu eval-sexp-fu highlight dumb-jump f s define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol aggressive-indent adaptive-wrap ace-link which-key wgrep use-package unfill smex smeargle pcre2el mwim magit-gitflow macrostep ivy-hydra help-fns+ helm-make gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ fuzzy flyspell-correct-ivy flycheck-pos-tip flx exec-path-from-shell evil-visualstar evil-magit evil-escape elisp-slime-nav disaster diff-hl counsel-projectile company-statistics company-c-headers cmake-mode clang-format bind-map auto-yasnippet auto-dictionary auto-compile ace-window ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
