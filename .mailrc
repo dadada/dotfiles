@@ -1,0 +1,27 @@
+set sendmail=/usr/bin/msmtp
+set ssl-verify=strict
+
+# Essential setting: select allowed character sets
+set sendcharsets=utf-8
+
+# When replying, do not merge From: and To: of the original message
+# into To:.  Instead old From: -> new To:, old To: -> merge Cc:. 
+set recipients-in-cc
+
+set folder=/home/tim/Maildir
+set inbox=+Inbox
+set record=+Sent
+set DEAD=+Drafts
+
+account uberspace {
+  set mta=smtp://dadada@encke.uberspace.de \
+  smtp-use-starttls
+  set from='Tim Schubert <mail@timschubert.net>'
+}
+
+account tubs {
+  set mta=smtps://y0067212@groupware.tu-braunschweig.de:465
+  set from='Tim Schubert <tim.schubert@tu-bs.de>'
+}
+
+account tubs

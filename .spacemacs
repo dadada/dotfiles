@@ -58,7 +58,21 @@ values."
      syntax-checking
      version-control
      (c-c++ :variables
-            c-c++-enable-clang-support t))
+            c-c++-enable-clang-support t)
+     (mu4e :variables
+           mu4e-installation-path "/usr/share/emacs/site-lisp"
+           mu4e-maildir "~/Maildir"
+           mu4e-spam-folder "/Junk"
+           mu4e-drafts-folder "/Drafts"
+           mu4e-trash-folder "/Trash"
+           mu4e-refile-folder "/Archives"
+           mu4e-sent-folder "/Sent"
+           mu4e-get-mail-command "mbsync -a"
+           mu4e-update-interval 900
+           mu4e-compose-signature-auto-include t
+           mu4e-view-show-images t
+           mu4e-enable-notifications t
+           mu4e-view-show-addresses t))
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -335,7 +349,27 @@ you should place your code here."
         eclim-executable "/usr/lib/eclipse/eclim")
   (setq message-send-mail-function 'message-send-mail-with-sendmail
 		sendmail-program "/usr/bin/msmtp"
-		user-full-name "Tim Schubert"))
+		user-full-name "Tim Schubert")
+  (with-eval-after-load 'mu4e
+	(setq mu4e-contexts
+		  `(,(make-mu4e-context
+			  :name "tubs"
+			  :enter-func (lambda () (mu4e-message "Entering TUBS context"))
+			  :leave-func (lambda () (mu4e-message "Leaving TUBS context"))
+			  :match-func (lambda (msg)
+							(when msg
+							  (mu4e-message-contact-field-matches msg :to "[y0067212,tim.schubert]@tu-[bs,braunschweig].de")))
+			  :vars '((user-mail-address . "tim.schubert@tu-bs.de")
+					  (user-full-name . "Tim Schubert")))
+			,(make-mu4e-context
+			  :name "Uberspace"
+			  :enter-func (lambda () (mu4e-message "Entering Uberspace context"))
+			  :leave-func (lambda () (mu4e-message "Leaving Uberspace context"))
+			  :match-func (lambda (msg)
+							(when msg
+							  (mu4e-message-contact-field-matches msg :to "*@timschubert.net")))
+			  :vars '( (user-mail-address . "mail@timschubert.net")
+					   (user-full-name . "Tim Schubert")))))))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
