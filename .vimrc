@@ -28,9 +28,6 @@ au FileType sh set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set modelines=0
 set nomodeline
 
-" neomake
-autocmd! BufWritePost * Neomake
-
 " theming
 syntax enable
 set background=dark
