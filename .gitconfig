@@ -1,6 +1,6 @@
 [user]
 	email = tim.schubert@tu-bs.de
 	name = Tim Schubert
-	signingkey = D11C08CDC78D786120D3C67170F37B2DFC163370
+	signingkey = 0x0FABBDF978AA9E83
 [credential]
 	helper = /usr/lib/git-core/git-credential-gnome-keyring
