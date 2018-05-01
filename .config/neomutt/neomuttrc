@@ -1,4 +1,6 @@
 source mutt-colors-solarized-dark-16.muttrc
+source private.muttrc
+
 set mail_check_stats
 
 set sidebar_visible=yes
@@ -21,9 +23,6 @@ set use_from=yes
 set ssl_starttls=yes
 set ssl_force_tls=yes
 
-set imap_user=dadada
-set imap_pass=`pass Network/uberspace.de/dadada | head -n1`
-set folder=imaps://encke.uberspace.de:993/
 set spoolfile=+INBOX
 set imap_check_subscribed
 unset imap_passive
@@ -104,5 +103,3 @@ set pgp_list_secring_command="gpg2 --no-verbose --batch --quiet --with-colons --
 #set pgp_getkeys_command="gpg2 --search-keys %r"
 set pgp_good_sign="^gpgv?: Good signature from"
 set pgp_decryption_okay="^\\[GNUPG:\\] DECRYPTION_OKAY"
-
-crypt-hook t.goesmann@tu-bs.de 0xEBE9AFCB67811E3C
