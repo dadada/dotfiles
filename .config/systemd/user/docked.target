@@ -1,0 +1,9 @@
+# SUBSYSTEM=="usb", ACTION=="add", ENV{ID_VENDOR}=="17ef", ENV{ID_MODEL}=="100a", ENV{SYSTEMD_ALIAS}="/dev/tpdock", TAG+="systemd"
+# SUBSYSTEM=="usb", ACTION=="remove", ENV{PRODUCT}=="17ef/100a/0", ENV{SYSTEMD_ALIAS}="/dev/tpdock", TAG+="systemd"
+[Unit]
+Description=Docked to Thinkpad Dock
+BindsTo=dev-tpdock.device
+After=dev-tpdock.device
+
+[Install]
+WantedBy=dev-tpdock.device

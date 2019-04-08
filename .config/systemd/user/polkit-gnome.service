@@ -1,0 +1,11 @@
+[Unit]
+Description=Polkit Agent
+Requires=dbus.socket
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+[Install]
+WantedBy=default.target
+

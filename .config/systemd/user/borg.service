@@ -1,0 +1,12 @@
+[Unit]
+Description=Automatic backups with Borg
+Wants=network-online.target gpg-agent.socket
+After=network-online.target gpg-agent.socket
+
+[Service]
+Environment=BORG_PASSCOMMAND='/usr/bin/pass borg/media.dadada.li/metis.pwd'
+Type=oneshot
+ExecStart=/usr/bin/borg create --stats --one-file-system --compression lz4 --exclude-from %h/.config/borg/excludes --checkpoint-interval 300 'dadada@media.dadada.li:/mnt/storage/dadada/backups/metis::{utcnow}' %h
+
+[Install]
+WantedBy=default.target

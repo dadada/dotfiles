@@ -1,0 +1,21 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+
+[general]
+accounts = timschubert.net
+pythonfile = ~/.config/offlineimap/offlineimap.py
+
+[Account timschubert.net]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/.var/mail
+
+[Repository Remote]
+type = IMAP
+remotehost = encke.uberspace.de
+remoteuser = dadada
+remotepasseval = get_password("uberspace.de/dadada")
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

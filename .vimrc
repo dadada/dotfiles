@@ -1,38 +1,124 @@
-" general
-set nocompatible
-set history=50
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg " lower priority suffixes
-set autochdir
-set updatetime=250
-set mouse=a
-
-" file format
+filetype plugin on
 filetype indent on
-set encoding=utf-8
-setglobal fileencoding=utf-8
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab
-autocmd FileType java setlocal shiftwidth=4 tabstop=4 expandtab
 
-" editing
-imap jj <Esc>
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-set backspace=indent,eol,start
-filetype plugin indent on
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4
-au FileType c set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-au FileType tex set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-au FileType sh set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-set modelines=0
-set nomodeline
+set autoread
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
 
-" theming
-syntax enable
-set background=dark
-set number
-set relativenumber
+" Turn on the Wild menu
+set wildmenu
+
+" Clipboard copy & paste
+"set clipboard=unnamedplus
+
+" Always show current position
 set ruler
-set incsearch
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
 set hlsearch
+
+" Inenteremental search
+set incsearch
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" Do not show matching brackets when text indicator is over them
+set noshowmatch
+let loaded_matchparen = 1
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+
+set wrap
+set linebreak
+set nolist  " list disables linebreak
+
+" Enable syntax highlighting
+syntax enable
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+set t_Co=256
+
+set background=dark
+
+colorscheme spacemacs-theme
+
+" Use tabs for indent
+set smarttab
+set smartindent
+set autoindent
+set copyindent
+set preserveindent
+
+set wildmode=longest,list,full
+set wildmenu
+
+" Transparency
+hi Normal guibg=NONE ctermbg=NONE
+
+" Map leader to do extra key combinations
+let mapleader = " "
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<Enter>
+
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<Enter>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+" Fast saving
+nmap <leader>w :w!<Enter>
+
+" Buffer switching
+nmap <leader>bb :Buffers<Enter>
+nmap <leader>bl :Buffers<Enter>
+nmap <leader>bn :bnext<Enter>
+nmap <leader>bp :bprevious<Enter>
+
+" finding files
+nmap <leader>ff :Files<Enter>
+nmap <leader>pp :FufDir<Enter>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+nmap <leader>sp :ALEFindReferences<Enter>
+nmap <leader>ss :ALESymbolSearch<Enter>
+nmap <leader>gd :ALEGoToDefinition<Enter>
+nmap <leader>?? :ALEHover<Enter>
+
+" Enable completion where available.
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 0
+
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+"
+"let g:airline_theme='base16_spacemacs'
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL

@@ -1,0 +1,11 @@
+[Unit]
+Description=Lock screen when idle
+Requisite=sway@%i.service
+After=sway@%i.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swayidle timeout 300 '/usr/bin/swaylock' timeout 600 '/usr/bin/swaymsg "output * dpms off"' resume '/usr/bin/swaymsg "output * dpms on"' before-sleep '/usr/bin/swaylock'
+
+[Install]
+WantedBy=graphical.target

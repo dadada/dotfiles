@@ -1,0 +1,11 @@
+[Unit]
+Description=Redshift
+Wants=xorg@%i.socket
+
+[Service]
+Type=simple
+Environment="DISPLAY=:%i"
+ExecStart=/usr/bin/redshift
+
+[Install]
+WantedBy=wm.target

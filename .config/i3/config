@@ -18,6 +18,25 @@ set $light_cyan    #268bd2
 set $dark_white    #6c71c4
 set $light_white   #d33682
 
+#set $foreground    #073642
+#set $background    #eee8d5
+#set $dark_black    #002b36
+#set $light_black   #073642
+#set $dark_red      #586e75
+#set $light_red     #657b83
+#set $dark_green    #839496
+#set $light_green   #93a1a1
+#set $dark_yellow   #eee8d5
+#set $light_yellow  #fdf6e3
+#set $dark_blue     #dc322f
+#set $light_blue    #cb4b16
+#set $dark_magenta  #b58900
+#set $light_magenta #859900
+#set $dark_cyan     #2aa198
+#set $light_cyan    #268bd2
+#set $dark_white    #6c71c4
+#set $light_white   #d33682
+
 # global modifier key
 set $mod Mod4
 
@@ -31,7 +50,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 
 # the font to be used for i3bar and window decorations
-font pango:SourceCodePro 8
+font pango:SourceCodePro 6
 #font pango:Noto Sans Mono CJK JP 8
 
 # start a terminal
@@ -76,6 +95,7 @@ bindsym $mod+t border toggle
 
 # set border width of new window
 new_window pixel 1
+#new_window none
 
 # keep focus within current container?
 force_focus_wrapping no
@@ -183,7 +203,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id i3lock -fc "#1f2022" -u && xset dpms force off
+bindsym $mod+equal exec --no-startup-id i3lock -c 000000
 
 # control volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
@@ -208,7 +228,7 @@ bar {
     status_command i3blocks
     mode dock
     modifier $mod
-    position bottom
+    position top
     strip_workspace_numbers yes
     workspace_buttons yes
     tray_output LVDS1
@@ -241,4 +261,5 @@ client.placeholder      $light_black $dark_magenta $background $dark_magenta $da
 # automatically run the following after starting i3
 exec --no-startup-id xinput set-prop 11 264 1
 exec --no-startup-id xinput set-prop 11 274 1
-exec --no-startup-id compton 
+exec --no-startup-id xsetroot -solid black
+exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

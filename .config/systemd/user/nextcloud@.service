@@ -1,0 +1,12 @@
+[Unit]
+Description=Nextcloud Sync Client
+Wants=xorg@%i.socket
+After=network.target
+
+[Service]
+Type=simple
+Environment="DISPLAY=:%i"
+ExecStart=/usr/bin/nextcloud
+
+[Install]
+WantedBy=apps.target

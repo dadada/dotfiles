@@ -1,0 +1,15 @@
+[Unit]
+Description=Configure Thinkpad Dock
+Wants=sway@0.socket
+BindsTo=docked.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/swaymsg output LVDS-1 pos 1280 0 res 1600x900
+ExecStart=/usr/bin/swaymsg output VGA-1 pos 0 0 res 1280x1024 
+ExecStop=/usr/bin/swaymsg output VGA-1 disable
+KillMode=none
+
+[Install]
+WantedBy=docked.target

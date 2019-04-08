@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs service to set background
+After=graphical.target
+
+[Timer]
+OnUnitActiveSec=1h
+Unit=maurudor.service
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Index Mail
+After=offlineimap.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/notmuch new
+
+[Install]
+WantedBy=offlineimap.service

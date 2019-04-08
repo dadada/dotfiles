@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync Maildir
+
+[Timer]
+OnUnitActiveSec=1h
+Unit=offlineimap.service
+
+[Install]
+WantedBy=default.target

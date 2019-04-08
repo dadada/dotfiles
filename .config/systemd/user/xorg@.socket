@@ -1,0 +1,7 @@
+[Unit]
+Description=Socket for xorg at display %i
+
+[Socket]
+SocketUser=tim
+ListenStream=/tmp/.X11-unix/X%i
+Service=sway@%i.service

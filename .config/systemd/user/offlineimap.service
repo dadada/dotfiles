@@ -2,12 +2,11 @@
 Description=Mailbox synchronization service
 Wants=network-online.target
 After=network-online.target
+Requires=dbus.socket
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/mbsync -Va
-StandardOutput=syslog
-StandardError=syslog
+ExecStart=/usr/bin/offlineimap
 
 [Install]
 WantedBy=default.target

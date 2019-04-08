@@ -1,0 +1,12 @@
+[Unit]
+Description=Sway idle action
+BindsTo=sway@%i.socket
+
+[Service]
+Type=simple
+TimeoutStartSec=60
+WatchdogSec=20
+ExecStart=/usr/bin/swayidle timeout 30 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+
+[Install]
+WantedBy=wm.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Index Maildir
+
+[Timer]
+OnUnitActiveSec=1h
+Unit=notmuch.service
+
+[Install]
+WantedBy=default.target

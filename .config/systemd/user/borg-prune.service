@@ -1,0 +1,11 @@
+[Unit]
+Description=Prune borg backups
+Wants=network-online.target
+After=network-online.target borg.service
+
+[Service]
+Environment=BORG_PASSCOMMAND='/usr/bin/pass borg/media.dadada.li/metis.pwd'
+ExecStart=/usr/bin/borg prune --stats --keep-daily 7 --keep-weekly 4 --keep-monthly 2 --keep-yearly 1 --keep-last 3 'dadada@media.dadada.li:/mnt/storage/dadada/backups/metis'
+
+[Install]
+WantedBy=borg.service

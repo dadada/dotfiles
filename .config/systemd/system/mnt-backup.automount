@@ -1,0 +1,8 @@
+[Unit]
+Description=Mounts backup drive
+
+[Automount]
+Where=/mnt/backup
+
+[Install]
+WantedBy=multi=user.target

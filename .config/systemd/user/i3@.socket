@@ -1,0 +1,7 @@
+[Unit]
+Description=Socket for i3 at display %i
+
+[Socket]
+SocketUser=tim
+ListenStream=/run/user/1000/sway/ipc.%i.sock
+Service=sway@%i.service

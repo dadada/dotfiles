@@ -1,9 +1,0 @@
-[Unit]
-Description=Redshift
-After=graphical.target
-
-[Service]
-ExecStart=/usr/bin/redshift -l geoclue2
-
-[Install]
-WantedBy=graphical.target

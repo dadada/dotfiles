@@ -1,10 +1,22 @@
-include spacemacs
-
-output WLC-1 bg ~/.wallpaper fill
-
-input "2:7:SynPS/2_Synaptics_TouchPad" tap enabled
-input "2:7:SynPS/2_Synaptics_TouchPad" natural_scroll enabled
-input "2:7:SynPS/2_Synaptics_TouchPad" dwt enabled
+set $wallpaper ~/.wallpaper
+set $foreground    #a3a3a3ff
+set $background    #1f2022e5
+set $dark_black    #1f2022ff
+set $light_black   #282828ff
+set $dark_red      #444155ff
+set $light_red     #585858ff
+set $dark_green    #b8b8b8ff
+set $light_green   #a3a3a3ff
+set $dark_yellow   #e8e8e8ff
+set $light_yellow  #f8f8f8ff
+set $dark_blue     #f2241fff
+set $light_blue    #ffa500ff
+set $dark_magenta  #b1951dff
+set $light_magenta #67b11dff
+set $dark_cyan     #2d9574ff
+set $light_cyan    #4f97d7ff
+set $dark_white    #a31db1ff
+set $light_white   #b03060ff
 
 # global modifier key
 set $mod Mod4
@@ -19,17 +31,20 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 
 # the font to be used for i3bar and window decorations
-font pango:SourceCodePro 9
+font pango:Source Code Pro 8
 #font pango:Noto Sans Mono CJK JP 8
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec termite
 
 # start an editor
-bindsym $mod+Shift+Return exec /usr/bin/emacsclient -n -c
+bindsym $mod+Shift+Return exec /usr/bin/termite -e vim
+
+# start an web browser
+bindsym $mod+backslash exec /usr/bin/firefox
 
 # start dmenu
-bindsym $mod+space exec dmenu_run -fn "Source Code Pro:size=9"
+bindsym $mod+space exec bemenu-run
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -64,6 +79,9 @@ bindsym $mod+t border toggle
 
 # set border width of new window
 new_window pixel 1
+#new_window none
+#gaps outer 5
+#gaps inner 5
 
 # keep focus within current container?
 force_focus_wrapping no
@@ -171,22 +189,27 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # lock the screen
-bindsym $mod+equal exec --no-startup-id swaylock -fc "#1f2022" -u && xset dpms force off
+
+bindsym $mod+equal exec swaylock -f -i ~/.wallpaper
+#/usr/bin/swayidle timeout 1 'swaylock -c 000000' timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -c 000000'
 
 # control volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMicMute exec --no-startup-id amixer set 'Capture' toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer set Master toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMicMute exec amixer set 'Capture' toggle && pkill -RTMIN+10 i3blocks
 
 # control media player
 bindsym XF86AudioPlay exec playerctl play-pause && pkill -RTMIN+11 i3blocks
+bindsym XF86LaunchA exec playerctl play-pause && pkill -RTMIN+11 i3blocks
 bindsym XF86AudioNext exec playerctl next && pkill -RTMIN+11 i3blocks
+bindsym XF86Explorer exec playerctl next && pkill -RTMIN+11 i3blocks
 bindsym XF86AudioPrev exec playerctl previous && pkill -RTMIN+11 i3blocks
+bindsym XF86Search exec playerctl previous && pkill -RTMIN+11 i3blocks
 
-# control screen brightnes
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+# control screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set -d intel_backlight +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set -d intel_backlight 5%-
 
 # Basic bar configuration using the Base16 variables.
 bar {
@@ -194,10 +217,10 @@ bar {
     status_command i3blocks
     mode dock
     modifier $mod
-    position bottom
+    position top
     strip_workspace_numbers yes
     workspace_buttons yes
-    tray_output LVDS1
+    #tray_output LVDS1
 
     colors {
         background $background
@@ -214,17 +237,45 @@ bar {
 }
 
 #hide_edge_borders both
-bindsym XF86Launch1 exec --no-startup-id aplay ~/lib/sounds/wortwitzklingel-mono.wav
+bindsym XF86Launch1 exec aplay ~/lib/sounds/wortwitzklingel-mono.wav
 
 # Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border        BG            Text        Indicator    Child Border
+# Property Name         Border       BG            Text        Indicator     Child Border
 client.focused          $light_black $dark_cyan    $background $dark_cyan    $dark_cyan
 client.focused_inactive $light_black $dark_green   $background $dark_green   $dark_green
-client.unfocused        $dark_black  $background   $foreground $dark_white   $dark_white
+client.unfocused        $light_black  $background   $foreground $dark_white   $dark_white
 client.urgent           $light_black $dark_red     $background $dark_red     $dark_red
 client.placeholder      $light_black $dark_magenta $background $dark_magenta $dark_magenta
 
-# automatically run the following after starting i3
-exec --no-startup-id xinput set-prop 11 264 1
-exec --no-startup-id xinput set-prop 11 274 1
-exec --no-startup-id compton 
+input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
+    xkb_layout us
+    xkb_variant altgr-intl
+    xkb_model pc105+inet
+    xkb_options caps:escape
+}
+
+input 1:1:AT_Translated_Set_2_keyboard {
+    xkb_layout us
+    xkb_variant altgr-intl
+    xkb_model pc105+inet
+    xkb_options caps:escape
+}
+
+input 2:7:SynPS/2_Synaptics_TouchPad {
+    tap enabled
+    natural_scroll enabled
+}
+
+output LVDS-1 {
+    background ~/.wallpaper fill
+}
+
+output VGA-1 {
+    background ~/.wallpaper fill
+}
+
+#default_floating_border none
+#for_window [class="Emacs"] floating disable
+
+#exec swayidle timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -i ~/.wallpaper'
+#exec redshift

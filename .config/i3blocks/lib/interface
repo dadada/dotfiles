@@ -1,0 +1,9 @@
+#!/bin/bash
+
+INTERFACE="${BLOCK_INSTANCE:-netcom}"
+
+[[ ! -f /sys/class/net/${INTERFACE}/operstate ]] ||
+    [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && exit
+
+cat /sys/class/net/netcom/operstate && cat /sys/class/net/netcom/operstate
+cat /sys/class/net/netcom/operstate && cat /sys/class/net/netcom/operstate

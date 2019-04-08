@@ -1,0 +1,11 @@
+[Unit]
+Description=Set background to maurudor.de
+Wants=sway.service network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/curl -o %h/.maurudor https://maurudor.de/
+
+[Install]
+WantedBy=wm.target

@@ -1,15 +1,18 @@
 command=~/.config/i3blocks/lib/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=20
 markup=none
 
 #[mpd]
-#label=♪
 #separator=true
 #interval=5
 #signal=11
 
+[notmuch]
+label=mail
+signal=12
+interval=360
+
 [space]
-label=S
 separator=true
 interval=30
 
@@ -19,21 +22,18 @@ interval=30
 #interval=30
 
 [playerctl]
-label=♪
 separator=true
-#instance=spotify
 interval=5
 signal=11
 
 [volume]
-label=🔊
+label=VOL
 instance=Master
 interval=once
 signal=10
 
 [memory]
-label=▤
-separator=false
+label=MEM
 interval=30
 
 [disk]
@@ -46,11 +46,16 @@ label=/
 instance=/
 interval=30
 
-[wifi]
-label=◌
-instance=wlp3s0
-interval=5
-separator=false
+#[wifi]
+#label=W
+#instance=wlp3s0
+#interval=5
+#separator=false
+
+[interface]
+label=netcom
+interval=10
+instance=netcom
 
 [bandwidth]
 instance=wlp3s0
@@ -60,12 +65,11 @@ interval=1
 #
 # The battery instance defaults to 0.
 [battery]
-label=⚡
+label=BAT
 interval=10
 
 # Date Time
 #
 [time]
-label=⏰
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=5

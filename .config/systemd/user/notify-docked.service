@@ -1,0 +1,12 @@
+[Unit]
+Description=Send a message to notification daemon when docked target is reached
+Wants=docked.target
+BindsTo=docked.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/notify-send -t 2 -u low Dock started
+ExecStop=/usr/bin/notify-send -t 2 -u low Dock stoped
+
+[Install]
+WantedBy=docked.target

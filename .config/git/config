@@ -1,0 +1,9 @@
+[user]
+	email = mail@timschubert.net
+	name = Tim Schubert
+	signingkey = 99658A3EB5CD7C13
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
