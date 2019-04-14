@@ -9,6 +9,9 @@ command W w !sudo tee % > /dev/null
 " Turn on the Wild menu
 set wildmenu
 
+" Enable hidden buffers
+set hidden
+
 " Clipboard copy & paste
 "set clipboard=unnamedplus
 
@@ -71,13 +74,6 @@ let mapleader = " "
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<Enter>
 
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<Enter>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
 " Fast saving
 nmap <leader>w :w!<Enter>
 
@@ -86,6 +82,11 @@ nmap <leader>bb :Buffers<Enter>
 nmap <leader>bl :Buffers<Enter>
 nmap <leader>bn :bnext<Enter>
 nmap <leader>bp :bprevious<Enter>
+
+nmap <leader>ll :Lines<Enter>
+nmap <leader>mm :Marks<Enter>
+nmap <leader>ww :Windows<Enter>
+nmap <leader>hh :History/<Enter>
 
 " finding files
 nmap <leader>ff :Files<Enter>
@@ -113,8 +114,8 @@ let g:ale_lint_on_text_changed = 'never'
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
 
-"
-"let g:airline_theme='base16_spacemacs'
+" Set airline theme
+let g:airline_theme='base16_spacemacs'
 
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
