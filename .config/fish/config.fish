@@ -14,7 +14,7 @@ set -x EDITOR vim
 set -x PAGER less
 set -x MAILDIR $HOME/.var/mail
 #set -x PATH $HOME/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin:$PATH
-set -x PATH $HOME/bin:$HOME/.local/bin:$PATH
+set -x PATH $HOME/.bin:$HOME/.local/bin:$PATH
 set -x SSH_AUTH_SOCK /run/user/1000/gnupg/S.gpg-agent.ssh
 set -x RUST_SRC_PATH $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 set -x MBLAZE $HOME/.config/mblaze
