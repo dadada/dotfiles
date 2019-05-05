@@ -18,6 +18,8 @@ set $light_cyan    #4f97d7ff
 set $dark_white    #a31db1ff
 set $light_white   #b03060ff
 
+xwayland enable
+
 # global modifier key
 set $mod Mod4
 
