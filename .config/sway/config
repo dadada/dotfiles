@@ -282,6 +282,7 @@ seat * {
 
 #default_floating_border none
 for_window [class="jetbrains-studio"] floating enable
+focus_follows_mouse no
 
 #exec swayidle timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -i ~/.wallpaper'
 #exec redshift
