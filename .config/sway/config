@@ -269,15 +269,19 @@ input 2:7:SynPS/2_Synaptics_TouchPad {
 }
 
 output LVDS-1 {
-    background ~/.wallpaper fill
+    background /home/tim/lib/pictures/Wallpapers/mikhail-vasilyev-130018-unsplash.jpg fill
 }
 
 output VGA-1 {
-    background ~/.wallpaper fill
+    background /home/tim/lib/pictures/Wallpapers/cel-lisboa-73965-unsplash.jpg fill
+}
+
+seat * {
+	hide_cursor 5000
 }
 
 #default_floating_border none
-#for_window [class="Emacs"] floating disable
+for_window [class="jetbrains-studio"] floating enable
 
 #exec swayidle timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -i ~/.wallpaper'
 #exec redshift
