@@ -9,18 +9,6 @@ set __fish_git_prompt_showcolorhints 'yes'
 # disable path shortening
 set fish_prompt_pwd_dir_length 0
 
-set -x GPG_TTY (tty)
-set -x EDITOR vim
-set -x PAGER less
-set -x MAILDIR $HOME/.var/mail
-#set -x PATH $HOME/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin:$PATH
-set -x PATH $HOME/.bin:$HOME/.local/bin:$PATH
-set -x SSH_AUTH_SOCK /run/user/1000/gnupg/S.gpg-agent.ssh
-set -x RUST_SRC_PATH $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-set -x MBLAZE $HOME/.config/mblaze
-set -x NOTMUCH_CONFIG $HOME/.config/notmuch/config
-set -x PASSWORD_STORE_DIR $HOME/src/password-store
-#set -x DISPLAY ":0"
 set -U FZF_LEGACY_KEYBINDINGS 0
 set -U FZF_COMPLETE 2
 
@@ -58,11 +46,11 @@ alias ssh "env TERM=xterm ssh"
 #	exec tmux
 #end
 
-#if status is-login
-#		if test -z "$DISPLAY" -a $XDG_VTNR = 1
-#				/usr/bin/systemctl --user import-environment
-#		end
-#end
-
-systemctl --user import-environment
+set -x GPG_TTY (tty)
+if status is-login
+	gpg-connect-agent updatestartuptty /bye
+	for var in (systemctl --user show-environment)
+		export $var
+	end
+end
 
