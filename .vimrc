@@ -87,6 +87,7 @@ nmap <leader>ll :Lines<Enter>
 nmap <leader>mm :Marks<Enter>
 nmap <leader>ww :Windows<Enter>
 nmap <leader>hh :History/<Enter>
+nmap <leader>rr :reg<Enter>
 
 " finding files
 nmap <leader>ff :Files<Enter>
