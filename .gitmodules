@@ -25,3 +25,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-fugitive"]
 	path = .vim/pack/git-plugins/start/vim-fugitive
 	url = git@github.com:/tpope/vim-fugitive.git
+[submodule ".vim/pack/git-plugins/start/vim-peekaboo"]
+	path = .vim/pack/git-plugins/start/vim-peekaboo
+	url = https://github.com/junegunn/vim-peekaboo.git
