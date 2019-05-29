@@ -250,15 +250,13 @@ client.urgent           $light_black $dark_red     $background $dark_red     $da
 client.placeholder      $light_black $dark_magenta $background $dark_magenta $dark_magenta
 
 input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
-    xkb_layout us
-    xkb_variant altgr-intl
+    xkb_layout eu
     xkb_model pc105+inet
     xkb_options caps:escape
 }
 
 input 1:1:AT_Translated_Set_2_keyboard {
-    xkb_layout us
-    xkb_variant altgr-intl
+    xkb_layout eu
     xkb_model pc105+inet
     xkb_options caps:escape
 }
