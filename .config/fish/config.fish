@@ -10,7 +10,7 @@ set __fish_git_prompt_showcolorhints 'yes'
 set fish_prompt_pwd_dir_length 0
 
 set -U FZF_LEGACY_KEYBINDINGS 0
-set -U FZF_COMPLETE 2
+#set -U FZF_COMPLETE 2
 
 function fish_prompt
 	set last_status $status
@@ -47,10 +47,10 @@ alias ssh "env TERM=xterm ssh"
 #end
 
 set -x GPG_TTY (tty)
+gpg-connect-agent updatestartuptty /bye > /dev/null
+
 if status is-login
-	gpg-connect-agent updatestartuptty /bye
 	for var in (systemctl --user show-environment)
 		export $var
 	end
 end
-
