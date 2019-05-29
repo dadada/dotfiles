@@ -14,7 +14,7 @@ interval=360
 
 [space]
 separator=true
-interval=30
+interval=300
 
 #[fgraum]
 #label=FG
@@ -23,7 +23,7 @@ interval=30
 
 [playerctl]
 separator=true
-interval=5
+interval=10
 signal=11
 
 [volume]
@@ -34,28 +34,23 @@ signal=10
 
 [memory]
 label=MEM
-interval=30
+interval=60
 
 [disk]
 label=~
 separator=false
-interval=30
+interval=60
 
 [disk]
 label=/
 instance=/
-interval=30
+interval=60
 
 #[wifi]
 #label=W
 #instance=wlp3s0
 #interval=5
 #separator=false
-
-[interface]
-label=netcom
-interval=10
-instance=netcom
 
 [bandwidth]
 instance=wlp3s0
@@ -66,10 +61,10 @@ interval=1
 # The battery instance defaults to 0.
 [battery]
 label=BAT
-interval=10
+interval=60
 
 # Date Time
 #
 [time]
 command=date '+%Y-%m-%d %H:%M:%S'
-interval=5
+interval=60
