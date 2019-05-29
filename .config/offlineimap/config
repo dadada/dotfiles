@@ -19,3 +19,13 @@ remotehost = encke.uberspace.de
 remoteuser = dadada
 remotepasseval = get_password("uberspace.de/dadada")
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[mbnames]
+enabled = yes
+sep = " "
+footer = "\n"
+incremental = no
+header = "mailboxes "
+filename = ~/.config/mutt/mailboxes
+peritem = "+%(accountname)s/%(foldername)s"
+folderfilter = mbnames_folderfilter
