@@ -28,3 +28,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-peekaboo"]
 	path = .vim/pack/git-plugins/start/vim-peekaboo
 	url = https://github.com/junegunn/vim-peekaboo.git
+[submodule ".vim/pack/git-plugins/start/rust.vim"]
+	path = .vim/pack/git-plugins/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git

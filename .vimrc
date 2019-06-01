@@ -31,8 +31,8 @@ set incsearch
 set lazyredraw
 
 " Do not show matching brackets when text indicator is over them
-set noshowmatch
-let loaded_matchparen = 1
+" set noshowmatch
+" let loaded_matchparen = 1
 
 " No annoying sound on errors
 set noerrorbells
@@ -106,14 +106,22 @@ nmap <leader>ss :ALESymbolSearch<Enter>
 nmap <leader>gd :ALEGoToDefinition<Enter>
 nmap <leader>?? :ALEHover<Enter>
 
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
+
 " Enable completion where available.
 " This setting must be set before ALE is loaded.
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
+let g:ale_warn_about_trailing_whitespace = 1
+let g:ale_warn_about_trailing_lines = 1
 
-let g:ale_lint_on_text_changed = 'never'
+" Use ALE and also some plugin 'foobar' as completion sources for all code.
+"let g:deoplete#sources = {'_': ['ale']}
+"let g:deoplete#enable_at_startup = 1
+
+"let g:ale_lint_on_text_changed = 'never'
 " You can disable this option too
 " if you don't want linters to run on opening a file
-let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_enter = 0
 
 " Set airline theme
 let g:airline_theme='base16_spacemacs'
