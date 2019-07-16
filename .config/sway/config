@@ -18,7 +18,7 @@ set $light_cyan    #4f97d7ff
 set $dark_white    #a31db1ff
 set $light_white   #b03060ff
 
-xwayland enable
+#xwayland disable
 
 # global modifier key
 set $mod Mod4
@@ -37,13 +37,13 @@ font pango:Source Code Pro 8
 #font pango:Noto Sans Mono CJK JP 8
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec st
 
 # start an editor
-bindsym $mod+Shift+Return exec /usr/bin/termite -e vim
+bindsym $mod+Shift+Return exec /usr/bin/st -e vim
 
 # start an web browser
-bindsym $mod+backslash exec /usr/bin/firefox
+bindsym $mod+backslash exec $HOME/.bin/firefox
 
 # start dmenu
 bindsym $mod+space exec bemenu-run
@@ -222,7 +222,7 @@ bar {
     position top
     strip_workspace_numbers yes
     workspace_buttons yes
-    output LVDS-1
+    #output LVDS-1
 
     colors {
         background $background
@@ -253,6 +253,11 @@ input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
     xkb_layout eu
     xkb_model pc105+inet
     xkb_options caps:escape
+    natural_scroll enabled
+}
+
+input 2:10:TPPS/2_IBM_TrackPoint {
+    natural_scroll enabled
 }
 
 input 1:1:AT_Translated_Set_2_keyboard {
@@ -264,7 +269,17 @@ input 1:1:AT_Translated_Set_2_keyboard {
 input 2:7:SynPS/2_Synaptics_TouchPad {
     tap enabled
     natural_scroll enabled
+
+    # disables the input device
+    events disabled
 }
+
+input 1133:49938:LITEON_Technology_USB_Multimedia_Keyboard {
+    xkb_layout neo
+    xkb_model pc105
+    xkb_options caps:escape
+}
+    
 
 output LVDS-1 {
     background /home/tim/lib/pictures/Wallpapers/mikhail-vasilyev-130018-unsplash.jpg fill
@@ -282,5 +297,7 @@ seat * {
 for_window [class="jetbrains-studio"] floating enable
 focus_follows_mouse no
 
+exec xset s off
+exec xss-lock -- swaylock
 #exec swayidle timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -i ~/.wallpaper'
 #exec redshift
