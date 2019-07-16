@@ -1,6 +1,6 @@
 #!/bin/sh
 
-long="$(notmuch count 'not folder:/Trash|Drafts|Sent|Archive/ and tag:unread')"
+long="$(notmuch count 'folder:/INBOX/ and tag:unread')"
 short="${long}"
 
 echo "${long}"

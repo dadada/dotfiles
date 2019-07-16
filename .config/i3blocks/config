@@ -10,7 +10,7 @@ markup=none
 [notmuch]
 label=mail
 signal=12
-interval=360
+interval=60
 
 [space]
 separator=true
