@@ -6,6 +6,9 @@ set autoread
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
+" no command execution from modeline
+set nomodeline
+
 " Turn on the Wild menu
 set wildmenu
 
@@ -49,8 +52,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set t_Co=256
-
 set background=dark
 
 colorscheme spacemacs-theme
@@ -67,6 +68,9 @@ set wildmenu
 
 " Transparency
 hi Normal guibg=NONE ctermbg=NONE
+
+"set list!
+"set listchars=trail:⛤,extends:⟩,precedes:⟨,nbsp:␣,conceal:…
 
 " Map leader to do extra key combinations
 let mapleader = " "
