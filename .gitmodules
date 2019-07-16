@@ -31,3 +31,9 @@
 [submodule ".vim/pack/git-plugins/start/rust.vim"]
 	path = .vim/pack/git-plugins/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".vim/pack/git-plugins/start/vim-fish"]
+	path = .vim/pack/git-plugins/start/vim-fish
+	url = https://github.com/dag/vim-fish.git
+[submodule ".vim/pack/git-plugins/start/vim-ledger"]
+	path = .vim/pack/git-plugins/start/vim-ledger
+	url = https://github.com/ledger/vim-ledger.git
