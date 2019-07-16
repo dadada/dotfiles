@@ -42,10 +42,14 @@ alias mv "mv -i"
 alias cp "cp -i"
 alias ssh "env TERM=xterm ssh"
 
-#if status is-interactive 
-#and not set -q TMUX
-#	exec tmux
-#end
+if status is-interactive
+	and not set -q TMUX
+	exec tmux
+end
+
+if set -q TMUX
+	set -x TERM xterm-256color
+end
 
 set -x GPG_TTY (tty)
 gpg-connect-agent updatestartuptty /bye > /dev/null
