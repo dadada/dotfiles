@@ -26,6 +26,7 @@ end
 
 function fish_right_prompt
 	printf '%s' (__fish_git_prompt)
+	printf '%s' (__fish_maildir_prompt)
 end
 
 function fish_greeting
