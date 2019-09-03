@@ -6,6 +6,5 @@ MBLAZE=$HOME/.config/mblaze
 MBLAZE_PAGER=cat
 NOTMUCH_CONFIG=$HOME/.config/notmuch/config
 PASSWORD_STORE_DIR=$HOME/src/password-store
-PATH=$HOME/.bin:$HOME/.local/bin:$HOME/src/mailfoo:$PATH
-SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh
 DISPLAY=:0
+SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket

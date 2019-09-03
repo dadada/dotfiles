@@ -4,8 +4,6 @@ HISTFILE=${HOME}/.zsh_history
 TERM="xterm-256color"
 EDITOR="emacsclient -c"
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 alias man='nocorrect man'
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
@@ -34,7 +32,7 @@ setopt inc_append_history
 setopt share_history # share command history data
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle :compinstall filename '/home/tim/.zshrc'
+zstyle :compinstall filename '/home/dadada/.zshrc'
 
 autoload -Uz compinit
 compinit

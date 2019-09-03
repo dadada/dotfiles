@@ -26,7 +26,6 @@ end
 
 function fish_right_prompt
 	printf '%s' (__fish_git_prompt)
-	printf '%s' (__fish_maildir_prompt)
 end
 
 function fish_greeting
@@ -36,26 +35,23 @@ alias gs "git status"
 alias gc "git commit"
 alias ga "git add -p"
 alias gl "git log"
-alias ls "exa -l"
+alias ls "exa"
 alias feeds 'picofeed ~/.config/feeds/feeds'
 alias mv "mv -i"
 alias cp "cp -i"
-alias ssh "env TERM=xterm ssh"
 
 if status is-interactive
-	and not set -q TMUX
+and not status is-login
+and not set -q TMUX
 	exec tmux
 end
 
-if set -q TMUX
+if status is-interactive
 	set -x TERM xterm-256color
 end
 
-set -x GPG_TTY (tty)
-gpg-connect-agent updatestartuptty /bye > /dev/null
-
-if status is-login
-	for var in (systemctl --user show-environment)
-		export $var
-	end
-end
+#if status is-login
+#	for var in (systemctl --user show-environment)
+#		export $var
+#	end
+#end

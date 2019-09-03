@@ -52,6 +52,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+set t_Co=256
 set background=dark
 
 colorscheme spacemacs-theme
@@ -66,8 +67,12 @@ set preserveindent
 set wildmode=longest,list,full
 set wildmenu
 
+set cursorline
+set number
+set relativenumber
+
 " Transparency
-hi Normal guibg=NONE ctermbg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
 
 "set list!
 "set listchars=trail:⛤,extends:⟩,precedes:⟨,nbsp:␣,conceal:…

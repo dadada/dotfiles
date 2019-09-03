@@ -1,21 +1,21 @@
 set $wallpaper ~/.wallpaper
-set $foreground    #a3a3a3ff
-set $background    #1f2022e5
-set $dark_black    #1f2022ff
+set $foreground	#a3a3a3ff
+set $background	#1f2022e5
+set $dark_black	#1f2022ff
 set $light_black   #282828ff
-set $dark_red      #444155ff
-set $light_red     #585858ff
-set $dark_green    #b8b8b8ff
+set $dark_red	  #444155ff
+set $light_red	 #585858ff
+set $dark_green	#b8b8b8ff
 set $light_green   #a3a3a3ff
 set $dark_yellow   #e8e8e8ff
 set $light_yellow  #f8f8f8ff
-set $dark_blue     #f2241fff
-set $light_blue    #ffa500ff
+set $dark_blue	 #f2241fff
+set $light_blue	#ffa500ff
 set $dark_magenta  #b1951dff
 set $light_magenta #67b11dff
-set $dark_cyan     #2d9574ff
-set $light_cyan    #4f97d7ff
-set $dark_white    #a31db1ff
+set $dark_cyan	 #2d9574ff
+set $light_cyan	#4f97d7ff
+set $dark_white	#a31db1ff
 set $light_white   #b03060ff
 
 #xwayland disable
@@ -29,24 +29,15 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exit
-
 # the font to be used for i3bar and window decorations
 font pango:Source Code Pro 8
-#font pango:Noto Sans Mono CJK JP 8
 
-# start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec termite
+bindsym $mod+Space exec dmenu_run
 
-# start an editor
-bindsym $mod+Shift+Return exec /usr/bin/st -e vim
-
-# start an web browser
-bindsym $mod+backslash exec $HOME/.bin/firefox
-
-# start dmenu
-bindsym $mod+space exec bemenu-run
+# switch keyboard to neo
+bindsym $mod+F1 exec neo-key
+bindsym $mod+F2 exec eu-key
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -57,45 +48,30 @@ floating_modifier $mod
 # toggle tiling / floating
 bindsym $mod+Shift+f floating toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+f focus mode_toggle
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
-    # resize windows with hjkl
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
-    
-    # back to normal mode 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+	# resize windows with hjkl
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+	
+	# back to normal mode 
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 # switch to resize mode
 bindsym $mod+r mode "resize"
 
-# toggle window decorations
-bindsym $mod+t border toggle
-
 # set border width of new window
-new_window pixel 1
-#new_window none
-#gaps outer 5
-#gaps inner 5
+default_border pixel 1
 
 # keep focus within current container?
-force_focus_wrapping no
+focus_wrapping no
 
 # enter fullscreen mode for the focused container
 bindsym $mod+o fullscreen
-
-# focus the parent container
-bindsym $mod+p focus parent
-
-# focus the child container
-bindsym $mod+shift+p focus child
 
 # default orientation of new windows
 default_orientation horizontal
@@ -107,9 +83,7 @@ bindsym $mod+b split h
 bindsym $mod+shift+b split v
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+y layout stacking
-bindsym $mod+u layout tabbed
-bindsym $mod+i layout toggle split
+bindsym $mod+x layout toggle all
 
 # name workspaces
 set $1 1:msg
@@ -136,15 +110,18 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # focus latest urgent window
-bindsym $mod+x [urgent=latest] focus
+bindsym $mod+Shift+1 [urgent=latest] focus
 
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+# focus the parent container
+bindsym $mod+Up focus parent
 
-# switch to workspace
+# focus the child container
+bindsym $mod+Down focus child
+
+# focus tiling/floating
+bindsym $mod+f focus mode_toggle
+
+# focus workspace
 bindsym $mod+1 workspace number $1
 bindsym $mod+2 workspace number $2
 bindsym $mod+3 workspace number $3
@@ -155,138 +132,133 @@ bindsym $mod+7 workspace number $7
 bindsym $mod+8 workspace number $8
 bindsym $mod+9 workspace number $9
 bindsym $mod+0 workspace number $10
-bindsym $mod+m workspace next_on_output
-bindsym $mod+n workspace prev_on_output
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $1
-bindsym $mod+Shift+2 move container to workspace number $2
-bindsym $mod+Shift+3 move container to workspace number $3
-bindsym $mod+Shift+4 move container to workspace number $4
-bindsym $mod+Shift+5 move container to workspace number $5
-bindsym $mod+Shift+6 move container to workspace number $6
-bindsym $mod+Shift+7 move container to workspace number $7
-bindsym $mod+Shift+8 move container to workspace number $8
-bindsym $mod+Shift+9 move container to workspace number $9
-bindsym $mod+Shift+0 move container to workspace number $10
-bindsym $mod+Shift+m move container to workspace next_on_output
-bindsym $mod+Shift+n move container to workspace prev_on_output
+bindsym $mod+n workspace next_on_output
+bindsym $mod+p workspace prev_on_output
 
 # focus different outputs (displays)
-bindsym $mod+ctrl+h focus output left
-bindsym $mod+ctrl+j focus output down
-bindsym $mod+ctrl+k focus output up
-bindsym $mod+ctrl+l focus output right
-
-# move selected workspace to output
-bindsym $mod+shift+ctrl+h move workspace to output left
-bindsym $mod+shift+ctrl+j move workspace to output down
-bindsym $mod+shift+ctrl+k move workspace to output up
-bindsym $mod+shift+ctrl+l move workspace to output right
-
-# make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+shift+h focus output left
+bindsym $mod+shift+j focus output down
+bindsym $mod+shift+k focus output up
+bindsym $mod+shift+l focus output right
 
 # show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-# lock the screen
+set $mode_move "move"
+bindsym $mod+m mode "$mode_move"
 
-bindsym $mod+equal exec swaylock -f -i ~/.wallpaper
-#/usr/bin/swayidle timeout 1 'swaylock -c 000000' timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -c 000000'
+mode "$mode_move" {
+
+	# move focused container
+	bindsym h move left
+	bindsym j move down
+	bindsym k move up
+	bindsym l move right
+	bindsym 1 move container to workspace number $1     ;mode "default"
+	bindsym 2 move container to workspace number $2     ;mode "default"
+	bindsym 3 move container to workspace number $3     ;mode "default"
+	bindsym 4 move container to workspace number $4     ;mode "default"
+	bindsym 5 move container to workspace number $5     ;mode "default"
+	bindsym 6 move container to workspace number $6     ;mode "default"
+	bindsym 7 move container to workspace number $7     ;mode "default"
+	bindsym 8 move container to workspace number $8     ;mode "default"
+	bindsym 9 move container to workspace number $9     ;mode "default"
+	bindsym 0 move container to workspace number $10    ;mode "default"
+	bindsym n move container to workspace next_on_output;mode "default"
+	bindsym p move container to workspace prev_on_output;mode "default"
+
+	# move focused workspace to output
+	bindsym shift+h move workspace to output left ; mode "default"
+	bindsym shift+j move workspace to output down ; mode "default"
+	bindsym shift+k move workspace to output up ; mode "default"
+	bindsym shift+l move workspace to output right ; mode "default"
+	bindsym shift+n move container to output next ; mode "default"
+	bindsym shift+p move container to output prev ; mode "default"
+
+	# make the currently focused window a scratchpad
+	bindsym minus move scratchpad; mode "default"
+	
+	# Move container to the current position of the cursor
+	bindsym m move position mouse; mode "default"
+
+	bindsym Escape mode "default"
+}
+
+# lock the screen
+bindsym $mod+equal exec loginctl lock-session
 
 # control volume
-bindsym XF86AudioRaiseVolume exec amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer set Master toggle && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMicMute exec amixer set 'Capture' toggle && pkill -RTMIN+10 i3blocks
+bindsym --locked XF86AudioRaiseVolume exec amixer set 'Master' 5%+ && pkill -RTMIN+10 i3blocks
+bindsym --locked XF86AudioLowerVolume exec amixer set 'Master' 5%- && pkill -RTMIN+10 i3blocks
+bindsym --locked XF86AudioMute exec amixer set Master toggle && pkill -RTMIN+10 i3blocks
+bindsym --locked XF86AudioMicMute exec amixer set 'Capture' toggle && pkill -RTMIN+10 i3blocks
 
 # control media player
-bindsym XF86AudioPlay exec playerctl play-pause && pkill -RTMIN+11 i3blocks
-bindsym XF86LaunchA exec playerctl play-pause && pkill -RTMIN+11 i3blocks
-bindsym XF86AudioNext exec playerctl next && pkill -RTMIN+11 i3blocks
-bindsym XF86Explorer exec playerctl next && pkill -RTMIN+11 i3blocks
-bindsym XF86AudioPrev exec playerctl previous && pkill -RTMIN+11 i3blocks
-bindsym XF86Search exec playerctl previous && pkill -RTMIN+11 i3blocks
+bindsym --locked XF86AudioPlay exec playerctl play-pause && pkill -RTMIN+11 i3blocks
+bindsym --locked XF86LaunchA exec playerctl play-pause && pkill -RTMIN+11 i3blocks
+bindsym --locked XF86AudioNext exec playerctl next && pkill -RTMIN+11 i3blocks
+bindsym --locked XF86Explorer exec playerctl next && pkill -RTMIN+11 i3blocks
+bindsym --locked XF86AudioPrev exec playerctl previous && pkill -RTMIN+11 i3blocks
+bindsym --locked XF86Search exec playerctl previous && pkill -RTMIN+11 i3blocks
 
 # control screen brightness
-bindsym XF86MonBrightnessUp exec brightnessctl set -d intel_backlight +5%
-bindsym XF86MonBrightnessDown exec brightnessctl set -d intel_backlight 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set -d intel_backlight +5%
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set -d intel_backlight 5%-
 
 # Basic bar configuration using the Base16 variables.
 bar {
-    id bar
-    status_command i3blocks
-    mode dock
-    modifier $mod
-    position top
-    strip_workspace_numbers yes
-    workspace_buttons yes
-    #output LVDS-1
+	id bar
+	status_command i3blocks
+	mode dock
+	modifier $mod
+	position top
+	strip_workspace_numbers yes
+	workspace_buttons yes
+	#output LVDS-1
 
-    colors {
-        background $background
-        separator  $light_green
-        statusline $foreground
+	colors {
+		background $background
+		separator  $light_green
+		statusline $foreground
 
-        # State            Border        BG           Text
-        focused_workspace  $light_black $dark_cyan    $background
-        active_workspace   $light_black $dark_green   $background
-        inactive_workspace $dark_black  $background   $foreground
-        urgent_workspace   $light_black $dark_red     $background
-        binding_mode       $light_black $dark_magenta $background
-    }
+		# State			Border		BG		   Text
+		focused_workspace  $light_black $dark_cyan	$background
+		active_workspace   $light_black $dark_green   $background
+		inactive_workspace $dark_black  $background   $foreground
+		urgent_workspace   $light_black $dark_red	 $background
+		binding_mode	   $light_black $dark_magenta $background
+	}
 }
 
 #hide_edge_borders both
 bindsym XF86Launch1 exec aplay ~/lib/sounds/wortwitzklingel-mono.wav
 
 # Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border       BG            Text        Indicator     Child Border
-client.focused          $light_black $dark_cyan    $background $dark_cyan    $dark_cyan
+# Property Name		 Border	   BG			Text		Indicator	 Child Border
+client.focused		  $light_black $dark_cyan	$background $dark_cyan	$dark_cyan
 client.focused_inactive $light_black $dark_green   $background $dark_green   $dark_green
-client.unfocused        $light_black  $background   $foreground $dark_white   $dark_white
-client.urgent           $light_black $dark_red     $background $dark_red     $dark_red
-client.placeholder      $light_black $dark_magenta $background $dark_magenta $dark_magenta
+client.unfocused		$light_black  $background   $foreground $dark_white   $dark_white
+client.urgent		   $light_black $dark_red	 $background $dark_red	 $dark_red
+client.placeholder	  $light_black $dark_magenta $background $dark_magenta $dark_magenta
 
-input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
-    xkb_layout eu
-    xkb_model pc105+inet
-    xkb_options caps:escape
-    natural_scroll enabled
-}
-
-input 2:10:TPPS/2_IBM_TrackPoint {
-    natural_scroll enabled
-}
-
-input 1:1:AT_Translated_Set_2_keyboard {
-    xkb_layout eu
-    xkb_model pc105+inet
-    xkb_options caps:escape
+input * {
+	xkb_layout eu
+	xkb_model pc105+inet
+	xkb_options caps:escape
+	natural_scroll enabled
 }
 
 input 2:7:SynPS/2_Synaptics_TouchPad {
-    tap enabled
-    natural_scroll enabled
-
-    # disables the input device
-    events disabled
+	# disables the input device
+	events disabled
 }
-
-input 1133:49938:LITEON_Technology_USB_Multimedia_Keyboard {
-    xkb_layout neo
-    xkb_model pc105
-    xkb_options caps:escape
-}
-    
 
 output LVDS-1 {
-    background /home/tim/lib/pictures/Wallpapers/mikhail-vasilyev-130018-unsplash.jpg fill
+	background /home/dadada/lib/pictures/Wallpapers/mikhail-vasilyev-130018-unsplash.jpg fill
 }
 
 output VGA-1 {
-    background /home/tim/lib/pictures/Wallpapers/cel-lisboa-73965-unsplash.jpg fill
+	background /home/dadada/lib/pictures/Wallpapers/cel-lisboa-73965-unsplash.jpg fill
 }
 
 seat * {
@@ -298,6 +270,6 @@ for_window [class="jetbrains-studio"] floating enable
 focus_follows_mouse no
 
 exec xset s off
-exec xss-lock -- swaylock
+exec xss-lock -- lock-session
 #exec swayidle timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f -i ~/.wallpaper'
 #exec redshift

@@ -1,5 +1,6 @@
 Outbox: /home/tim/.var/mail/Sent
-Sendmail: /usr/bin/msmtp
+Sendmail: /usr/bin/sendmail
 Local-Mailbox: mail@timschubert.net
 Alternate-Mailboxes: tim.schubert@tu-bs.de,mail@timschubert.net,dadada@uber.space,tim.schubert@tu-braunschweig.de,dadada@dadada.li
+Scan-Format: %u%r %-3n %10d %17f %t %2i%s
 

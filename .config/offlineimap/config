@@ -16,7 +16,7 @@ localfolders = ~/.var/mail
 [Repository Remote]
 type = IMAP
 remotehost = encke.uberspace.de
-remoteuser = dadada
-remotepasseval = get_password("uberspace.de/dadada")
+remoteuser = dadada@dadada.encke.uberspace.de
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 folderfilter = folderfilter
+#remotepasseval = get_password("uberspace.de")

@@ -1,15 +1,15 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
-import urllib3
+import urllib
 import json
 import dateutil.parser
 
 from datetime import datetime, date
 
 
-http = urllib3.PoolManager()
+http = urllib.PoolManager()
 
-urllib3.disable_warnings()
+urllib.disable_warnings()
 
 req = http.request('GET', 'https://status.stratum0.org/status.json')
 

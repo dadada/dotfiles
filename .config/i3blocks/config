@@ -2,11 +2,6 @@ command=~/.config/i3blocks/lib/$BLOCK_NAME
 separator_block_width=20
 markup=none
 
-#[mpd]
-#separator=true
-#interval=5
-#signal=11
-
 [notmuch]
 label=mail
 signal=12
@@ -15,11 +10,6 @@ interval=60
 [space]
 separator=true
 interval=300
-
-#[fgraum]
-#label=FG
-#separator=true
-#interval=30
 
 [playerctl]
 separator=true
@@ -31,30 +21,6 @@ label=VOL
 instance=Master
 interval=once
 signal=10
-
-[memory]
-label=MEM
-interval=60
-
-[disk]
-label=~
-separator=false
-interval=60
-
-[disk]
-label=/
-instance=/
-interval=60
-
-#[wifi]
-#label=W
-#instance=wlp3s0
-#interval=5
-#separator=false
-
-[bandwidth]
-instance=wlp3s0
-interval=1
 
 # Battery indicator
 #
